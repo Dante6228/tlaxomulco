@@ -4,13 +4,13 @@ require_once __DIR__ . "/conexion.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $usuario = $_POST["usuario"];
-    $contraseña = $_POST["contraseña"];
-    $inicio = iniciar($usuario,$contraseña);
+    $contrasena = $_POST["contraseña"];
+    $inicio = iniciar($usuario,$contrasena);
     if ($inicio === 1){
         header("Location: ../index.php?mensaje=1");
         exit();
     } else{
-        header("Location: ../index.php?mensaje=error");
+        header("Location:../index.php?mensaje=0");
         exit();
     }
 } else{
@@ -26,11 +26,11 @@ function iniciar($usuario, $contrasena){
             throw new UnexpectedValueException("Error de conexión a la base de datos");
         }
 
-        $query = "SELECT * FROM usuario WHERE usuario = :usuario AND contraseña = :contraseña";
+        $query = "SELECT * FROM usuario WHERE usuario = :usuario AND contraseña = :contrasena";
 
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':usuario', $usuario);
-        $stmt->bindParam(':contraseña', $contrasena);
+        $stmt->bindParam(':contrasena', $contrasena);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
@@ -41,7 +41,7 @@ function iniciar($usuario, $contrasena){
             return 1;
         }
 
-    } catch (PDOException $e) {
+    } catch (Exception $e) {
         echo "Error en la consulta: " . $e->getMessage();
     }
 }

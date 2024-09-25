@@ -16,6 +16,13 @@
         </div>
     </header>
     <main>
+
+        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "0") { ?>
+            <div class="error">
+                <p>Inicio de sesión fallido, por favor vuelve a intentarlo</p>
+            </div>
+        <?php } ?>
+
         <table>
             <thead>
                 <th colspan="2">

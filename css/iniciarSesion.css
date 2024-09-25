@@ -86,3 +86,14 @@ table input[type="submit"]:hover{
     box-shadow: 4px 5px 10px rgb(0, 0, 0, 0.4);
     border: 0.2px solid rgb(7, 124, 52, 0.2);
 }
+
+.error{
+    background-color: #faa39d;
+    padding: 15px;
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
+    border-radius: 12px;
+    box-shadow: 6px 6px 12px rgb(0, 0, 0, 0.4);
+    margin-bottom: 25px;
+}
