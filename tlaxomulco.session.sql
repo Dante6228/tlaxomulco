@@ -1,0 +1,59 @@
+CREATE TABLE usuario (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+usuario VARCHAR(30) NOT NULL,
+contraseña VARCHAR(30) NOT NULL
+);
+CREATE TABLE nivel_educativo (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+descripcion VARCHAR(50) NOT NULL
+);
+CREATE TABLE estado (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+descripcion VARCHAR(50) NOT NULL
+);
+CREATE TABLE genero (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+descripcion VARCHAR(50) NOT NULL
+);
+CREATE TABLE alumno (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+nombre VARCHAR(60) NOT NULL,
+Ap VARCHAR(50) NOT NULL,
+Am VARCHAR(50) NOT NULL,
+matricula INT NOT NULL,
+direccion VARCHAR(100) NOT NULL,
+estado INT NOT NULL,
+nivel INT NOT NULL,
+genero INT NOT NULL,
+FOREIGN KEY (estado) REFERENCES estado(id),
+FOREIGN KEY (nivel) REFERENCES nivel_educativo(id),
+FOREIGN KEY (genero) REFERENCES genero(id)
+);
+CREATE TABLE ciclo (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+descripcion VARCHAR(50) NOT NULL
+);
+CREATE TABLE promocion (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+descripcion VARCHAR(50) NOT NULL
+);
+CREATE TABLE medio_enterado (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+descripcion VARCHAR(50) NOT NULL
+);
+CREATE TABLE registro (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+fecha DATE NOT NULL,
+pago_inscripcion INT NOT NULL,
+pago_colegiatura INT NOT NULL,
+medio_enterado INT NOT NULL,
+promocion INT NOT NULL,
+ciclo_escolar INT NOT NULL,
+alumno INT NOT NULL,
+usuario INT NOT NULL,
+FOREIGN KEY (medio_enterado) REFERENCES medio_enterado(id),
+FOREIGN KEY (promocion) REFERENCES promocion(id),
+FOREIGN KEY (ciclo_escolar) REFERENCES ciclo(id),
+FOREIGN KEY (alumno) REFERENCES alumno(id),
+FOREIGN KEY (usuario) REFERENCES usuario(id)
+);
