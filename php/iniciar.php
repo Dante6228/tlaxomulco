@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $contrasena = $_POST["contraseña"];
     $inicio = iniciar($usuario,$contrasena);
     if ($inicio === 1){
-        header("Location: ../index.php?mensaje=1");
+        header("Location: ../Bienvenida.php");
         exit();
     } else{
         header("Location:../index.php?mensaje=0");

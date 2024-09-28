@@ -23,6 +23,12 @@
             </div>
         <?php } ?>
 
+        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "cierre") { ?>
+            <div class="cierre">
+                <p>Sesión cerrada exitosamente</p>
+            </div>
+        <?php } ?>
+
         <table>
             <thead>
                 <th colspan="2">
@@ -38,7 +44,7 @@
                             <label for="usuario">Usuario: </label>
                         </td>
                         <td>
-                            <input type="text" name="usuario" id="usuario">
+                            <input type="text" name="usuario" id="usuario" required>
                         </td>
                     </tr>
                     <tr>
@@ -46,7 +52,7 @@
                             <label for="contraseña">Contraseña: </label>
                         </td>
                         <td>
-                            <input type="password" name="contraseña" id="contraseña">
+                            <input type="password" name="contraseña" id="contraseña" required>
                         </td>
                     </tr>
                     <tr>
@@ -58,8 +64,5 @@
             </tbody>
         </table>
     </main>
-    <footer>
-
-    </footer>
 </body>
 </html>

@@ -42,14 +42,16 @@ main{
 
 table{
     background-color: #FFF9F0;
-    box-shadow: 8px 8px 20px rgb(0, 0, 0, 0.25);
+    box-shadow: 8px 8px 18px rgb(0, 0, 0, 0.25);
     padding: 20px;
     border-radius: 12px;
-    width: 28%;
+    width: 30%;
     height: 60%;
+    border: 1px solid rgb(0, 0, 0, 0.3);
 }
 
-table input[type="text"], table input[type="password"]{
+table input[type="text"],
+table input[type="password"]{
     padding: 6px;
     border: 1px solid rgb(0, 0, 0, 0.2);
     border-radius: 4px;
@@ -58,7 +60,8 @@ table input[type="text"], table input[type="password"]{
     transition: .3s;
 }
 
-table input[type="text"]:hover, table input[type="password"]:hover{
+table input[type="text"]:hover,
+table input[type="password"]:hover{
     outline: 0.1px solid rgb(0, 0, 0, 0.2);
     box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.3);
 }
@@ -77,6 +80,7 @@ table input[type="submit"]{
     background-color: #dffae8;
     box-shadow: 3px 3px 10px rgb(0, 0, 0, 0.2);
     transition: .5s;
+    outline: none;
 }
 
 table input[type="submit"]:hover{
@@ -85,6 +89,8 @@ table input[type="submit"]:hover{
     cursor: pointer;
     box-shadow: 4px 5px 10px rgb(0, 0, 0, 0.4);
     border: 0.2px solid rgb(7, 124, 52, 0.2);
+    padding: 12px;
+    outline: 1px solid rgb(0, 0, 0, 0.2);
 }
 
 .error{
@@ -95,5 +101,46 @@ table input[type="submit"]:hover{
     font-weight: bolder;
     border-radius: 12px;
     box-shadow: 6px 6px 12px rgb(0, 0, 0, 0.4);
-    margin-bottom: 25px;
+    margin-bottom: 35px;
+    animation: animacionError 1s normal;
+    z-index: -1;
+}
+
+@keyframes animacionError{
+    0%{
+        transform: translateY(-100px);
+        opacity: 0%;
+        display: none;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+        display: flex;
+    }
+}
+
+.cierre{
+    background-color: #9dfab7;
+    padding: 15px;
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
+    border-radius: 12px;
+    box-shadow: 6px 6px 12px rgb(0, 0, 0, 0.4);
+    margin-bottom: 35px;
+    animation: animacionCierre 1s normal;
+    z-index: -1;
+}
+
+@keyframes animacionCierre{
+    0%{
+        transform: translateY(-100px);
+        opacity: 0%;
+        display: none;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+        display: flex;
+    }
 }
