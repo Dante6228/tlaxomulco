@@ -37,12 +37,24 @@ main{
     justify-content: center;
 }
 
+@keyframes inicio{
+    0%{
+        transform: translateY(-30px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
 .links{
     display: flex;
     align-items: center;
     width: 70%;
     height: 100px;  
     justify-content: space-around;
+    animation: inicio 1s normal;
 }
 
 .links a{
