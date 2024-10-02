@@ -95,6 +95,7 @@ table tr td a:hover{
     cursor: pointer;
     font-weight: bolder;
     box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.5);
+    transform: scale(1.05);
 }
 
 .master h2{
@@ -242,6 +243,7 @@ table tr td a:hover{
     box-shadow: 6px 6px 10px rgb(0, 0, 0, 0.5);
     cursor: pointer;
     font-weight: bolder;
+    transform: scale(1.07);
 }
 
 @keyframes animacionActualizacion{

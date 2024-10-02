@@ -28,8 +28,7 @@ header img{
 
 header img:hover{
     cursor: pointer;
-    width: 110px;
-    height: 110px;
+    transform: scale(1.1);
 }
 
 main{
@@ -79,4 +78,5 @@ main{
     font-size: 20px;
     color: white;
     font-weight: bolder;
+    transform: scale(1.05);
 }
