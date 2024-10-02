@@ -22,4 +22,5 @@ header{
 header img{
     width: 100px;
     display: inline;
+    transition: all 0.2s ease-in-out;
 }

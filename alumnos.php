@@ -2,7 +2,7 @@
 
 session_start();
 
-if($_SESSION['usuario'] === ""){
+if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     header("Location: Index.php?mensaje=error");
     exit();
 }
