@@ -38,10 +38,12 @@ function iniciar($usuario, $contrasena){
             session_start();
             $_SESSION["usuario"] = $row['usuario'];
             $_SESSION["contraseña"] = $row['contraseña'];
+            $_SESSION["idUsuario"] = $row['id'];
             return 1;
         }
 
     } catch (Exception $e) {
         echo "Error en la consulta: " . $e->getMessage();
+        exit();
     }
 }

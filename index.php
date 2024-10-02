@@ -29,6 +29,18 @@
             </div>
         <?php } ?>
 
+        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "error") { ?>
+            <div class="error">
+                <p>Debes iniciar sesión para entrar al sitio web</p>
+            </div>
+        <?php } ?>
+
+        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "err1") { ?>
+            <div class="error">
+                <p>No dispones de los permisos necesarios para acceder a esa url</p>
+            </div>
+        <?php } ?>
+
         <table>
             <thead>
                 <th colspan="2">

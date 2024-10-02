@@ -24,6 +24,20 @@ header img{
     display: inline;
 }
 
+header a{
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+}
+
+header a:hover{
+    color: rgb(228, 228, 228);
+    cursor: pointer;
+    font-weight: bolder;
+}
+
 main img{
     width: 200px;
     margin: 25px;
@@ -53,6 +67,23 @@ table td:last-child{
     text-align: center;
 }
 
+table tr td a{
+    background-color: aquamarine;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.2);
+}
+
+table tr td a:hover{
+    background-color: #54f88a;
+    cursor: pointer;
+    font-weight: bolder;
+    box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.5);
+}
+
 .master h2{
     padding: 6px;
     border-radius: 10px;
@@ -67,6 +98,26 @@ table td:last-child{
 .master table td:nth-child(2),
 .master table td:nth-child(4){
     padding: 5px;
+}
+
+@keyframes animacionModal{
+    0%{
+        transform: translateY(-100px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+@keyframes animacionCierre{
+    0%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0%;
+    }
 }
 
 .modal {
@@ -88,6 +139,8 @@ table td:last-child{
     border: 1px solid rgb(0, 0, 0, 0.3);
     width: 40%;
     border-radius: 14px;
+    box-shadow: 7px 7px 10px rgb(0, 0, 0, 0.4);
+    animation: animacionModal 0.5s normal;
 }
 
 .modal-content h2{
@@ -175,4 +228,43 @@ table td:last-child{
     box-shadow: 6px 6px 10px rgb(0, 0, 0, 0.5);
     cursor: pointer;
     font-weight: bolder;
+}
+
+@keyframes animacionActualizacion{
+    0%{
+        transform: translateY(-100px);
+        opacity: 0%;
+        display: none;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+        display: flex;
+    }
+}
+
+.actualizacion{
+    background-color: #9dfab7;
+    padding: 15px;
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
+    border-radius: 12px;
+    box-shadow: 6px 6px 12px rgb(0, 0, 0, 0.4);
+    animation: animacionActualizacion 1s normal;
+    z-index: -1;
+    margin-top: 35px;
+}
+
+.error{
+    background-color: #fa9d9d;
+    padding: 15px;
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
+    border-radius: 12px;
+    box-shadow: 6px 6px 12px rgb(0, 0, 0, 0.4);
+    animation: animacionActualizacion 1s normal;
+    z-index: -1;
+    margin-top: 35px;
 }
