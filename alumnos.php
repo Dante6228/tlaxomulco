@@ -9,9 +9,8 @@
 <body>
     <header>
         <h1>Alumnos</h1>
-        <a href="Bienvenida.php" class="profile-btn">Inicio</a>
-        <!-- Enlace para que la imagen te mande a otra página (cambia href para tu URL) -->
-        <a href="Perfil_usuario.html"><img src="imagenes/perfil1.jpg" alt="Perfil"></a>
+        <a href="Bienvenida.php" class="botonInicio">Inicio</a>
+        <a href="usuario.php"><img src="img/usuario.png" alt="Perfil"></a>
     </header>
 
     <div class="container">

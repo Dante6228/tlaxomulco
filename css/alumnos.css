@@ -6,23 +6,22 @@ body {
 }
 
 header {
-    background-color: #f59898;
-    padding: 10px;
+    background-color: #333;
+    padding: 10px 30px 10px 30px;
+    color: #fff;
+    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 header h1 {
-    margin: 0;
-    color: #333;
+    color: #ffffff;
 }
 
 header img {
-    width: 40px;
-    height: 40px;
+    width: 100px;
     cursor: pointer;
-    border-radius: 50%;
     transition: transform 0.3s ease;
 }
 
@@ -133,10 +132,11 @@ th {
 .update-btn:hover {
     background-color: #99d9a3;
 }
-.profile-btn {
+
+.botonInicio {
     position: absolute;
-    top: 10px;
-    right: 90px;
+    top: 40px;
+    right: 160px;
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
@@ -147,10 +147,11 @@ th {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.profile-btn:hover {
+.botonInicio:hover {
     background-color: #45a049;
     transform: scale(1.05);
 }
+
 .button-container {
     display: flex;
     gap: 10px;

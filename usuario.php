@@ -40,7 +40,7 @@ if ($stmt->rowCount() > 0) {
 <body>
     <header>
         <h1>Cuenta de usuario</h1>
-        <a href="Bienvenida.php">Regresar</a>
+        <a href="Bienvenida.php" class="botonInicio">Regresar</a>
         <a href="usuario.php">
             <img src="img/usuario.png" alt="Cuenta de usuario">
         </a>
