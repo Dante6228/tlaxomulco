@@ -1,10 +1,29 @@
+<?php
+
+require_once __DIR__ . "/php/conexion.php";
+
+$pdo = Conexion::connection();
+
+if (!$pdo) {
+    throw new UnexpectedValueException("Error de conexión a la base de datos");
+}
+
+$query = "SELECT * FROM nivel_educativo";
+
+$stmt = $pdo->prepare($query);
+$stmt->execute();
+
+$nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alumnos</title>
     <link rel="stylesheet" href="css/alumnos.css">
+    <title>Alumnos</title>
 </head>
 <body>
     <header>
@@ -13,91 +32,84 @@
         <a href="usuario.php"><img src="img/usuario.png" alt="Perfil"></a>
     </header>
 
-    <div class="container">
-        <div class="button-container">
-            <a href="Registrar_alumno.html">
-                <button class="register-btn">Registrar nuevo alumno</button>
-            </a>
+    <main>
+        <div class="container">
+            <div class="button-container">
+                <a href="Registrar_alumno.html">
+                    <button class="register-btn">Registrar nuevo alumno</button>
+                </a>
+            </div>
+            
+            <div class="options-container">
+                <div class="option-box">
+                    <h3>Nivel Educativo</h3>
+                    <select id="nivel-educativo" onchange="cargarGrados()">
+                        <option value="">Selecciona un nivel</option>
+                        <?php
+                        foreach ($nivel as $item) {
+                            echo "<option value='" . $item['id'] . "'>" . $item['descripcion'] . "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="option-box">
+                    <h3>Grado</h3>
+                    <select id="grado">
+                        <option value="">Selecciona un grado</option>
+                    </select>
+                </div>
+
+
+                <div class="option-box">
+                    <h3>Ciclo Escolar</h3>
+                    <select>
+                        <option value="">Selecciona un ciclo</option>
+                    </select>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Matrícula</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dante Alejandro Viveros</td>
+                        <td>135EFAS21</td>
+                        <td>
+                            <button class="delete-btn">Eliminar</button>
+                            <button class="update-btn">Actualizar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Luis Emiliano Romero</td>
+                        <td>15ASIO02C</td>
+                        <td>
+                            <button class="delete-btn">Eliminar</button>
+                            <button class="update-btn">Actualizar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ian Viveros Rodríguez</td>
+                        <td>937AJS214</td>
+                        <td>
+                            <button class="delete-btn">Eliminar</button>
+                            <button class="update-btn">Actualizar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button class="btn">Generar PDF</button>
         </div>
-        
-        <div class="options-container">
-            <div class="option-box">
-                <h3>Nivel Educativo</h3>
-                <select>
-                    <option value="preescolar">Preescolar</option>
-                    <option value="primaria">Primaria</option>
-                    <option value="secundaria">Secundaria</option>
-                    <option value="bachillerato">Bachillerato</option>
-                </select>
-            </div>
+    </main>
 
-            <div class="option-box">
-                <h3>Grado</h3>
-                <select>
-                    <option value="primero">Primero</option>
-                    <option value="segundo">Segundo</option>
-                    <option value="tercero">Tercero</option>
-                    <option value="cuarto">Cuarto</option>
-                </select>
-            </div>
+    <script src="js/alumnos.js"></script>
 
-            <div class="option-box">
-                <h3>Ciclo Escolar</h3>
-                <select>
-                    <option value="2022-2023">2022 - 2023</option>
-                    <option value="2021-2022">2021 - 2022</option>
-                    <option value="2020-2021">2020 - 2021</option>
-                    <option value="2019-2020">2019 - 2020</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Tabla de alumnos -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Matrícula</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Dante Alejandro Viveros</td>
-                    <td>135EFAS21</td>
-                    <td>
-                        <button class="delete-btn">Eliminar</button>
-                        <button class="update-btn">Actualizar</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Luis Emiliano Romero</td>
-                    <td>15ASIO02C</td>
-                    <td>
-                        <button class="delete-btn">Eliminar</button>
-                        <button class="update-btn">Actualizar</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Ian Viveros Rodríguez</td>
-                    <td>937AJS214</td>
-                    <td>
-                        <button class="delete-btn">Eliminar</button>
-                        <button class="update-btn">Actualizar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- Botón para generar PDF -->
-        <button class="btn" onclick="generatePDF()">Generar PDF</button>
-    </div>
-
-    <script>
-        // Función de PHP para generar PDF - Colocar en el archivo PHP correspondiente.
-        function generatePDF() {
-            window.location.href = 'generar_pdf.php'; // Aquí debe ir la lógica de tu PHP para generar el PDF.
-        }
-    </script>
 </body>
 </html>
