@@ -55,7 +55,7 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="option-box">
                     <h3>Grado</h3>
-                    <select id="grado">
+                    <select id="grado" onchange="eliminarOpcion()">
                         <option value="">Selecciona un grado</option>
                     </select>
                 </div>
