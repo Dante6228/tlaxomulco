@@ -194,3 +194,18 @@ th {
         opacity: 100%;
     }
 }
+
+#mostrar-alumnos-btn{
+    padding: 10px;
+    background-color: #8eff94;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+#mostrar-alumnos-btn:hover{
+    background-color: #9def9e;
+    box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.4);
+}

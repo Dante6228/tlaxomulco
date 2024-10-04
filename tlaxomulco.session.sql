@@ -1,113 +1,39 @@
-DROP DATABASE IF EXISTS tlaxomulco;
+-- Inserciones de estados
+INSERT INTO estado (descripcion) VALUES
+('Jalisco'),
+('Zacatecas'),
+('Durango'),
+('Guanajuato');
 
-CREATE DATABASE tlaxomulco;
+-- Inserciones de géneros
+INSERT INTO genero (descripcion) VALUES
+('Masculino'),
+('Femenino'),
+('No binario');
 
-USE tlaxomulco;
+-- Inserciones de medios enterados
+INSERT INTO medio_enterado (descripcion) VALUES
+('Internet'),
+('Amigos'),
+('Familia'),
+('Publicidad');
 
-CREATE TABLE usuario (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    usuario VARCHAR(30) NOT NULL,
-    contraseña VARCHAR(30) NOT NULL
-);
+-- Inserciones de promociones
+INSERT INTO promocion (descripcion) VALUES
+('Descuento del 10%'),
+('Descuento del 20%'),
+('Beca del 50%');
 
-CREATE TABLE nivel_educativo (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    descripcion VARCHAR(50) NOT NULL
-);
+-- Inserciones de alumnos
+INSERT INTO alumno (nombre, Ap, Am, matricula, direccion, estado, nivel, genero, grado_id) VALUES
+('Juan', 'Pérez', 'López', 12345, 'Calle Falsa 123', 1, 2, 1, 4),  -- Primaria, Primero
+('María', 'García', 'Hernández', 12346, 'Calle Verdadera 456', 2, 3, 2, 10), -- Secundaria, Primero
+('Luis', 'Méndez', 'Sánchez', 12347, 'Calle Real 789', 3, 4, 1, 13), -- Bachillerato, Semestre 1
+('Sofía', 'Morales', 'Torres', 12348, 'Calle Imaginaria 101', 4, 1, 2, 5); -- Primaria, Segundo
 
-CREATE TABLE estado (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    descripcion VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE genero (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    descripcion VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE grado (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    descripcion VARCHAR(50) NOT NULL,
-    nivel_educativo_id INT NOT NULL,
-    FOREIGN KEY (nivel_educativo_id) REFERENCES nivel_educativo(id)
-);
-
-CREATE TABLE ciclo (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    descripcion VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE promocion (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    descripcion VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE medio_enterado (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    descripcion VARCHAR(50) NOT NULL
-);
-
--- La tabla alumno debe ser creada después de que grado esté creada
-CREATE TABLE alumno (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(60) NOT NULL,
-    Ap VARCHAR(50) NOT NULL,
-    Am VARCHAR(50) NOT NULL,
-    matricula INT NOT NULL,
-    direccion VARCHAR(100) NOT NULL,
-    estado INT NOT NULL,
-    nivel INT NOT NULL,
-    genero INT NOT NULL,
-    grado_id INT NOT NULL,
-    FOREIGN KEY (grado_id) REFERENCES grado(id),
-    FOREIGN KEY (estado) REFERENCES estado(id),
-    FOREIGN KEY (nivel) REFERENCES nivel_educativo(id),
-    FOREIGN KEY (genero) REFERENCES genero(id)
-);
-
-CREATE TABLE registro (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    fecha DATE NOT NULL,
-    pago_inscripcion INT NOT NULL,
-    pago_colegiatura INT NOT NULL,
-    medio_enterado INT NOT NULL,
-    promocion INT NOT NULL,
-    ciclo_escolar INT NOT NULL,
-    alumno INT NOT NULL,
-    usuario INT NOT NULL,
-    FOREIGN KEY (medio_enterado) REFERENCES medio_enterado(id),
-    FOREIGN KEY (promocion) REFERENCES promocion(id),
-    FOREIGN KEY (ciclo_escolar) REFERENCES ciclo(id),
-    FOREIGN KEY (alumno) REFERENCES alumno(id),
-    FOREIGN KEY (usuario) REFERENCES usuario(id)
-);
-
--- Inserciones iniciales
-INSERT INTO usuario (usuario, contraseña) VALUES
-('Dante', '123');
-
-INSERT INTO nivel_educativo (descripcion) VALUES
-('Primaria'),
-('Secundaria'),
-('Preparatoria');
-
--- Grados para Primaria
-INSERT INTO grado (descripcion, nivel_educativo_id) VALUES
-('Primero', 1),
-('Segundo', 1),
-('Tercero', 1),
-('Cuarto', 1),
-('Quinto', 1),
-('Sexto', 1);
-
--- Grados para Secundaria
-INSERT INTO grado (descripcion, nivel_educativo_id) VALUES
-('Primero', 2),
-('Segundo', 2),
-('Tercero', 2);
-
--- Grados para Preparatoria
-INSERT INTO grado (descripcion, nivel_educativo_id) VALUES
-('Semestre 1', 3),
-('Semestre 2', 3),
-('Semestre 3', 3);
+-- Inserciones de registros
+INSERT INTO registro (fecha, pago_inscripcion, pago_colegiatura, medio_enterado, promocion, ciclo_escolar, alumno, usuario) VALUES
+('2022-08-15', 500, 3000, 1, 1, 1, 1, 1),  -- Juan
+('2022-08-16', 500, 3000, 2, 2, 1, 2, 1),  -- María
+('2022-08-17', 500, 4000, 3, 3, 2, 3, 1),  -- Luis
+('2022-08-18', 500, 3000, 1, 1, 1, 4, 1);  -- Sofía

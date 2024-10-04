@@ -55,19 +55,20 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="option-box">
                     <h3>Grado</h3>
-                    <select id="grado" onchange="eliminarOpcion()">
+                    <select id="grado" onchange="eliminarOpcionGrado(); cargarCiclos()">
                         <option value="">Selecciona un grado</option>
                     </select>
                 </div>
 
-
                 <div class="option-box">
                     <h3>Ciclo Escolar</h3>
-                    <select>
+                    <select id="ciclo-escolar" onchange="eliminarOpcionCiclo()"">
                         <option value="">Selecciona un ciclo</option>
                     </select>
                 </div>
             </div>
+
+            <button id="mostrar-alumnos-btn" onclick="mostrarAlumnos()">Mostrar Alumnos</button>
 
             <table>
                 <thead>
@@ -78,30 +79,7 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Dante Alejandro Viveros</td>
-                        <td>135EFAS21</td>
-                        <td>
-                            <button class="delete-btn">Eliminar</button>
-                            <button class="update-btn">Actualizar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Luis Emiliano Romero</td>
-                        <td>15ASIO02C</td>
-                        <td>
-                            <button class="delete-btn">Eliminar</button>
-                            <button class="update-btn">Actualizar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ian Viveros Rodríguez</td>
-                        <td>937AJS214</td>
-                        <td>
-                            <button class="delete-btn">Eliminar</button>
-                            <button class="update-btn">Actualizar</button>
-                        </td>
-                    </tr>
+                    <!-- Los registros de alumnos se mostrarán aquí -->
                 </tbody>
             </table>
 
