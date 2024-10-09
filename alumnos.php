@@ -35,7 +35,7 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <main>
         <div class="container">
             <div class="button-container">
-                <a href="Registrar_alumno.html">
+                <a href="Registrar_alumno.php">
                     <button class="register-btn">Registrar nuevo alumno</button>
                 </a>
             </div>
@@ -79,7 +79,7 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Los registros de alumnos se mostrarán aquí -->
+                    <!-- La consulta al registro de alumnos se mostrará aquí -->
                 </tbody>
             </table>
 

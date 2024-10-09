@@ -13,7 +13,6 @@ if (isset($_POST['nivelEducativoId'], $_POST['gradoId'], $_POST['cicloId'])) {
     $gradoId = $_POST['gradoId'];
     $cicloId = $_POST['cicloId'];
 
-    // Modificación en la consulta
     $query = "
         SELECT a.nombre, a.matricula
         FROM alumno a

@@ -8,15 +8,15 @@ if (!$pdo) {
     throw new UnexpectedValueException("Error de conexión a la base de datos");
 }
 
-if (isset($_POST['nivelEducativoId'])) {
-    $nivelEducativoId = $_POST['nivelEducativoId'];
+if (isset($_POST['municipio'])) {
+    $municipio = $_POST['municipio'];
 
-    $query = "SELECT id, descripcion FROM grado WHERE nivel_educativo_id = ?";
+    $query = "SELECT id, descripcion FROM colonia WHERE municipio_id = ?";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$nivelEducativoId]);
+    $stmt->execute([$municipio]);
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $options = "<option value=''>Selecciona un grado</option>";
+    $options = "<option value=''>Selecciona una colonia</option>";
     
     foreach ($result as $row) {
         $options .= "<option value='" . $row['id'] . "'>" . $row['descripcion'] . "</option>";
