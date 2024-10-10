@@ -54,6 +54,11 @@ CREATE TABLE medio_enterado (
     descripcion VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE estado(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    descripcion VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE nivel_grado_ciclo (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nivel_educativo_id INT NOT NULL,
@@ -70,12 +75,17 @@ CREATE TABLE alumno (
     Ap VARCHAR(50) NOT NULL,
     Am VARCHAR(50) NOT NULL,
     matricula INT NOT NULL,
-    direccion VARCHAR(100) NOT NULL,
     municipio INT NOT NULL,
     nivel INT NOT NULL,
     genero INT NOT NULL,
     grado_id INT NOT NULL,
     colonia INT NOT NULL,
+    medio_enterado INT NOT NULL,
+    promocion INT NOT NULL,
+    estado INT NOT NULL,
+    FOREIGN KEY (estado) REFERENCES estado(id),
+    FOREIGN KEY (promocion) REFERENCES promocion(id),
+    FOREIGN KEY (medio_enterado) REFERENCES medio_enterado(id),
     FOREIGN KEY (colonia) REFERENCES colonia(id),
     FOREIGN KEY (grado_id) REFERENCES grado(id),
     FOREIGN KEY (municipio) REFERENCES municipio(id),
@@ -243,12 +253,17 @@ INSERT INTO promocion (descripcion) VALUES
 ('Descuento del 20%'),
 ('Beca del 50%');
 
--- Inserciones de alumnos (modificando la columna colonia y quitando espacios al inicio)
-INSERT INTO alumno (nombre, Ap, Am, matricula, direccion, municipio, nivel, genero, grado_id, colonia) VALUES
-('Juan', 'Pérez', 'López', 12345, 'Calle Falsa 123', 1, 2, 1, 4, 1),  -- Primaria, Primero, Villas de Cuautitlán
-('María', 'García', 'Hernández', 12346, 'Calle Verdadera 456', 2, 3, 2, 10, 4), -- Secundaria, Primero, Centro (Xaltipa)
-('Luis', 'Méndez', 'Sánchez', 12347, 'Calle Real 789', 3, 4, 1, 13, 6), -- Bachillerato, Semestre 1, San Blas Centro
-('Sofía', 'Morales', 'Torres', 12348, 'Calle Imaginaria 101', 4, 1, 2, 5, 7); -- Primaria, Segundo, Melchor Ocampo Centro
+INSERT INTO estado (descripcion) VALUES
+('Nuevo ingreso'),
+('Reinscripcion');
+
+-- Inserciones de alumnos con el campo medio_enterado corregido
+INSERT INTO alumno (nombre, Ap, Am, matricula, estado, municipio, nivel, genero, grado_id, colonia, medio_enterado, promocion) VALUES
+('Juan', 'Pérez', 'López', 12345, 1, 1, 2, 1, 4, 1, 1, 1),  -- Medio enterado: Internet
+('María', 'García', 'Hernández', 12346, 2, 2, 3, 2, 10, 4, 2, 2), -- Medio enterado: Amigos
+('Luis', 'Méndez', 'Sánchez', 12347, 2, 3, 4, 1, 13, 6, 3, 3), -- Medio enterado: Familia
+('Sofía', 'Morales', 'Torres', 12348, 2, 4, 1, 2, 5, 7, 4, 1); -- Medio enterado: Publicidad
+
 
 -- Inserciones de registros
 INSERT INTO registro (fecha, pago_inscripcion, pago_colegiatura, medio_enterado, promocion, ciclo_escolar, alumno, usuario) VALUES

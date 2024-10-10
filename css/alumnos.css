@@ -209,3 +209,18 @@ th {
     background-color: #9def9e;
     box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.4);
 }
+
+@keyframes alumnos{
+    0%{
+        transform: scale(50%);
+        opacity: 0%;
+    }
+    100%{
+        transform: scale(100%);
+        opacity: 100%
+    }
+}
+
+tr td{
+    animation: alumnos 1s normal;
+}

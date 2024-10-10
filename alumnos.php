@@ -33,6 +33,12 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </header>
 
     <main>
+
+        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "registro") { ?>
+            <div class="mensaje">
+                <p>¡Alumno registrado correctamente!</p>
+            </div>
+        <?php } ?>
         <div class="container">
             <div class="button-container">
                 <a href="Registrar_alumno.php">
