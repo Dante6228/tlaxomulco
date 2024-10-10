@@ -145,7 +145,10 @@ INSERT INTO grado (descripcion, nivel_educativo_id) VALUES
 INSERT INTO grado (descripcion, nivel_educativo_id) VALUES
 ('Semestre 1', 4),
 ('Semestre 2', 4),
-('Semestre 3', 4);
+('Semestre 3', 4),
+('Semestre 4', 4),
+('Semestre 5', 4),  
+('Semestre 6', 4);
 
 INSERT INTO ciclo (descripcion) VALUES
 ('2020-2021'),
@@ -271,3 +274,4 @@ INSERT INTO registro (fecha, pago_inscripcion, pago_colegiatura, medio_enterado,
 ('2022-08-16', 500, 3000, 2, 2, 1, 2, 1),  -- María
 ('2022-08-17', 500, 4000, 3, 3, 2, 3, 1),  -- Luis
 ('2022-08-18', 500, 3000, 1, 1, 1, 4, 1);  -- Sofía
+
