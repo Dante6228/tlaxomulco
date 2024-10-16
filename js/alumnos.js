@@ -127,3 +127,27 @@ async function actualizarAlumno(event) {
     const alumnoId = event.target.getAttribute('data-id');
     window.location.href = `actualizar_alumno.php?id=${alumnoId}`;
 }
+
+function generarPDF() {
+    const alumnos = [];
+    const rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const alumno = {
+            id: cells[2].querySelector('.update-btn').dataset.id,
+            nombre: cells[0].innerText,
+            matricula: cells[1].innerText
+        };
+        alumnos.push(alumno);
+    });
+
+    if (alumnos.length === 0) {
+        alert("No hay alumnos para generar el PDF.");
+        return;
+    }
+
+    const params = new URLSearchParams();
+    params.append('alumnos', JSON.stringify(alumnos));
+    window.location.href = 'php/generar_pdf.php?' + params.toString();
+}
