@@ -81,11 +81,49 @@ function cargarDatosAlumnos(alumnos, tbody) {
                         <td>${alumno.nombre}</td>
                         <td>${alumno.matricula}</td>
                         <td>
-                            <button class="delete-btn">Eliminar</button>
-                            <button class="update-btn">Actualizar</button>
+                            <button class="delete-btn" data-id="${alumno.id}">Eliminar</button>
+                            <button class="update-btn" data-id="${alumno.id}">Actualizar</button>
                         </td>
                     </tr>`;
         tbody.innerHTML += row;
     });
+
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', eliminarAlumno);
+    });
+
+    document.querySelectorAll('.update-btn').forEach(button => {
+        button.addEventListener('click', actualizarAlumno);
+    });
 }
 
+async function eliminarAlumno(event) {
+    const alumnoId = event.target.getAttribute('data-id');
+    const confirmDelete = confirm("¿Estás seguro de que deseas eliminar este alumno?");
+    
+    if (confirmDelete) {
+        try {
+            const response = await fetch('php/eliminar_alumno.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `id=${alumnoId}`
+            });
+
+            if (response.ok) {
+                alert('Alumno eliminado con éxito.');
+                mostrarAlumnos();
+            } else {
+                throw new Error('Error al eliminar el alumno');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+}
+
+async function actualizarAlumno(event) {
+    const alumnoId = event.target.getAttribute('data-id');
+    window.location.href = `actualizar_alumno.php?id=${alumnoId}`;
+}

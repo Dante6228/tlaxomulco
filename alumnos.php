@@ -50,7 +50,7 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="option-box">
                     <h3>Nivel Educativo</h3>
                     <select id="nivel-educativo" onchange="cargarGrados()">
-                        <opt value="">Selecciona un nivel</opt ion>
+                        <option value="">Selecciona un nivel</option>
                         <?php
                         foreach ($nivel as $item) {
                             echo "<option value='" . $item['id'] . "'>" . $item['descripcion'] . "</option>";
