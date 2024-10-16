@@ -224,3 +224,16 @@ th {
 tr td{
     animation: alumnos 1s normal;
 }
+
+.mensaje{
+    color: black;
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: center;
+    background-color: #e07171;
+    padding: 10px;
+    width: 25%;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 12px;
+}

@@ -13,11 +13,11 @@ if (isset($_POST['nivelEducativoId'], $_POST['gradoId'], $_POST['cicloId'])) {
     $gradoId = $_POST['gradoId'];
     $cicloId = $_POST['cicloId'];
 
-    $query = "
-        SELECT a.nombre, a.matricula
+    $query = " SELECT a.nombre, a.matricula
         FROM alumno a
-        JOIN nivel_grado_ciclo ngc ON a.grado_id = ngc.grado_id
-        WHERE a.nivel = ? AND a.grado_id = ? AND ngc.ciclo_id = ?";
+        JOIN nivel_grado_ciclo ngc ON a.nivel_grado_ciclo_id = ngc.id
+        WHERE ngc.nivel_educativo_id = ? AND ngc.grado_id = ? AND ngc.ciclo_id = ?";
+
     
     $stmt = $pdo->prepare($query);
     $stmt->execute([$nivelEducativoId, $gradoId, $cicloId]);

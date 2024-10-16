@@ -76,20 +76,18 @@ CREATE TABLE alumno (
     Am VARCHAR(50) NOT NULL,
     matricula INT NOT NULL,
     municipio INT NOT NULL,
-    nivel INT NOT NULL,
     genero INT NOT NULL,
-    grado_id INT NOT NULL,
     colonia INT NOT NULL,
     medio_enterado INT NOT NULL,
     promocion INT NOT NULL,
     estado INT NOT NULL,
+    nivel_grado_ciclo_id INT NOT NULL,
+    FOREIGN KEY (nivel_grado_ciclo_id) REFERENCES nivel_grado_ciclo(id),
     FOREIGN KEY (estado) REFERENCES estado(id),
     FOREIGN KEY (promocion) REFERENCES promocion(id),
     FOREIGN KEY (medio_enterado) REFERENCES medio_enterado(id),
     FOREIGN KEY (colonia) REFERENCES colonia(id),
-    FOREIGN KEY (grado_id) REFERENCES grado(id),
     FOREIGN KEY (municipio) REFERENCES municipio(id),
-    FOREIGN KEY (nivel) REFERENCES nivel_educativo(id),
     FOREIGN KEY (genero) REFERENCES genero(id)
 );
 
@@ -260,13 +258,11 @@ INSERT INTO estado (descripcion) VALUES
 ('Nuevo ingreso'),
 ('Reinscripcion');
 
--- Inserciones de alumnos con el campo medio_enterado corregido
-INSERT INTO alumno (nombre, Ap, Am, matricula, estado, municipio, nivel, genero, grado_id, colonia, medio_enterado, promocion) VALUES
-('Juan', 'Pérez', 'López', 12345, 1, 1, 2, 1, 4, 1, 1, 1),  -- Medio enterado: Internet
-('María', 'García', 'Hernández', 12346, 2, 2, 3, 2, 10, 4, 2, 2), -- Medio enterado: Amigos
-('Luis', 'Méndez', 'Sánchez', 12347, 2, 3, 4, 1, 13, 6, 3, 3), -- Medio enterado: Familia
-('Sofía', 'Morales', 'Torres', 12348, 2, 4, 1, 2, 5, 7, 4, 1); -- Medio enterado: Publicidad
-
+INSERT INTO alumno (nombre, Ap, Am, matricula, estado, municipio, genero, colonia, medio_enterado, promocion, nivel_grado_ciclo_id) VALUES
+('Juan', 'Pérez', 'López', 12345, 1, 1, 1, 1, 1, 1, 1),  -- nivel_grado_ciclo_id: 1 (Preescolar, Primero, 2020-2021)
+('María', 'García', 'Hernández', 12346, 2, 2, 2, 4, 2, 2, 10), -- nivel_grado_ciclo_id: 10 (Primaria, Segundo, 2021-2022)
+('Luis', 'Méndez', 'Sánchez', 12347, 2, 3, 1, 6, 3, 3, 20), -- nivel_grado_ciclo_id: 20 (Secundaria, Tercero, 2022-2023)
+('Sofía', 'Morales', 'Torres', 12348, 2, 4, 2, 7, 4, 1, 5);  -- nivel_grado_ciclo_id: 5 (otro ejemplo)
 
 -- Inserciones de registros
 INSERT INTO registro (fecha, pago_inscripcion, pago_colegiatura, medio_enterado, promocion, ciclo_escolar, alumno, usuario) VALUES

@@ -66,6 +66,15 @@ function generarOpciones($tabla, $pdo) {
                     ?>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="ciclo">Ciclo escolar</label>
+                <select name="ciclo" id="ciclo" required onchange="limpiarSelect('ciclo')">
+                    <option value="">Selecciona un ciclo escolar</option>
+                    <?php
+                        generarOpciones('ciclo', $pdo);
+                    ?>
+                </select>
+            </div>
             <div class="group-1">
                 <div class="form-group">
                     <label for="nivel_escolar">Nivel Escolar</label>
