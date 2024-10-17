@@ -76,10 +76,21 @@ async function mostrarAlumnos() {
 }
 
 function cargarDatosAlumnos(alumnos, tbody) {
+    tbody.innerHTML = '';
+
     alumnos.forEach(alumno => {
         const row = `<tr>
                         <td>${alumno.nombre}</td>
+                        <td>${alumno.Ap}</td> <!-- Apellido paterno -->
+                        <td>${alumno.Am}</td> <!-- Apellido materno -->
                         <td>${alumno.matricula}</td>
+                        <td>${alumno.genero}</td> <!-- Género -->
+                        <td>${alumno.municipio}</td> <!-- Municipio -->
+                        <td>${alumno.colonia}</td> <!-- Colonia -->
+                        <td>${alumno.medio_enterado}</td> <!-- Medio enterado -->
+                        <td>${alumno.promocion}</td> <!-- Promoción -->
+                        <td>${alumno.estado_alumno}</td> <!-- Estado del alumno -->
+                        <td style="display: none">${alumno.nivel_grado_ciclo_id}</td> <!-- nivel_grado_ciclo_id oculto -->
                         <td>
                             <button class="delete-btn" data-id="${alumno.id}">Eliminar</button>
                             <button class="update-btn" data-id="${alumno.id}">Actualizar</button>
@@ -135,9 +146,18 @@ function generarPDF() {
     rows.forEach(row => {
         const cells = row.querySelectorAll('td');
         const alumno = {
-            id: cells[2].querySelector('.update-btn').dataset.id,
+            id: cells[11].querySelector('.update-btn').dataset.id,
             nombre: cells[0].innerText,
-            matricula: cells[1].innerText
+            Ap: cells[1].innerText,
+            Am: cells[2].innerText,
+            matricula: cells[3].innerText,
+            genero: cells[4].innerText,
+            municipio: cells[5].innerText,
+            colonia: cells[6].innerText,
+            medio_enterado: cells[7].innerText,
+            promocion: cells[8].innerText,
+            estado_alumno: cells[9].innerText,
+            ngc: cells[10].innerText
         };
         alumnos.push(alumno);
     });

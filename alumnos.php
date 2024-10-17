@@ -87,7 +87,15 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Apellido paterno</th>
+                        <th>Apellido materno</th>
                         <th>Matrícula</th>
+                        <th>Género</th>
+                        <th>Municipio</th>
+                        <th>Colonia</th>
+                        <th>Medio enterado</th>
+                        <th>Promoción</th>
+                        <th>Estado del alumno</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
