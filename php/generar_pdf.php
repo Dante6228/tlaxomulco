@@ -9,8 +9,8 @@ if (!$pdo) {
     throw new UnexpectedValueException("Error de conexión a la base de datos");
 }
 
-if (isset($_GET['alumnos'])) {
-    $alumnos = json_decode($_GET['alumnos'], true);
+if (isset($_POST['alumnos'])) {
+    $alumnos = json_decode($_POST['alumnos'], true);
     $ngc = $alumnos[0]['ngc'];
 
     try {

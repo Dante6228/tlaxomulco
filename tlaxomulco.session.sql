@@ -258,16 +258,61 @@ INSERT INTO estado (descripcion) VALUES
 ('Nuevo ingreso'),
 ('Reinscripcion');
 
+-- Inserciones de alumnos
 INSERT INTO alumno (nombre, Ap, Am, matricula, estado, municipio, genero, colonia, medio_enterado, promocion, nivel_grado_ciclo_id) VALUES
-('Juan', 'Pérez', 'López', 12345, 1, 1, 1, 1, 1, 1, 1),  -- nivel_grado_ciclo_id: 1 (Preescolar, Primero, 2020-2021)
-('María', 'García', 'Hernández', 12346, 2, 2, 2, 4, 2, 2, 10), -- nivel_grado_ciclo_id: 10 (Primaria, Segundo, 2021-2022)
-('Luis', 'Méndez', 'Sánchez', 12347, 2, 3, 1, 6, 3, 3, 20), -- nivel_grado_ciclo_id: 20 (Secundaria, Tercero, 2022-2023)
-('Sofía', 'Morales', 'Torres', 12348, 2, 4, 2, 7, 4, 1, 5);  -- nivel_grado_ciclo_id: 5 (otro ejemplo)
-
--- Inserciones de registros
-INSERT INTO registro (fecha, pago_inscripcion, pago_colegiatura, medio_enterado, promocion, ciclo_escolar, alumno, usuario) VALUES
-('2022-08-15', 500, 3000, 1, 1, 1, 1, 1),  -- Juan
-('2022-08-16', 500, 3000, 2, 2, 1, 2, 1),  -- María
-('2022-08-17', 500, 4000, 3, 3, 2, 3, 1),  -- Luis
-('2022-08-18', 500, 3000, 1, 1, 1, 4, 1);  -- Sofía
-
+('Juan', 'Pérez', 'López', 12345, 1, 1, 1, 1, 1, 1, 1),
+('María', 'García', 'Hernández', 12346, 2, 1, 2, 2, 2, 2, 1),
+('Luis', 'Méndez', 'Sánchez', 12347, 2, 2, 1, 3, 3, 3, 1),
+('Sofía', 'Morales', 'Torres', 12348, 1, 3, 2, 4, 4, 1, 1),
+('Diego', 'Castillo', 'Jiménez', 12349, 2, 1, 1, 1, 1, 1, 1),
+('Ana', 'Rojas', 'Soto', 12350, 1, 2, 2, 2, 2, 2, 1),
+('Carlos', 'Vázquez', 'Ríos', 12351, 1, 3, 1, 3, 3, 3, 1),
+('Elena', 'Romero', 'Salinas', 12352, 2, 4, 2, 4, 4, 1, 1),
+('Fernando', 'Núñez', 'Aguilar', 12353, 2, 1, 1, 1, 1, 1, 1),
+('Gabriela', 'Mendoza', 'Palacios', 12354, 1, 2, 2, 2, 2, 2, 1),
+('Mateo', 'Cervantes', 'Paredes', 12355, 1, 3, 1, 3, 3, 3, 1),
+('Luisa', 'Alvarado', 'Martínez', 12356, 2, 4, 2, 4, 4, 1, 1),
+('Roberto', 'Ponce', 'Aguilar', 12357, 1, 1, 1, 1, 1, 1, 1),
+('Paola', 'Vera', 'Cisneros', 12358, 1, 2, 2, 2, 2, 2, 1),
+('Andrés', 'Morales', 'Hernández', 12359, 2, 3, 1, 3, 3, 3, 1),
+('Cecilia', 'Bermúdez', 'Rivas', 12360, 1, 4, 2, 4, 4, 1, 1),
+('Ricardo', 'Salazar', 'Reyes', 12361, 2, 1, 1, 1, 1, 1, 1),
+('Fernanda', 'Escobar', 'Sandoval', 12362, 1, 2, 2, 2, 2, 2, 1),
+('Jorge', 'Camacho', 'Ramírez', 12363, 1, 3, 1, 3, 3, 3, 1),
+('Tatiana', 'Cuéllar', 'Villanueva', 12364, 2, 4, 2, 4, 4, 1, 1),
+('Hugo', 'Rangel', 'Fuentes', 12365, 1, 1, 1, 1, 1, 1, 1),
+('Martha', 'López', 'Cortez', 12366, 1, 2, 2, 2, 2, 2, 1),
+('Pablo', 'González', 'Esquivel', 12367, 2, 3, 1, 3, 3, 3, 1),
+('Verónica', 'Cortez', 'Molina', 12368, 2, 4, 2, 4, 4, 1, 1),
+('Emilio', 'Aragón', 'Salgado', 12369, 2, 1, 1, 1, 1, 1, 1),
+('Claudia', 'Bautista', 'Sandoval', 12370, 2, 2, 2, 2, 2, 2, 1),
+('Omar', 'Reyes', 'González', 12371, 2, 3, 1, 3, 3, 3, 1),
+('Gina', 'Pérez', 'Ponce', 12372, 2, 4, 2, 4, 4, 1, 1),
+('Nicolás', 'Aguirre', 'Delgado', 12373, 1, 1, 1, 1, 1, 1, 1),
+('Juliana', 'Serrano', 'Armas', 12374, 1, 2, 2, 2, 2, 2, 1),
+('Raúl', 'Medina', 'Téllez', 12375, 1, 3, 1, 3, 3, 3, 1),
+('Lina', 'Santana', 'Valenzuela', 12376, 2, 4, 2, 4, 4, 1, 1),
+('Álvaro', 'Cordero', 'Banda', 12377, 2, 1, 1, 1, 1, 1, 1),
+('Natalia', 'Gálvez', 'Rojas', 12378, 1, 2, 2, 2, 2, 2, 1),
+('Héctor', 'Chávez', 'Soto', 12379, 2, 3, 1, 3, 3, 3, 1),
+('Karina', 'Pineda', 'Gómez', 12380, 2, 4, 2, 4, 4, 1, 1),
+('Fernando', 'Vega', 'Riviera', 12381, 1, 1, 1, 1, 1, 1, 1),
+('Martín', 'Flores', 'Zamora', 12382, 1, 2, 2, 2, 2, 2, 1),
+('Alberto', 'Hinojosa', 'Salgado', 12383, 1, 3, 1, 3, 3, 3, 1),
+('Silvia', 'Mora', 'Núñez', 12384, 2, 4, 2, 4, 4, 1, 1),
+('Victor', 'Navarro', 'Rosales', 12385, 1, 1, 1, 1, 1, 1, 1),
+('Gloria', 'Salas', 'Aguirre', 12386, 1, 2, 2, 2, 2, 2, 1),
+('Fabián', 'Salinas', 'Vázquez', 12387, 2, 3, 1, 3, 3, 3, 1),
+('Nora', 'Parra', 'Romero', 12388, 2, 4, 2, 4, 4, 1, 1),
+('Raúl', 'Cano', 'Alvarado', 12389, 1, 1, 1, 1, 1, 1, 1),
+('Julia', 'Montalvo', 'Téllez', 12390, 1, 2, 2, 2, 2, 2, 1),
+('Santiago', 'Nava', 'Montes', 12391, 1, 3, 1, 3, 3, 3, 1),
+('Rocío', 'Cruz', 'Gómez', 12392, 2, 4, 2, 4, 4, 1, 1),
+('Arturo', 'Gámez', 'Sánchez', 12393, 2, 1, 1, 1, 1, 1, 1),
+('Leticia', 'López', 'Zúñiga', 12394, 2, 2, 2, 2, 2, 2, 1),
+('Pablo', 'Ortega', 'López', 12395, 2, 3, 1, 3, 3, 3, 1),
+('Patricia', 'Sierra', 'Lira', 12396, 1, 4, 2, 4, 4, 1, 1),
+('Omar', 'Quintero', 'Vallejo', 12397, 1, 1, 1, 1, 1, 1, 1),
+('Araceli', 'Sandoval', 'Alarcón', 12398, 1, 2, 2, 2, 2, 2, 1),
+('José', 'Hernández', 'Paredes', 12399, 2, 3, 1, 3, 3, 3, 1),
+('Silvia', 'Cisneros', 'Cisneros', 12400, 2, 4, 2, 4, 4, 1, 1);

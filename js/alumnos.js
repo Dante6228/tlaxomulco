@@ -139,7 +139,7 @@ async function actualizarAlumno(event) {
     window.location.href = `actualizar_alumno.php?id=${alumnoId}`;
 }
 
-function generarPDF() {
+async function generarPDF() {
     const alumnos = [];
     const rows = document.querySelectorAll("tbody tr");
 
@@ -169,5 +169,34 @@ function generarPDF() {
 
     const params = new URLSearchParams();
     params.append('alumnos', JSON.stringify(alumnos));
-    window.location.href = 'php/generar_pdf.php?' + params.toString();
+
+    try {
+        const response = await fetch('php/generar_pdf.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: params.toString()
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al generar el PDF');
+        }
+
+        // Descarga el PDF
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = 'Listado_de_Alumnos.pdf';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+
+        window.location.href = 'alumnos.php?mensaje=pdf';
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }

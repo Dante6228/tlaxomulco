@@ -46,6 +46,12 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         <?php } ?>
 
+        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "pdf") { ?>
+            <div class="mensaje">
+                <p>¡PDF generado correctamente!</p>
+            </div>
+        <?php } ?>
+
         <div class="container">
             <div class="button-container">
                 <a href="Registrar_alumno.php">
@@ -104,7 +110,7 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </tbody>
             </table>
 
-            <button class="btn" onclick="generarPDF()">Generar PDF</button>
+            <button id="mostrar-alumnos-btn" class="btn" onclick="generarPDF()">Generar PDF</button>
         </div>
     </main>
 
