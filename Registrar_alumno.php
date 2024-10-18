@@ -2,6 +2,13 @@
 
 require_once __DIR__ . "/php/conexion.php";
 
+session_start();
+
+if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
+    header("Location: Index.php?mensaje=error");
+    exit();
+}
+
 $pdo = Conexion::connection();
 
 if (!$pdo) {

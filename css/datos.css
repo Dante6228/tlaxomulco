@@ -1,0 +1,209 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #f0f8ff;
+}
+
+header{
+    background-color: #333;
+    padding: 10px 30px 10px 30px;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img{
+    width: 100px;
+    display: inline;
+    transition: all 0.2s ease-in-out;
+}
+
+header img:hover {
+    transform: scale(1.1);
+}
+
+header a{
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+}
+
+header a:hover{
+    color: rgb(228, 228, 228);
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+main{
+    animation: inicio 1s normal;
+}
+
+.botonInicio {
+    position: absolute;
+    top: 40px;
+    right: 160px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.botonInicio:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.register-btn{
+    background-color: #ffadad;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.register-btn:hover{
+    background-color: #ff6b6b;
+    transform: scale(1.05);
+}
+
+.filter-section h2 {
+    margin-bottom: 15px;
+}
+
+.delete-btn {
+    background-color: #ff8989;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
+    transition: background-color 1s ease;
+}
+
+.delete-btn:hover {
+    background-color: #e07171;
+}
+
+.update-btn {
+    background-color: #ffadad;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.update-btn:hover {
+    background-color: #ff6b6b;
+    transform: scale(1.05);
+}
+
+.filter-section{
+    background-color: #ffe8cc;
+    width: 20%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 8px 8px 18px rgb(0, 0, 0, 0.25);
+}
+
+.filter-section button{
+    margin: 10px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #8eff94;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px rgb(0, 0, 0, 0.1);
+    transition: background-color 0.6s ease;
+}
+
+.filter-section button:hover{
+    background-color: #70e075;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.3);
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(0, 0, 0, 0.3);
+    outline: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #d9e6ff;
+}
+
+@keyframes inicio{
+    0%{
+        transform: translateY(-50px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+@keyframes datos {
+    0%{
+        transform: scale(50%);
+        opacity: 0%;
+    }
+    100%{
+        transform: scale(100%);
+        opacity: 100%
+    }
+}
+
+.animar {
+    animation: datos 0.6s normal;
+}

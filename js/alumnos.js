@@ -81,16 +81,16 @@ function cargarDatosAlumnos(alumnos, tbody) {
     alumnos.forEach(alumno => {
         const row = `<tr>
                         <td>${alumno.nombre}</td>
-                        <td>${alumno.Ap}</td> <!-- Apellido paterno -->
-                        <td>${alumno.Am}</td> <!-- Apellido materno -->
+                        <td>${alumno.Ap}</td>
+                        <td>${alumno.Am}</td>
                         <td>${alumno.matricula}</td>
-                        <td>${alumno.genero}</td> <!-- Género -->
-                        <td>${alumno.municipio}</td> <!-- Municipio -->
-                        <td>${alumno.colonia}</td> <!-- Colonia -->
-                        <td>${alumno.medio_enterado}</td> <!-- Medio enterado -->
-                        <td>${alumno.promocion}</td> <!-- Promoción -->
-                        <td>${alumno.estado_alumno}</td> <!-- Estado del alumno -->
-                        <td style="display: none">${alumno.nivel_grado_ciclo_id}</td> <!-- nivel_grado_ciclo_id oculto -->
+                        <td>${alumno.genero}</td>
+                        <td>${alumno.municipio}</td>
+                        <td>${alumno.colonia}</td>
+                        <td>${alumno.medio_enterado}</td>
+                        <td>${alumno.promocion}</td>
+                        <td>${alumno.estado_alumno}</td>
+                        <td style="display: none">${alumno.nivel_grado_ciclo_id}</td>
                         <td>
                             <button class="delete-btn" data-id="${alumno.id}">Eliminar</button>
                             <button class="update-btn" data-id="${alumno.id}">Actualizar</button>

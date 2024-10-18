@@ -24,7 +24,7 @@ CREATE TABLE colonia (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     descripcion VARCHAR(50) NOT NULL,
     municipio_id INT NOT NULL, 
-    FOREIGN KEY (municipio_id) REFERENCES municipio(id) 
+    FOREIGN KEY (municipio_id) REFERENCES municipio(id) ON DELETE CASCADE
 );
 
 CREATE TABLE genero (
@@ -36,7 +36,7 @@ CREATE TABLE grado (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     descripcion VARCHAR(50) NOT NULL,
     nivel_educativo_id INT NOT NULL,
-    FOREIGN KEY (nivel_educativo_id) REFERENCES nivel_educativo(id)
+    FOREIGN KEY (nivel_educativo_id) REFERENCES nivel_educativo(id) ON DELETE CASCADE
 );
 
 CREATE TABLE ciclo (
@@ -64,9 +64,9 @@ CREATE TABLE nivel_grado_ciclo (
     nivel_educativo_id INT NOT NULL,
     grado_id INT NOT NULL,
     ciclo_id INT NOT NULL,
-    FOREIGN KEY (nivel_educativo_id) REFERENCES nivel_educativo(id),
-    FOREIGN KEY (grado_id) REFERENCES grado(id),
-    FOREIGN KEY (ciclo_id) REFERENCES ciclo(id)
+    FOREIGN KEY (nivel_educativo_id) REFERENCES nivel_educativo(id) ON DELETE CASCADE,
+    FOREIGN KEY (grado_id) REFERENCES grado(id) ON DELETE CASCADE,
+    FOREIGN KEY (ciclo_id) REFERENCES ciclo(id) ON DELETE CASCADE
 );
 
 CREATE TABLE alumno (
@@ -82,13 +82,13 @@ CREATE TABLE alumno (
     promocion INT NOT NULL,
     estado INT NOT NULL,
     nivel_grado_ciclo_id INT NOT NULL,
-    FOREIGN KEY (nivel_grado_ciclo_id) REFERENCES nivel_grado_ciclo(id),
-    FOREIGN KEY (estado) REFERENCES estado(id),
-    FOREIGN KEY (promocion) REFERENCES promocion(id),
-    FOREIGN KEY (medio_enterado) REFERENCES medio_enterado(id),
-    FOREIGN KEY (colonia) REFERENCES colonia(id),
-    FOREIGN KEY (municipio) REFERENCES municipio(id),
-    FOREIGN KEY (genero) REFERENCES genero(id)
+    FOREIGN KEY (nivel_grado_ciclo_id) REFERENCES nivel_grado_ciclo(id) ON DELETE CASCADE,
+    FOREIGN KEY (estado) REFERENCES estado(id) ON DELETE CASCADE,
+    FOREIGN KEY (promocion) REFERENCES promocion(id) ON DELETE CASCADE,
+    FOREIGN KEY (medio_enterado) REFERENCES medio_enterado(id) ON DELETE CASCADE,
+    FOREIGN KEY (colonia) REFERENCES colonia(id) ON DELETE CASCADE,
+    FOREIGN KEY (municipio) REFERENCES municipio(id) ON DELETE CASCADE,
+    FOREIGN KEY (genero) REFERENCES genero(id) ON DELETE CASCADE
 );
 
 CREATE TABLE registro (
@@ -101,12 +101,13 @@ CREATE TABLE registro (
     ciclo_escolar INT NOT NULL,
     alumno INT NOT NULL,
     usuario INT NOT NULL,
-    FOREIGN KEY (medio_enterado) REFERENCES medio_enterado(id),
-    FOREIGN KEY (promocion) REFERENCES promocion(id),
-    FOREIGN KEY (ciclo_escolar) REFERENCES ciclo(id),
-    FOREIGN KEY (alumno) REFERENCES alumno(id),
-    FOREIGN KEY (usuario) REFERENCES usuario(id)
+    FOREIGN KEY (medio_enterado) REFERENCES medio_enterado(id) ON DELETE CASCADE,
+    FOREIGN KEY (promocion) REFERENCES promocion(id) ON DELETE CASCADE,
+    FOREIGN KEY (ciclo_escolar) REFERENCES ciclo(id) ON DELETE CASCADE,
+    FOREIGN KEY (alumno) REFERENCES alumno(id) ON DELETE CASCADE,
+    FOREIGN KEY (usuario) REFERENCES usuario(id) ON DELETE CASCADE
 );
+
 
 -- Inserciones iniciales
 INSERT INTO usuario (usuario, contraseña) VALUES

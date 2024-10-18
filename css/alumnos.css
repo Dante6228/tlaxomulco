@@ -39,21 +39,6 @@ main{
     text-align: center;
 }
 
-.register-btn {
-    background-color: #ffd966;
-    padding: 15px 25px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.register-btn:hover {
-    background-color: #ffc14d;
-}
-
 .options-container {
     display: flex;
     justify-content: space-evenly;
