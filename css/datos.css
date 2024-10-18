@@ -70,7 +70,7 @@ main{
 .filter-section{
     background-color: #ffe8cc;
     width: 20%;
-    margin: 20px auto;
+    margin: 30px auto;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 8px 8px 18px rgb(0, 0, 0, 0.25);
@@ -141,6 +141,37 @@ th {
     }
 }
 
+@keyframes animacionMensaje{
+    0%{
+        transform: translateY(-100px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
 .animar {
     animation: datos 0.6s normal;
+}
+
+.mensaje{
+    background-color: #9dfac7;
+    padding: 15px;
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
+    border-radius: 12px;
+    box-shadow: 6px 6px 12px rgb(0, 0, 0, 0.4);
+    margin-bottom: 35px;
+    width: 25%;
+    animation: animacionMensaje 1s normal;
+    z-index: -1;
+}
+
+.aviso{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }

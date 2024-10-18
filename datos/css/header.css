@@ -43,10 +43,6 @@ header a:hover{
     font-weight: bolder;
 }
 
-main{
-    animation: inicio 1s normal;
-}
-
 .botonInicio {
     position: absolute;
     top: 40px;

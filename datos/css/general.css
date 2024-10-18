@@ -1,0 +1,101 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 125px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: #fff2cd;
+    height: 200px;
+    width: 24%;
+    border-radius: 12px;
+    box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.2);
+    animation: inicio 1s normal;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.form-group label {
+    width: 100%;
+    text-align: center;
+    margin-right: 10px;
+    background-color: #ffd966;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-group select{
+    width: 100%;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.form-group select:hover{
+    box-shadow: 3px 3px 10px rgb(0, 0, 0, 0.2);
+    transition: .5s;
+    outline: none;
+    outline: 0.1px solid rgb(0, 0, 0, 0.2);
+}
+
+form input{
+    padding: 6px;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    border-radius: 4px;
+    width: 100%;
+    outline: none;
+    transition: .3s;
+}
+
+form input:hover{
+    outline: 0.1px solid rgb(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.3);
+}
+
+form button[type="submit"]{
+    width: 50%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    background-color: #dffae8;
+    box-shadow: 3px 3px 10px rgb(0, 0, 0, 0.2);
+    transition: .5s;
+    outline: none;
+}
+
+form button[type="submit"]:hover{
+    font-weight: bolder;
+    cursor: pointer;
+    box-shadow: 4px 5px 10px rgb(0, 0, 0, 0.4);
+    border: 0.2px solid rgb(7, 124, 52, 0.2);
+    padding: 12px;
+    background-color: #c8f2d6;
+    transform: scale(1.03);
+}
+
+@keyframes inicio{
+    0%{
+        transform: translateY(-50px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}

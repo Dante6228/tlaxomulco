@@ -16,7 +16,10 @@ if (!$pdo) {
 }
 
 $id = $_GET['id'];
-$stmt = $pdo->prepare("SELECT * FROM colonia WHERE id = :id");
+$stmt = $pdo->prepare("SELECT colonia.*, municipio.descripcion AS municipio_descripcion
+    FROM colonia
+    INNER JOIN municipio ON colonia.municipio_id = municipio.id
+    WHERE colonia.id = :id");
 $stmt->execute(['id' => $id]);
 $colonia = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -27,8 +30,8 @@ $colonia = $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/colonia.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/general.css">
     <title>Actualizar colonia</title>
 </head>
 <body>
@@ -37,15 +40,30 @@ $colonia = $stmt->fetch(PDO::FETCH_ASSOC);
         <a href="../datos.php" class="botonInicio">Regresar</a>
         <a href="../usuario.php"><img src="../img/usuario.png" alt="Perfil"></a>
     </header>
-    <main>
-        <form action="php/actualizar_ciclo.php" method="GET">
-            <input type="hidden" name="id" value="<?php echo htmlspecialchars($colonia['id']); ?>" required>
-            <label for="descripcion">Descripción</label>
-            <input type="text" id="descripcion" name="descripcion" value="<?php echo htmlspecialchars($colonia['descripcion']); ?>" required>
-            <label for="municipio">Municipio</label>
-            <input type="text" id="municipio" name="municipio" value="<?php echo htmlspecialchars($colonia['municipio_id']); ?>" required>
-            <button type="submit" class="submit-btn">Actualizar</button>
-        </form>
-    </main>
+    <div class="container">
+        <main>
+            <form action="../php/datos/acciones/actualizar_colonia.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($colonia['id']); ?>" required>
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <input type="text" id="descripcion" name="descripcion" value="<?php echo htmlspecialchars($colonia['descripcion']); ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="municipio">Municipio</label>
+                    <select name="municipio" id="municipio">
+                        <option value="<?php echo htmlspecialchars($colonia['municipio_id']); ?>" selected>
+                            <?php echo htmlspecialchars($colonia['municipio_descripcion']); ?>
+                        </option>
+                        <?php
+
+                        //Seguir codificando a partir de aquí
+
+                        ?>
+                    </select>
+                </div>
+                <button type="submit">Actualizar</button>
+            </form>
+        </main>
+    </div>
 </body>
 </html>

@@ -33,6 +33,14 @@ if (!$pdo) {
         <a href="usuario.php"><img src="img/usuario.png" alt="Perfil"></a>
     </header>
 
+    <div class="aviso">
+        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "actualizacion") { ?>
+            <div class="mensaje">
+                <p>Dato actualizado correctamente!</p>
+            </div>
+        <?php } ?>
+    </div>
+
     <main>
         <div class="container">
             <div class="button-container">
