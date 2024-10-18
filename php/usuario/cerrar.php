@@ -12,5 +12,5 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-header('Location: ../index.php?mensaje=cierre');
+header('Location: ../../index.php?mensaje=cierre');
 exit();

@@ -36,17 +36,17 @@ async function filtrarDatos() {
     let datos = null;
 
     if (datoSeleccionado === "colonia") {
-        datos = await fetchData("php/obtener_colonias_datos.php", params);
+        datos = await fetchData("php/datos/obtener_colonias_datos.php", params);
         if (datos) {
             cargarColonias(datos, tbody);
         }
     } else if (datoSeleccionado === "grado") {
-        datos = await fetchData("php/obtener_grados_datos.php", params);
+        datos = await fetchData("php/datos/obtener_grados_datos.php", params);
         if (datos) {
             cargarGrados(datos, tbody);
         }
     } else {
-        datos = await fetchData("php/obtener_datos.php", params);
+        datos = await fetchData("php/datos/obtener_datos.php", params);
         if (datos) {
             cargarDatos(datos, tbody);
         }
@@ -177,7 +177,7 @@ async function eliminarDato(event) {
     
     if (confirmDelete) {
         try {
-            const response = await fetch('php/eliminar_dato.php', {
+            const response = await fetch('php/datos/eliminar_dato.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

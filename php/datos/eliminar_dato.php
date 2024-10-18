@@ -1,6 +1,6 @@
 <?php
 
-include_once __DIR__ . '/conexion.php';
+include_once __DIR__ . '/../conexion.php';
 
 $pdo = Conexion::connection();
 

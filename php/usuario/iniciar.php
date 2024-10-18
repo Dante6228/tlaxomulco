@@ -1,20 +1,20 @@
 <?php
 
-require_once __DIR__ . "/conexion.php";
+require_once __DIR__ . "/../conexion.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $usuario = $_POST["usuario"];
     $contrasena = $_POST["contraseña"];
     $inicio = iniciar($usuario,$contrasena);
     if ($inicio === 1){
-        header("Location: ../Bienvenida.php");
+        header("Location: ../../Bienvenida.php");
         exit();
     } else{
-        header("Location:../index.php?mensaje=0");
+        header("Location:../../index.php?mensaje=0");
         exit();
     }
 } else{
-    header("Location: ../index.php?mensaje=err1");
+    header("Location: ../../index.php?mensaje=err1");
     exit();
 }
 

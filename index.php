@@ -50,7 +50,7 @@
                 </th>
             </thead>
             <tbody>
-                <form action="php/iniciar.php" method="POST">
+                <form action="php/usuario/iniciar.php" method="POST">
                     <tr>
                         <td>
                             <label for="usuario">Usuario: </label>

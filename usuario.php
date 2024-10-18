@@ -114,7 +114,7 @@ if ($stmt->rowCount() > 0) {
 
         <script src="js/usuario.js"></script>
         
-        <a href="php/cerrar.php" id="cerrar">Cerrar sesión</a>
+        <a href="php/usuario/cerrar.php" id="cerrar">Cerrar sesión</a>
     </main>
 </body>
 </html>
