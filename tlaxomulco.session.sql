@@ -91,24 +91,6 @@ CREATE TABLE alumno (
     FOREIGN KEY (genero) REFERENCES genero(id) ON DELETE CASCADE
 );
 
-CREATE TABLE registro (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    fecha DATE NOT NULL,
-    pago_inscripcion INT NOT NULL,
-    pago_colegiatura INT NOT NULL,
-    medio_enterado INT NOT NULL,
-    promocion INT NOT NULL,
-    ciclo_escolar INT NOT NULL,
-    alumno INT NOT NULL,
-    usuario INT NOT NULL,
-    FOREIGN KEY (medio_enterado) REFERENCES medio_enterado(id) ON DELETE CASCADE,
-    FOREIGN KEY (promocion) REFERENCES promocion(id) ON DELETE CASCADE,
-    FOREIGN KEY (ciclo_escolar) REFERENCES ciclo(id) ON DELETE CASCADE,
-    FOREIGN KEY (alumno) REFERENCES alumno(id) ON DELETE CASCADE,
-    FOREIGN KEY (usuario) REFERENCES usuario(id) ON DELETE CASCADE
-);
-
-
 -- Inserciones iniciales
 INSERT INTO usuario (usuario, contraseña) VALUES
 ('Dante', '123');

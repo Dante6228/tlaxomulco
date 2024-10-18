@@ -1,9 +1,10 @@
 <?php
 
-require_once __DIR__ . "/conexion.php";
+require_once __DIR__ . "/../conexion.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $datos = [
+        'id' => $_POST["id"],
         'nombre' => $_POST["nombre"],
         'ap' => $_POST["ap"],
         'am' => $_POST["am"],
@@ -19,10 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'promocion' => $_POST["promocion"]
     ];
 
-    registrar($datos);
+    actualizar($datos);
 
 } else {
-    header("Location: ../index.php?mensaje=err1");
+    header("Location: ../../index.php?mensaje=err1");
     exit();
 }
 
@@ -42,7 +43,7 @@ function obtenerNivelGradoCicloId($pdo, $nivel_escolar, $grado, $ciclo) {
     
 }
 
-function registrar($datos) {
+function actualizar($datos) {
     try {
         $pdo = Conexion::connection();
 
@@ -55,24 +56,39 @@ function registrar($datos) {
         $stmt = $pdo->prepare("INSERT INTO alumno (nombre, Ap, Am, matricula, genero, estado, nivel_grado_ciclo_id, municipio, colonia, medio_enterado, promocion)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
+        $stmt = $pdo->prepare("UPDATE alumno SET
+        nombre = ?,
+        Ap = ?,
+        Am = ?,
+        matricula = ?,
+        genero = ?,
+        estado = ?,
+        nivel_grado_ciclo_id = ?,
+        municipio = ?,
+        colonia = ?,
+        medio_enterado = ?,
+        promocion = ?
+        WHERE id = ?");
+
         $stmt->execute([
-            $datos['nombre'],
-            $datos['ap'],
-            $datos['am'],
-            $datos['matricula'],
-            $datos['genero'],
-            $datos['estado'],
-            $nivelGradoCicloId,
-            $datos['municipio'],
-            $datos['colonia'],
-            $datos['medio_enterado'],
-            $datos['promocion']
+        $datos['nombre'],
+        $datos['ap'],
+        $datos['am'],
+        $datos['matricula'],
+        $datos['genero'],
+        $datos['estado'],
+        $nivelGradoCicloId,
+        $datos['municipio'],
+        $datos['colonia'],
+        $datos['medio_enterado'],
+        $datos['promocion'],
+        $datos['id']
         ]);
 
-        header("Location: ../alumnos.php?mensaje=registro");
+        header("Location: ../../alumnos.php?mensaje=actualizado");
         exit();
     } catch (\Throwable $th) {
-        echo "Error al registrar al alumno: " . $th->getMessage();
+        echo "Error al actualizar al alumno: " . $th->getMessage();
         exit();
     }
 }

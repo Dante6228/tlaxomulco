@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/fpdf/fpdf.php';
-require_once __DIR__ . '/conexion.php';
+require_once __DIR__ . '/../fpdf/fpdf.php';
+require_once __DIR__ . '/../conexion.php';
 
 $pdo = Conexion::connection();
 

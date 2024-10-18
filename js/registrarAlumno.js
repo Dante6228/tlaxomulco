@@ -19,14 +19,14 @@ async function cargarOpciones(url, parametros, selectId) {
 
 function cargarGrados() {
     let nivelEducativoId = document.getElementById("nivel_escolar").value;
-    cargarOpciones('php/obtener_grados.php', `nivelEducativoId=${nivelEducativoId}`, "grado");
+    cargarOpciones('php/alumnos/obtener_grados.php', `nivelEducativoId=${nivelEducativoId}`, "grado");
     limpiarSelect('nivel_escolar');
 }
 
 
 function cargarColonias() {
     let municipio = document.getElementById("municipio").value;
-    cargarOpciones('php/obtener_colonias.php', `municipio=${municipio}`, "colonia");
+    cargarOpciones('php/alumnos/obtener_colonias.php', `municipio=${municipio}`, "colonia");
     limpiarSelect('municipio')
 }
 

@@ -1,14 +1,13 @@
 <?php
 
-require_once __DIR__ . "/conexion.php";
+require_once __DIR__ . "/../conexion.php";
 
 session_start();
 
 if ($_SESSION["usuario"] === "") {
-    header("Location: ../index.php?mensaje=error");
+    header("Location: ../../index.php?mensaje=error");
     exit();
 }
-
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $usuario = $_POST["usuario"];
@@ -16,14 +15,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $idUsuario = $_SESSION["idUsuario"];
     $actualizacion = actualizarUsuario($usuario, $contrasena, $idUsuario);
     if ($actualizacion === 1) {
-        header("Location: ../usuario.php?mensaje=actualizacion");
+        header("Location: ../../usuario.php?mensaje=actualizacion");
         exit();
     } else{
-        header("Location: ../usuario.php?mensaje=error");
+        header("Location: ../../usuario.php?mensaje=error");
         exit();
     }
 } else{
-    header("Location: ../index.php?mensaje=err1");
+    header("Location: ../../index.php?mensaje=err1");
     exit();
 }
 

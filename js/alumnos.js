@@ -19,13 +19,13 @@ async function cargarOpciones(url, parametros, selectId) {
 
 function cargarGrados() {
     let nivelEducativoId = document.getElementById("nivel-educativo").value;
-    cargarOpciones('php/obtener_grados.php', `nivelEducativoId=${nivelEducativoId}`, "grado");
+    cargarOpciones('php/alumnos/obtener_grados.php', `nivelEducativoId=${nivelEducativoId}`, "grado");
     limpiarSelect('nivel-educativo');
 }
 
 function cargarCiclos() {
     let gradoId = document.getElementById("grado").value;
-    cargarOpciones('php/obtener_ciclos.php', `gradoId=${gradoId}`, "ciclo-escolar");
+    cargarOpciones('php/alumnos/obtener_ciclos.php', `gradoId=${gradoId}`, "ciclo-escolar");
     limpiarSelect('grado');
 }
 
@@ -53,7 +53,7 @@ async function mostrarAlumnos() {
         });
 
         try {
-            const response = await fetch("php/obtener_alumnos.php", {
+            const response = await fetch("php/alumnos/obtener_alumnos.php", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -114,7 +114,7 @@ async function eliminarAlumno(event) {
     
     if (confirmDelete) {
         try {
-            const response = await fetch('php/eliminar_alumno.php', {
+            const response = await fetch('php/alumnos/eliminar_alumno.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -171,7 +171,7 @@ async function generarPDF() {
     params.append('alumnos', JSON.stringify(alumnos));
 
     try {
-        const response = await fetch('php/generar_pdf.php', {
+        const response = await fetch('php/alumnos/generar_pdf.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/conexion.php";
+require_once __DIR__ . "/../conexion.php";
 
 $pdo = Conexion::connection();
 
@@ -8,15 +8,18 @@ if (!$pdo) {
     throw new UnexpectedValueException("Error de conexión a la base de datos");
 }
 
-if (isset($_POST['nivelEducativoId'])) {
-    $nivelEducativoId = $_POST['nivelEducativoId'];
+if (isset($_POST['gradoId'])) {
+    $gradoId = $_POST['gradoId'];
 
-    $query = "SELECT id, descripcion FROM grado WHERE nivel_educativo_id = ?";
+    $query = "SELECT ciclo.id, ciclo.descripcion
+                FROM nivel_grado_ciclo AS ngc
+                JOIN ciclo ON ngc.ciclo_id = ciclo.id
+                WHERE ngc.grado_id = ?";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$nivelEducativoId]);
+    $stmt->execute([$gradoId]);
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $options = "<option value=''>Selecciona un grado</option>";
+    $options = "";
     
     foreach ($result as $row) {
         $options .= "<option value='" . $row['id'] . "'>" . $row['descripcion'] . "</option>";

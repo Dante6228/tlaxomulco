@@ -35,6 +35,7 @@ if ($stmt->rowCount() > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/usuario.css">
+    <link rel="stylesheet" href="css/header.css">
     <title>Cuenta de usuario</title>
 </head>
 <body>
@@ -74,13 +75,13 @@ if ($stmt->rowCount() > 0) {
                     <tbody>
                         <tr>
                             <td>
-                                <label for="Usuario">Usuario:</label>
+                                <p>Usuario:</p>
                             </td>
                             <td> <?php echo $_SESSION['usuario'];?> </td>
                         </tr>
                         <tr>
                             <td>
-                                <label for="contraseña">Contraseña:</label>
+                                <p>Contraseña:</p>
                             </td>
                             <td> <?php echo $_SESSION['contraseña'];?> </td>
                         </tr>
@@ -99,7 +100,7 @@ if ($stmt->rowCount() > 0) {
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h2>Editar Datos</h2>
-                <form action="php/actualizarUsuario.php" method="POST">
+                <form action="php/usuario/actualizarUsuario.php" method="POST">
                     <label for="nuevoUsuario">Nuevo Usuario:</label>
                     <input type="text" id="nuevoUsuario" name="usuario"><br>
 

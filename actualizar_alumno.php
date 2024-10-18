@@ -41,13 +41,16 @@ if (!$_SERVER["REQUEST_METHOD"] === "GET") {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $alumno = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if (!$alumno) {
+            die("No se encontró el alumno con el ID: $id");
+        }
     } catch (\Throwable $th) {
         echo "Error: ". $th->getMessage();
         exit();
     }
-    
+
     try {
-        $id = $_GET['id'];
         $stmt = $pdo->prepare(
             "SELECT ngc.id as nivel_grado_ciclo_id,
                     c.id as ciclo_id,
@@ -62,13 +65,18 @@ if (!$_SERVER["REQUEST_METHOD"] === "GET") {
             INNER JOIN grado g ON ngc.grado_id = g.id
             WHERE ngc.id = :id"
         );
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':id', $alumno['nivel_grado_ciclo_id']);
         $stmt->execute();
         $nivel_grado_ciclo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$nivel_grado_ciclo) {
+            die("No se encontró el nivel grado ciclo con el ID: " . $alumno['nivel_grado_ciclo_id']);
+        }
     } catch (\Throwable $th) {
         echo "Error: ". $th->getMessage();
         exit();
     }
+    
     
 }
 
@@ -90,6 +98,7 @@ function generarOpciones($tabla, $pdo, $valorSeleccionado = null) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/registrarAlumno.css">
+    <link rel="stylesheet" href="css/header.css">
     <title>Actualizar alumno</title>
 </head>
 <body>
@@ -102,7 +111,7 @@ function generarOpciones($tabla, $pdo, $valorSeleccionado = null) {
     </header>
 
     <div class="container">
-        <form action="php/actualizarAlumno.php" method="POST">
+        <form action="php/alumnos/actualizarAlumno.php" method="POST">
             <div class="form-group">
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($alumno['id']); ?>" required>
                 <label for="nombre">Nombre completo</label>

@@ -31,6 +31,7 @@ function generarOpciones($tabla, $pdo) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/registrarAlumno.css">
+    <link rel="stylesheet" href="css/header.css">
     <title>Registrar nuevo Alumno</title>
 </head>
 <body>
@@ -44,7 +45,7 @@ function generarOpciones($tabla, $pdo) {
     </header>
 
     <div class="container">
-        <form action="php/registrarAlumno.php" method="POST">
+        <form action="php/alumnos/registrarAlumno.php" method="POST">
             <div class="form-group">
                 <label for="nombre">Nombre completo</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre(s)" required>

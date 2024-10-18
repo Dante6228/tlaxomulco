@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/conexion.php";
+require_once __DIR__ . "/../conexion.php";
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
