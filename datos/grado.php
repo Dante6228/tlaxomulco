@@ -38,7 +38,7 @@ $grado = $stmt->fetch(PDO::FETCH_ASSOC);
         <a href="../usuario.php"><img src="../img/usuario.png" alt="Perfil"></a>
     </header>
     <main>
-        <form action="php/actualizar_ciclo.php" method="GET">
+        <form action="../php/datos/acciones/actualizar_grado.php" method="GET">
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($grado['id']); ?>" required>
             <label for="descripcion">Descripción</label>
             <input type="text" id="descripcion" name="descripcion" value="<?php echo htmlspecialchars($grado['descripcion']); ?>" required>

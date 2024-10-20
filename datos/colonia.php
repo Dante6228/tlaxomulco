@@ -56,7 +56,14 @@ $colonia = $stmt->fetch(PDO::FETCH_ASSOC);
                         </option>
                         <?php
 
-                        //Seguir codificando a partir de aquí
+                        $query = "SELECT * FROM municipio";
+                        $stmt = $pdo->query($query);
+                        $municipios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                        foreach ($municipios as $municipio) {
+                            echo '<option value="'. htmlspecialchars($municipio['id']). '">'. htmlspecialchars($municipio['descripcion']). '</option>';
+                        }
+
 
                         ?>
                     </select>
