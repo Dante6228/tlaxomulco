@@ -16,7 +16,11 @@ if (!$pdo) {
 }
 
 $id = $_GET['id'];
-$stmt = $pdo->prepare("SELECT * FROM grado WHERE id = :id");
+$stmt = $pdo->prepare("SELECT grado.*, nivel_educativo.descripcion AS nivel_educativo_descripcion
+    FROM grado
+    INNER JOIN nivel_educativo ON grado.nivel_educativo_id = nivel_educativo.id
+    WHERE grado.id = :id
+");
 $stmt->execute(['id' => $id]);
 $grado = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -27,8 +31,8 @@ $grado = $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/grado.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/general.css">
     <title>Actualizar Grado</title>
 </head>
 <body>
@@ -37,15 +41,36 @@ $grado = $stmt->fetch(PDO::FETCH_ASSOC);
         <a href="../datos.php" class="botonInicio">Regresar</a>
         <a href="../usuario.php"><img src="../img/usuario.png" alt="Perfil"></a>
     </header>
-    <main>
-        <form action="../php/datos/acciones/actualizar_grado.php" method="GET">
-            <input type="hidden" name="id" value="<?php echo htmlspecialchars($grado['id']); ?>" required>
-            <label for="descripcion">Descripción</label>
-            <input type="text" id="descripcion" name="descripcion" value="<?php echo htmlspecialchars($grado['descripcion']); ?>" required>
-            <label for="municipio">Municipio</label>
-            <input type="text" id="municipio" name="municipio" value="<?php echo htmlspecialchars($grado['nivel_educativo_id']); ?>" required>
-            <button type="submit" class="submit-btn">Actualizar</button>
-        </form>
-    </main>
+    <div class="container">
+        <main>
+            <form action="../php/datos/acciones/actualizar_grado.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($grado['id']); ?>" required>
+                <div class="form-group">
+                    <label for="descripcion">Grado escolar</label>
+                    <input type="text" id="descripcion" name="descripcion" value="<?php echo htmlspecialchars($grado['descripcion']); ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="municipio">Nivel escolar</label>
+                    <select name="nivel_educativo" id="nivel_educativo">
+                        <option value="<?php echo htmlspecialchars($grado['nivel_educativo_id']); ?>" >
+                            <?php echo htmlspecialchars($grado['nivel_educativo_descripcion']); ?>
+                        </option>
+                        <?php
+
+                        $query = "SELECT * FROM nivel_educativo";
+                        $stmt = $pdo->query($query);
+                        $niveles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                        foreach ($niveles as $nivel) {
+                            echo '<option value="'. htmlspecialchars($nivel['id']). '">'. htmlspecialchars($nivel['descripcion']). '</option>';
+                        }
+
+                        ?>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Actualizar</button>
+            </form>
+        </main>
+    </div>
 </body>
 </html>

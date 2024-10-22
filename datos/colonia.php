@@ -45,7 +45,7 @@ $colonia = $stmt->fetch(PDO::FETCH_ASSOC);
             <form action="../php/datos/acciones/actualizar_colonia.php" method="POST">
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($colonia['id']); ?>" required>
                 <div class="form-group">
-                    <label for="descripcion">Descripción</label>
+                    <label for="descripcion">Colonia</label>
                     <input type="text" id="descripcion" name="descripcion" value="<?php echo htmlspecialchars($colonia['descripcion']); ?>" required>
                 </div>
                 <div class="form-group">
@@ -63,7 +63,6 @@ $colonia = $stmt->fetch(PDO::FETCH_ASSOC);
                         foreach ($municipios as $municipio) {
                             echo '<option value="'. htmlspecialchars($municipio['id']). '">'. htmlspecialchars($municipio['descripcion']). '</option>';
                         }
-
 
                         ?>
                     </select>

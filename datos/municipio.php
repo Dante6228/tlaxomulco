@@ -27,8 +27,8 @@ $municipio = $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/municipio.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/general.css">
     <title>Actualizar municipio</title>
 </head>
 <body>
@@ -37,13 +37,18 @@ $municipio = $stmt->fetch(PDO::FETCH_ASSOC);
         <a href="../datos.php" class="botonInicio">Regresar</a>
         <a href="../usuario.php"><img src="../img/usuario.png" alt="Perfil"></a>
     </header>
-    <main>
-        <form action="php/actualizar_medio.php" method="GET">
-            <input type="hidden" name="id" value="<?php echo htmlspecialchars($municipio['id']); ?>" required>
-            <label for="descripcion">Descripción</label>
-            <input type="text" id="descripcion" name="descripcion" value="<?php echo htmlspecialchars($municipio['descripcion']); ?>" required>
-            <button type="submit" class="submit-btn">Actualizar</button>
-        </form>
-    </main>
+    <div class="container">
+        <main>
+            <form action="../php/datos/acciones/actualizar_municipio.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($municipio['id']); ?>" required>
+                <div class="form-group">
+                    <label for="descripcion">Municipio</label>
+                    <input type="text" id="descripcion" name="descripcion" value="<?php echo htmlspecialchars($municipio['descripcion']); ?>" required>
+                </div>
+                <button type="submit" class="submit-btn">Actualizar</button>
+            </form>
+        </main>
+    </div>
+    
 </body>
 </html>
