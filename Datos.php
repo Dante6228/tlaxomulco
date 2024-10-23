@@ -28,12 +28,17 @@ if (!$pdo) {
 </head>
 <body>
     <header>
-        <h1>Alumnos</h1>
+        <h1>Datos</h1>
         <a href="Bienvenida.php" class="botonInicio">Inicio</a>
         <a href="usuario.php"><img src="img/usuario.png" alt="Perfil"></a>
     </header>
 
     <div class="aviso">
+        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "registro") { ?>
+            <div class="mensaje">
+                <p>Dato creado correctamente!</p>
+            </div>
+        <?php } ?>
         <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "actualizacion") { ?>
             <div class="mensaje">
                 <p>Dato actualizado correctamente!</p>
@@ -44,7 +49,7 @@ if (!$pdo) {
     <main>
         <div class="container">
             <div class="button-container">
-                <a href="#">
+                <a href="registrar_dato.php">
                     <button class="register-btn">Registrar nuevo dato</button>
                 </a>
             </div>
@@ -59,6 +64,8 @@ if (!$pdo) {
                     <option value="nivel_educativo">Nivel educativo</option>
                     <option value="ciclo">Ciclo escolar</option>
                     <option value="grado">Grado escolar</option>
+                    <option value="estado">Estado de alumno</option>
+                    <option value="genero">Género</option>
                 </select>
                 <button type="button" class="search-btn" onclick="filtrarDatos()">Buscar</button>
             </section>
