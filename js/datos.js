@@ -175,6 +175,12 @@ async function actualizarDato(event) {
         case "ciclo":
             window.location.href = `datos/ciclo.php?id=${id}`;
             break;
+        case "estado":
+            window.location.href = `datos/estado.php?id=${id}`;
+            break;
+        case "genero":
+            window.location.href = `datos/genero.php?id=${id}`;
+                break;
         default:
             alert("Por favor, selecciona un dato válido.");
             break;

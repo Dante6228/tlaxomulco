@@ -11,11 +11,12 @@ if (!$pdo) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $id = $_POST['id'];
-
-        $deleteRegistroQuery = "DELETE FROM registro WHERE alumno = :id";
-        $deleteStmt = $pdo->prepare($deleteRegistroQuery);
-        $deleteStmt->bindParam(':id', $id);
-        $deleteStmt->execute();
+        
+        // Esto es un pedazo de codigo que funciona solo si tenemos la tabla "registro" hecha
+        // $deleteRegistroQuery = "DELETE FROM registro WHERE alumno = :id";
+        // $deleteStmt = $pdo->prepare($deleteRegistroQuery);
+        // $deleteStmt->bindParam(':id', $id);
+        // $deleteStmt->execute();
 
         $query = "DELETE FROM alumno WHERE id = :id";
         $stmt = $pdo->prepare($query);
