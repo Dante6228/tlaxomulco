@@ -39,7 +39,8 @@ $ciclo = $stmt->fetch(PDO::FETCH_ASSOC);
     </header>
     <div class="container">
         <main>
-            <form action="../php/datos/acciones/actualizar_ciclo.php" method="POST">
+            <form action="../php/datos/acciones/actualizar_dato.php" method="POST">
+                <input type="hidden" name="tipo" value="1" required>
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($ciclo['id']); ?>" required>
                 <div class="form-group">
                     <label for="descripcion">Ciclo escolar</label>

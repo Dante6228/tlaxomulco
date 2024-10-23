@@ -39,7 +39,8 @@ $genero = $stmt->fetch(PDO::FETCH_ASSOC);
     </header>
     <div class="container">
         <main>
-            <form action="../php/datos/acciones/actualizar_genero.php" method="POST">
+            <form action="../php/datos/acciones/actualizar_dato.php" method="POST">
+                <input type="hidden" name="tipo" value="4" required>
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($genero['id']); ?>" required>
                 <div class="form-group">
                     <label for="descripcion">Género</label>

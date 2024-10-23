@@ -39,7 +39,8 @@ $municipio = $stmt->fetch(PDO::FETCH_ASSOC);
     </header>
     <div class="container">
         <main>
-            <form action="../php/datos/acciones/actualizar_municipio.php" method="POST">
+            <form action="../php/datos/acciones/actualizar_dato.php" method="POST">
+                <input type="hidden" name="tipo" value="6" required>
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($municipio['id']); ?>" required>
                 <div class="form-group">
                     <label for="descripcion">Municipio</label>

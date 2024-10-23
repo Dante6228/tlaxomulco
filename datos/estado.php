@@ -39,7 +39,8 @@ $estado = $stmt->fetch(PDO::FETCH_ASSOC);
     </header>
     <div class="container">
         <main>
-            <form action="../php/datos/acciones/actualizar_estado.php" method="POST">
+            <form action="../php/datos/acciones/actualizar_dato.php" method="POST">
+                <input type="hidden" name="tipo" value="3" required>
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($estado['id']); ?>" required>
                 <div class="form-group">
                     <label for="descripcion">Estado del alumno</label>

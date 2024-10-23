@@ -118,7 +118,7 @@ switch ($tipo) {
             }
             break;
 
-    case '6': // Tipo 8: Crear en la tabla de 'medio'
+    case '6': // Tipo 6: Crear en la tabla de 'medio'
         if (isset($_POST['medio'])) {
             $medio = $_POST['medio'];
             
@@ -134,7 +134,7 @@ switch ($tipo) {
         }
         break;
 
-    case '7': // Tipo 9: Crear en la tabla de 'genero'
+    case '7': // Tipo 7: Crear en la tabla de 'genero'
         if (isset($_POST['genero'])) {
             $genero = $_POST['genero'];
             

@@ -39,7 +39,8 @@ $medio_enterado = $stmt->fetch(PDO::FETCH_ASSOC);
     </header>
     <div class="container">
         <main>
-            <form action="../php/datos/acciones/actualizar_medio.php" method="POST">
+            <form action="../php/datos/acciones/actualizar_dato.php" method="POST">
+                <input type="hidden" name="tipo" value="5" required>
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($medio_enterado['id']); ?>" required>
                 <label for="descripcion">Medio enterado</label>
                 <input type="text" id="descripcion" name="descripcion" value="<?php echo htmlspecialchars($medio_enterado['descripcion']); ?>" required>
