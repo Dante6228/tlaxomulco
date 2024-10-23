@@ -31,7 +31,7 @@ switch ($tipo) {
             }
         }
         break;
-    case '2': // Tipo 2: Cambiar en la tabla de 'colonias'
+    case '2': // Tipo 2: Cambiar en la tabla de 'colonia'
         if (isset($_POST['colonia']) && isset($_POST['municipio'])) {
             $colonia = $_POST['colonia'];
             $municipio = $_POST['municipio'];
@@ -63,57 +63,46 @@ switch ($tipo) {
             }
         }
         break;
-
-    case '4': // Tipo 4: Crear en la tabla de 'nivel_educativo'
-        if (isset($_POST['nivel'])) {
-            $nivel = $_POST['nivel'];
-            
-            try {
-                $sql = "INSERT INTO nivel_educativo (descripcion) VALUES (:descripcion)";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute([':descripcion' => $nivel]);
-                
-                header("Location: ../../../datos.php?mensaje=registro");
-            } catch (PDOException $e) {
-                echo "Error al insertar el nivel educativo: " . $e->getMessage();
-            }
-        }
-        break;
-
-    case '5': // Tipo 5: Crear en la tabla de 'grado'
-        if (isset($_POST['nivel2']) && isset($_POST['grado'])) {
-            $nivel = $_POST['nivel2'];
-            $grado = $_POST['grado'];
-                    
-            try {
-                $sql = "INSERT INTO grado (descripcion, nivel_educativo_id) VALUES (:descripcion, :nivel_educativo_id)";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute([':descripcion' => $grado, ':nivel_educativo_id' => $nivel]);
-                
-                header("Location: ../../../datos.php?mensaje=registro");
-            } catch (PDOException $e) {
-                echo "Error al insertar el grado: " . $e->getMessage();
-            }
-        }
-        break;
     
-    case '6': // Tipo 6: Crear en la tabla de 'ciclo'
-        if (isset($_POST['ciclo'])) {
-            $ciclo = $_POST['ciclo'];
-            
-            try {
-                $sql = "INSERT INTO ciclo (descripcion) VALUES (:descripcion)";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute([':descripcion' => $ciclo]);
+        case '4': // Tipo 4: Crear en la tabla de 'ciclo'
+            if (isset($_POST['ciclo'])) {
+                $ciclo = $_POST['ciclo'];
                 
-                header("Location: ../../../datos.php?mensaje=registro");
-            } catch (PDOException $e) {
-                echo "Error al insertar el ciclo escolar: " . $e->getMessage();
+                try {
+                    // 1. Insertar el ciclo escolar
+                    $sql = "INSERT INTO ciclo (descripcion) VALUES (:descripcion)";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute([':descripcion' => $ciclo]);
+                    
+                    // 2. Obtener el ID del ciclo insertado
+                    $cicloId = $pdo->lastInsertId();
+        
+                    // 3. Relacionar todos los grados con el nuevo ciclo escolar
+                    $sqlGrados = "SELECT id, nivel_educativo_id FROM grado";
+                    $stmtGrados = $pdo->prepare($sqlGrados);
+                    $stmtGrados->execute();
+                    $grados = $stmtGrados->fetchAll(PDO::FETCH_ASSOC);
+        
+                    // 4. Insertar relaciones en nivel_grado_ciclo
+                    foreach ($grados as $grado) {
+                        $sqlRelacion = "INSERT INTO nivel_grado_ciclo (nivel_educativo_id, grado_id, ciclo_id) VALUES (:nivel_educativo_id, :grado_id, :ciclo_id)";
+                        $stmtRelacion = $pdo->prepare($sqlRelacion);
+                        $stmtRelacion->execute([
+                            ':nivel_educativo_id' => $grado['nivel_educativo_id'],
+                            ':grado_id' => $grado['id'],
+                            ':ciclo_id' => $cicloId,
+                        ]);
+                    }
+        
+                    header("Location: ../../../datos.php?mensaje=registro");
+                } catch (PDOException $e) {
+                    echo "Error al insertar el ciclo escolar: " . $e->getMessage();
+                }
             }
-        }
-        break;
+            break;
+        
 
-    case '7': // Tipo 7: Crear en la tabla de 'promocion'
+    case '5': // Tipo 5: Crear en la tabla de 'promocion'
             if (isset($_POST['promocion'])) {
                 $promocion = $_POST['promocion'];
                 
@@ -129,7 +118,7 @@ switch ($tipo) {
             }
             break;
 
-    case '8': // Tipo 8: Crear en la tabla de 'medio'
+    case '6': // Tipo 8: Crear en la tabla de 'medio'
         if (isset($_POST['medio'])) {
             $medio = $_POST['medio'];
             
@@ -145,7 +134,7 @@ switch ($tipo) {
         }
         break;
 
-    case '9': // Tipo 9: Crear en la tabla de 'genero'
+    case '7': // Tipo 9: Crear en la tabla de 'genero'
         if (isset($_POST['genero'])) {
             $genero = $_POST['genero'];
             

@@ -1,18 +1,10 @@
 <?php
 
-require_once __DIR__ . "/php/conexion.php";
-
 session_start();
 
 if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     header("Location: Index.php?mensaje=error");
     exit();
-}
-
-$pdo = Conexion::connection();
-
-if (!$pdo) {
-    throw new UnexpectedValueException("Error de conexión a la base de datos");
 }
 
 ?>
@@ -61,9 +53,7 @@ if (!$pdo) {
                     <option value="municipio">Municipio</option>
                     <option value="colonia">Colonia</option>
                     <option value="promocion">Promocion</option>
-                    <option value="nivel_educativo">Nivel educativo</option>
                     <option value="ciclo">Ciclo escolar</option>
-                    <option value="grado">Grado escolar</option>
                     <option value="estado">Estado de alumno</option>
                     <option value="genero">Género</option>
                 </select>

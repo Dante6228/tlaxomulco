@@ -41,6 +41,8 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </header>
 
     <main>
+        
+        <div class="container">
 
         <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "registro") { ?>
             <div class="mensaje">
@@ -60,7 +62,6 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         <?php } ?>
 
-        <div class="container">
             <div class="button-container">
                 <a href="Registrar_alumno.php">
                     <button class="register-btn">Registrar nuevo alumno</button>
@@ -73,9 +74,9 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <select id="nivel-educativo" onchange="cargarGrados()">
                         <option value="">Selecciona un nivel</option>
                         <?php
-                        foreach ($nivel as $item) {
-                            echo "<option value='" . $item['id'] . "'>" . $item['descripcion'] . "</option>";
-                        }
+                            foreach ($nivel as $item) {
+                                echo "<option value='" . $item['id'] . "'>" . $item['descripcion'] . "</option>";
+                            }
                         ?>
                     </select>
                 </div>

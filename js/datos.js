@@ -40,11 +40,6 @@ async function filtrarDatos() {
         if (datos) {
             cargarColonias(datos, tbody);
         }
-    } else if (datoSeleccionado === "grado") {
-        datos = await fetchData("php/datos/obtener_grados_datos.php", params);
-        if (datos) {
-            cargarGrados(datos, tbody);
-        }
     } else {
         datos = await fetchData("php/datos/obtener_datos.php", params);
         if (datos) {
@@ -73,43 +68,6 @@ function cargarColonias(datos, tbody) {
         row.innerHTML = `
             <td>${dato.colonia}</td>
             <td>${dato.municipio}</td>
-            <td>
-                <button class="delete-btn" data-id="${dato.id}">Eliminar</button>
-                <button class="update-btn" data-id="${dato.id}">Actualizar</button>
-            </td>
-        `;
-        tbody.appendChild(row);
-    });
-
-    document.querySelectorAll('.delete-btn').forEach(button => {
-        button.addEventListener('click', eliminarDato);
-    });
-
-    document.querySelectorAll('.update-btn').forEach(button => {
-        button.addEventListener('click', actualizarDato);
-    });
-}
-
-function cargarGrados(datos, tbody) {
-    tbody.innerHTML = '';
-
-    const thead = tbody.closest('table').querySelector('thead');
-    thead.innerHTML = '';
-
-    let headers = '<tr>';
-    headers += `
-    <th>Grado</th>
-    <th>Nivel educativo</th>
-    <th>Acciones</th>`;
-    headers += '</tr>';
-    thead.innerHTML = headers;
-
-    datos.forEach(dato => {
-        const row = document.createElement('tr');
-        row.classList.add('animar');
-        row.innerHTML = `
-            <td>${dato.grado}</td>
-            <td>${dato.nivel_educativo}</td>
             <td>
                 <button class="delete-btn" data-id="${dato.id}">Eliminar</button>
                 <button class="update-btn" data-id="${dato.id}">Actualizar</button>
@@ -214,14 +172,8 @@ async function actualizarDato(event) {
         case "promocion":
             window.location.href = `datos/promocion.php?id=${id}`;
             break;
-        case "nivel_educativo":
-            window.location.href = `datos/nivel_educativo.php?id=${id}`;
-            break;
         case "ciclo":
             window.location.href = `datos/ciclo.php?id=${id}`;
-            break;
-        case "grado":
-            window.location.href = `datos/grado.php?id=${id}`;
             break;
         default:
             alert("Por favor, selecciona un dato válido.");

@@ -55,49 +55,14 @@ function actualizarFormulario() {
                         </form>
                     `;
                     break;
-                case 'nivel':
+                case 'ciclo':
                     formularioContainer2.innerHTML = `
                         <h2>Dato a crear</h2>
                         <form action="php/datos/acciones/registrar_dato.php" method="POST">
                             <input type="hidden" name="tipo" value="4">
                             <div class="form-group">
-                                <label for="nivel">Nivel educativo nuevo</label>
-                                <input type="text" name="nivel" placeholder="Nivel educativo a crear">
-                            </div>
-                            <button type="submit">Registrar nivel educativo</button>
-                        </form>
-                    `;
-                    break;
-                case 'grado':
-                    formularioContainer2.innerHTML = `
-                        <h2>Dato a crear</h2>
-                        <form action="php/datos/acciones/registrar_dato.php" method="POST">
-                            <input type="hidden" name="tipo" value="5">    
-                            <div class="form-group">
-                                <label for="grado">Grado nuevo</label>
-                                <input type="text" name="grado" placeholder="Grado a crear">
-                            </div>
-                            <div class="form-group">
-                                <label for="nivel2">Nivel escolar al que pertenece</label>
-                                <select name="nivel2" id="nivel2">
-                                    <option value="">Selecciona un nivel escolar</option>
-                                    <?php obtenerNiveles($pdo); ?>
-                                </select>
-                            </div>
-                            <button type="submit">Registrar estado</button>
-                        </form>
-                    `;
-
-                    cargarNiveles();
-                    break;
-                case 'ciclo':
-                    formularioContainer2.innerHTML = `
-                        <h2>Dato a crear</h2>
-                        <form action="php/datos/acciones/registrar_dato.php" method="POST">
-                            <input type="hidden" name="tipo" value="6">
-                            <div class="form-group">
                                 <label for="ciclo">Ciclo escolar nuevo</label>
-                                <input type="text" name="ciclo" placeholder="Ciclo escolar a crear">
+                                <input type="text" name="ciclo" placeholder="2022-2023">
                             </div>
                             <button type="submit">Registrar ciclo escolar</button>
                         </form>
@@ -107,7 +72,7 @@ function actualizarFormulario() {
                     formularioContainer2.innerHTML = `
                         <h2>Dato a crear</h2>
                         <form action="php/datos/acciones/registrar_dato.php" method="POST">
-                            <input type="hidden" name="tipo" value="7">
+                            <input type="hidden" name="tipo" value="5">
                             <div class="form-group">
                                 <label for="promocion">Promoción nueva</label>
                                 <input type="text" name="promocion" placeholder="Promoción a crear">
@@ -120,7 +85,7 @@ function actualizarFormulario() {
                     formularioContainer2.innerHTML = `
                         <h2>Dato a crear</h2>
                         <form action="php/datos/acciones/registrar_dato.php" method="POST">
-                            <input type="hidden" name="tipo" value="8">
+                            <input type="hidden" name="tipo" value="6">
                             <div class="form-group">
                                 <label for="medio">Medio de enterado nuevo</label>
                                 <input type="text" name="medio" placeholder="Medio a crear">
@@ -133,7 +98,7 @@ function actualizarFormulario() {
                         formularioContainer2.innerHTML = `
                             <h2>Dato a crear</h2>
                             <form action="php/datos/acciones/registrar_dato.php" method="POST">
-                                <input type="hidden" name="tipo" value="9">
+                                <input type="hidden" name="tipo" value="7">
                                 <div class="form-group">
                                     <label for="genero">Género nuevo</label>
                                     <input type="text" name="genero" placeholder="Género a crear">
@@ -173,29 +138,5 @@ function cargarMunicipios() {
             console.error('Error al cargar los municipios:', error);
             const selectMunicipio = document.getElementById('municipio');
             selectMunicipio.innerHTML = `<option value="">Error al cargar municipios</option>`;
-        });
-}
-
-function cargarNiveles() {
-    fetch('php/datos/obtener_niveles.php')
-        .then(response => response.json())
-        .then(data => {
-            const selectNivel = document.getElementById('nivel2');
-            selectNivel.innerHTML = '';
-            if (data.error) {
-                selectNivel.innerHTML = `<option value="">Error cargando niveles educativos</option>`;
-            } else {
-                data.forEach(nivel => {
-                    const option = document.createElement('option');
-                    option.value = nivel.id;
-                    option.textContent = nivel.descripcion;
-                    selectNivel.appendChild(option);
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error al cargar los municipios:', error);
-            const selectNivel = document.getElementById('nivel2');
-            selectNivel.innerHTML = `<option value="">Error al cargar municipios</option>`;
         });
 }

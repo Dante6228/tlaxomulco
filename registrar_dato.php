@@ -50,24 +50,12 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                         </li>
                         <li>
                             <label>
-                                <input type="radio" name="opcion" value="nivel">
-                                Nivel educativo
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="opcion" value="grado">
-                                Grado escolar
-                            </label>
-                        </li>
-                    </div>
-                    <div class="div">
-                        <li>
-                            <label>
                                 <input type="radio" name="opcion" value="ciclo">
                                 Ciclo escolar
                             </label>
                         </li>
+                    </div>
+                    <div class="div">
                         <li>
                             <label>
                                 <input type="radio" name="opcion" value="promocion">
