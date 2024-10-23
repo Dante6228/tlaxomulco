@@ -7,6 +7,7 @@
     <title>Iniciar sesión</title>
 </head>
 <body>
+    
     <header>
         <div class="cabecera">
             <h1>
@@ -15,6 +16,7 @@
             <img src="img/logo.png" alt="Logotipo del Instituto Tlaxomulco">
         </div>
     </header>
+
     <main>
 
         <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "0") { ?>
