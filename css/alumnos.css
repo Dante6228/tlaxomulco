@@ -191,3 +191,20 @@ tr td{
     margin-top: 30px;
     border-radius: 12px;
 }
+
+::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #b0b0b0; /* Color de la barra de desplazamiento */
+    transition: background-color 1s ease; /* Transición suave en color */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #505050;
+}
