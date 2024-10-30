@@ -183,10 +183,13 @@ INSERT INTO nivel_grado_ciclo (nivel_educativo_id, grado_id, ciclo_id) VALUES
 
 -- Relación entre Bachillerato y sus grados
 INSERT INTO nivel_grado_ciclo (nivel_educativo_id, grado_id, ciclo_id) VALUES
+(4, 13, 1),  -- Bachillerato, Semestre 1, 2020-2021
 (4, 13, 2),  -- Bachillerato, Semestre 1, 2021-2022
 (4, 13, 3),  -- Bachillerato, Semestre 1, 2022-2023
+(4, 14, 1),  -- Bachillerato, Semestre 2, 2020-2021
 (4, 14, 2),  -- Bachillerato, Semestre 2, 2021-2022
 (4, 14, 3),  -- Bachillerato, Semestre 2, 2022-2023
+(4, 15, 1),  -- Bachillerato, Semestre 3, 2020-2021
 (4, 15, 2),  -- Bachillerato, Semestre 3, 2021-2022
 (4, 15, 3);  -- Bachillerato, Semestre 3, 2022-2023
 
