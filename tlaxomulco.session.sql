@@ -191,7 +191,16 @@ INSERT INTO nivel_grado_ciclo (nivel_educativo_id, grado_id, ciclo_id) VALUES
 (4, 14, 3),  -- Bachillerato, Semestre 2, 2022-2023
 (4, 15, 1),  -- Bachillerato, Semestre 3, 2020-2021
 (4, 15, 2),  -- Bachillerato, Semestre 3, 2021-2022
-(4, 15, 3);  -- Bachillerato, Semestre 3, 2022-2023
+(4, 15, 3),  -- Bachillerato, Semestre 3, 2022-2023
+(4, 16, 1),  -- Bachillerato, Semestre 4, 2020-2021
+(4, 16, 2),  -- Bachillerato, Semestre 4, 2021-2022
+(4, 16, 3),  -- Bachillerato, Semestre 4, 2022-2023
+(4, 17, 1),  -- Bachillerato, Semestre 5, 2020-2021
+(4, 17, 2),  -- Bachillerato, Semestre 5, 2021-2022
+(4, 17, 3),  -- Bachillerato, Semestre 5, 2022-2023
+(4, 18, 1),  -- Bachillerato, Semestre 6, 2020-2021
+(4, 18, 2),  -- Bachillerato, Semestre 6, 2021-2022
+(4, 18, 3);  -- Bachillerato, Semestre 6, 2022-2023
 
 -- Inserciones de estados
 INSERT INTO municipio (descripcion) VALUES
