@@ -1,0 +1,46 @@
+@keyframes inicio{
+    0%{
+        transform: translateY(-30px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: auto;
+    animation: inicio 1s normal;
+    gap: 30px
+}
+
+.links a {
+    flex: 1 1 calc(33.33% - 40px);
+    text-align: center;
+    margin: 15px 0;
+    padding: 15px;
+    text-decoration: none;
+    color: black;
+    border-radius: 8px;
+    font-size: 18px;
+    background-color: #ffecec;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+    outline: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.links a:hover{
+    background-color: #bf7575;
+    outline: 1px solid rgb(0, 0, 0, 0.3);
+    box-shadow: 8px 8px 10px rgb(0, 0, 0, 0.5);
+    font-size: 20px;
+    color: white;
+    font-weight: bolder;
+    transform: scale(1.05);
+}

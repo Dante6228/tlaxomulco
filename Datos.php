@@ -74,6 +74,9 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                 </table>
             </section>
         </div>
+        <div id="modalForm" class="modal">
+</div>
+
     </main>
 
     <script src="js/datos.js"></script>

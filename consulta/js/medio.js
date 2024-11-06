@@ -19,13 +19,13 @@ async function cargarOpciones(url, parametros, selectId) {
 
 function cargarGrados() {
     let nivelEducativoId = document.getElementById("nivel-educativo").value;
-    cargarOpciones('php/alumnos/obtener_grados.php', `nivelEducativoId=${nivelEducativoId}`, "grado");
+    cargarOpciones('../php/alumnos/obtener_grados.php', `nivelEducativoId=${nivelEducativoId}`, "grado");
     limpiarSelect('nivel-educativo');
 }
 
 function cargarCiclos() {
     let gradoId = document.getElementById("grado").value;
-    cargarOpciones('php/alumnos/obtener_ciclos.php', `gradoId=${gradoId}`, "ciclo-escolar");
+    cargarOpciones('../php/alumnos/obtener_ciclos.php', `gradoId=${gradoId}`, "ciclo-escolar");
     limpiarSelect('grado');
 }
 
@@ -41,19 +41,21 @@ async function mostrarAlumnos() {
     const nivelEducativoId = document.getElementById("nivel-educativo").value;
     const gradoId = document.getElementById("grado").value;
     const cicloId = document.getElementById("ciclo-escolar").value;
+    const medioId = document.getElementById("medio-enterado").value;
 
     const tbody = document.querySelector("tbody");
     tbody.innerHTML = "";
 
-    if (nivelEducativoId && gradoId && cicloId) {
+    if (nivelEducativoId && gradoId && cicloId && medioId) {
         const params = new URLSearchParams({
             nivelEducativoId: nivelEducativoId,
             gradoId: gradoId,
-            cicloId: cicloId
+            cicloId: cicloId,
+            medioId: medioId
         });
 
         try {
-            const response = await fetch("php/alumnos/obtener_alumnos.php", {
+            const response = await fetch("../php/consulta/medio.php", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -71,7 +73,7 @@ async function mostrarAlumnos() {
             console.error('Error:', error);
         }
     } else {
-        alert("Por favor, selecciona un nivel educativo, grado y ciclo escolar.");
+        alert("Por favor, selecciona un nivel educativo, grado, ciclo escolar y medio enterado.");
     }
 }
 
@@ -114,7 +116,7 @@ async function eliminarAlumno(event) {
     
     if (confirmDelete) {
         try {
-            const response = await fetch('php/alumnos/eliminar_alumno.php', {
+            const response = await fetch('../php/alumnos/eliminar_alumno.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -136,7 +138,7 @@ async function eliminarAlumno(event) {
 
 async function actualizarAlumno(event) {
     const alumnoId = event.target.getAttribute('data-id');
-    window.location.href = `actualizar_alumno.php?id=${alumnoId}&from=0`;
+    window.location.href = `../actualizar_alumno.php?id=${alumnoId}&from=1`;
 }
 
 async function generarPDF() {
@@ -147,16 +149,6 @@ async function generarPDF() {
         const cells = row.querySelectorAll('td');
         const alumno = {
             id: cells[11].querySelector('.update-btn').dataset.id,
-            nombre: cells[0].innerText,
-            Ap: cells[1].innerText,
-            Am: cells[2].innerText,
-            matricula: cells[3].innerText,
-            genero: cells[4].innerText,
-            municipio: cells[5].innerText,
-            colonia: cells[6].innerText,
-            medio_enterado: cells[7].innerText,
-            promocion: cells[8].innerText,
-            estado_alumno: cells[9].innerText,
             ngc: cells[10].innerText
         };
         alumnos.push(alumno);
@@ -171,7 +163,7 @@ async function generarPDF() {
     params.append('alumnos', JSON.stringify(alumnos));
 
     try {
-        const response = await fetch('php/alumnos/generar_pdf.php', {
+        const response = await fetch('../php/consulta/generar_pdf.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -189,12 +181,12 @@ async function generarPDF() {
         const a = document.createElement('a');
         a.style.display = 'none';
         a.href = url;
-        a.download = 'Listado_de_Alumnos.pdf';
+        a.download = 'Listado_de_Alumnos_por_medio_enterado.pdf';
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
 
-        window.location.href = 'alumnos.php?mensaje=pdf';
+        window.location.href = '/tlaxomulco/consulta/medio.php?mensaje=pdf';
 
     } catch (error) {
         console.error('Error:', error);

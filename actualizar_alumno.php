@@ -76,8 +76,6 @@ if (!$_SERVER["REQUEST_METHOD"] === "GET") {
         echo "Error: ". $th->getMessage();
         exit();
     }
-    
-    
 }
 
 function generarOpciones($tabla, $pdo, $valorSeleccionado = null) {
@@ -104,7 +102,13 @@ function generarOpciones($tabla, $pdo, $valorSeleccionado = null) {
 <body>
     <header>
         <h1>Actualizar alumno <?php echo htmlspecialchars($alumno['nombre']); ?></h1>
-        <a href="alumnos.php" class="botonInicio">Regresar</a>
+        <?php
+            if($_GET['from'] != 1){
+                echo "<a href='alumnos.php' class='botonInicio'>Regresar</a>";
+            }else{
+                echo "<a href='consulta/medio.php' class='botonInicio'>Regresar</a>";
+            }
+        ?>
         <a href="usuario.php">
             <img src="img/usuario.png" alt="Cuenta de usuario">
         </a>

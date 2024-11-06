@@ -28,7 +28,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
         <div class="links">
             <a href="alumnos.php" class="btn alumno"> Alumnos </a>
             <a href="Datos.php" class="btn dato"> Datos </a>
-            <a href="Consulta_especifica.html" class="btn consulta"> Consulta especifica </a>
+            <a href="consulta.php" class="btn consulta"> Consulta especifica </a>
         </div>
     </main>
 </body>
