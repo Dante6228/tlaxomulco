@@ -132,7 +132,7 @@ if (isset($_POST['alumnos'])) {
             $pdf->Ln();
         }
 
-        $pdf->Output('D', 'Listado_de_Alumnos_por_medio_enterado.pdf');
+        $pdf->Output('D', 'Listado_de_Alumnos.pdf');
     } catch (Exception $e) {
         echo 'Error: ' . $e->getMessage();
     }

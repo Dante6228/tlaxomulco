@@ -35,7 +35,7 @@ if (!$pdo) {
     <main>
         <div class="links">
             <a href="consulta/medio.php"> Consulta por medio enterado </a>
-            <a href="#"> Consulta por estado </a>
+            <a href="consulta/estado.php"> Consulta por estado </a>
             <a href="#"> Consulta por colonia </a>
             <a href="#"> Consulta por municipio </a>
             <a href="#"> Consulta por promoción </a>

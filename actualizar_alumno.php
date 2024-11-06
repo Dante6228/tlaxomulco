@@ -103,10 +103,19 @@ function generarOpciones($tabla, $pdo, $valorSeleccionado = null) {
     <header>
         <h1>Actualizar alumno <?php echo htmlspecialchars($alumno['nombre']); ?></h1>
         <?php
-            if($_GET['from'] != 1){
-                echo "<a href='alumnos.php' class='botonInicio'>Regresar</a>";
-            }else{
-                echo "<a href='consulta/medio.php' class='botonInicio'>Regresar</a>";
+            switch ($_GET['from']){
+                case '0':
+                    echo "<a href='alumnos.php' class='botonInicio'>Regresar</a>";
+                    break;
+                case '1':
+                    echo "<a href='consulta/medio.php' class='botonInicio'>Regresar</a>";
+                    break;
+                case '2':
+                    echo "<a href='consulta/estado.php' class='botonInicio'>Regresar</a>";
+                    break;
+                default:
+                    echo "Error inesperado";
+                    break;
             }
         ?>
         <a href="usuario.php">

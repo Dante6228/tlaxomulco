@@ -41,21 +41,21 @@ async function mostrarAlumnos() {
     const nivelEducativoId = document.getElementById("nivel-educativo").value;
     const gradoId = document.getElementById("grado").value;
     const cicloId = document.getElementById("ciclo-escolar").value;
-    const medioId = document.getElementById("medio-enterado").value;
+    const estadoId = document.getElementById("estado").value;
 
     const tbody = document.querySelector("tbody");
     tbody.innerHTML = "";
 
-    if (nivelEducativoId && gradoId && cicloId && medioId) {
+    if (nivelEducativoId && gradoId && cicloId && estadoId) {
         const params = new URLSearchParams({
             nivelEducativoId: nivelEducativoId,
             gradoId: gradoId,
             cicloId: cicloId,
-            medioId: medioId
+            estadoId: estadoId
         });
 
         try {
-            const response = await fetch("../php/consulta/medio.php", {
+            const response = await fetch("../php/consulta/estado.php", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -138,7 +138,7 @@ async function eliminarAlumno(event) {
 
 async function actualizarAlumno(event) {
     const alumnoId = event.target.getAttribute('data-id');
-    window.location.href = `../actualizar_alumno.php?id=${alumnoId}&from=1`;
+    window.location.href = `../actualizar_alumno.php?id=${alumnoId}&from=2`;
 }
 
 async function generarPDF() {
@@ -181,12 +181,12 @@ async function generarPDF() {
         const a = document.createElement('a');
         a.style.display = 'none';
         a.href = url;
-        a.download = 'Listado_de_alumnos_por_medio_enterado.pdf';
+        a.download = 'Listado_de_alumnos_por_estado_de_alumno.pdf';
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
 
-        window.location.href = '/tlaxomulco/consulta/medio.php?mensaje=pdf';
+        window.location.href = '/tlaxomulco/consulta/estado.php?mensaje=pdf';
 
     } catch (error) {
         console.error('Error:', error);
