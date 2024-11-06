@@ -73,7 +73,7 @@ async function mostrarAlumnos() {
             console.error('Error:', error);
         }
     } else {
-        alert("Por favor, selecciona un nivel educativo, grado, ciclo escolar y medio enterado.");
+        alert("Por favor, selecciona un nivel educativo, grado, ciclo escolar y estado del alumno.");
     }
 }
 
@@ -181,7 +181,9 @@ async function generarPDF() {
         const a = document.createElement('a');
         a.style.display = 'none';
         a.href = url;
-        a.download = 'Listado_de_alumnos_por_estado_de_alumno.pdf';
+        const cicloSelect = document.getElementById('ciclo-escolar');
+        const cicloTexto = cicloSelect.selectedOptions[0].text;
+        a.download = `Listado_de_alumnos_por_estado_de_alumno_${cicloTexto}.pdf`;
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);

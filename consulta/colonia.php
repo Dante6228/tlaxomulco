@@ -22,12 +22,12 @@ $stmt->execute();
 
 $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$query = "SELECT * FROM estado";
+$query = "SELECT * FROM colonia";
 
 $stmt = $pdo->prepare($query);
 $stmt->execute();
 
-$estado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$colonia = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -38,11 +38,11 @@ $estado = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/alumnos.css">
     <link rel="stylesheet" href="../css/header.css">
-    <title>Consulta por estado del alumno</title>
+    <title>Consulta por colonia del alumno</title>
 </head>
 <body>
     <header>
-        <h1>Consulta por estado del alumno</h1>
+        <h1>Consulta por colonia del alumno</h1>
         <a href="../consulta.php" class="botonInicio">Regresar</a>
         <a href="../usuario.php"><img src="../img/usuario.png" alt="Perfil"></a>
     </header>
@@ -84,11 +84,11 @@ $estado = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
 
                 <div class="option-box">
-                    <h3>Estado del alumno</h3>
-                    <select id="estado">
-                        <option value="">Selecciona un estado</option>
+                    <h3>Colonia</h3>
+                    <select id="colonia">
+                        <option value="">Selecciona una colonia</option>
                         <?php
-                            foreach ($estado as $item) {
+                            foreach ($colonia as $item) {
                                 echo "<option value='" . $item['id'] . "'>" . $item['descripcion'] . "</option>";
                             }
                         ?>
@@ -123,7 +123,7 @@ $estado = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </main>
 
-    <script src="js/estado.js"></script>
+    <script src="js/colonia.js"></script>
 
 </body>
 </html>

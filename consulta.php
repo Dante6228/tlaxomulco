@@ -36,11 +36,10 @@ if (!$pdo) {
         <div class="links">
             <a href="consulta/medio.php"> Consulta por medio enterado </a>
             <a href="consulta/estado.php"> Consulta por estado </a>
-            <a href="#"> Consulta por colonia </a>
-            <a href="#"> Consulta por municipio </a>
-            <a href="#"> Consulta por promoción </a>
+            <a href="consulta/colonia.php"> Consulta por colonia </a>
+            <a href="consulta/municipio.php"> Consulta por municipio </a>
+            <a href="consulta/promocion.php"> Consulta por promoción </a>
             <a href="#"> Consulta por género </a>
-            <a href="#">Consulta personalizada</a>
         </div>
     </main>
 </body>
