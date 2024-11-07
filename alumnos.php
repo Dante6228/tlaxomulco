@@ -41,7 +41,6 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </header>
 
     <main>
-        
         <div class="container">
 
         <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "registro") { ?>

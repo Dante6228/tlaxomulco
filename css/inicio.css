@@ -1,44 +1,46 @@
-@keyframes inicio{
-    0%{
+@keyframes inicio {
+    0% {
         transform: translateY(-30px);
-        opacity: 0%;
+        opacity: 0;
     }
-    100%{
-        transform: translateY(0px);
-        opacity: 100%;
+    100% {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
-.links{
+.links {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     width: 70%;
-    height: 100px;  
-    justify-content: space-around;
-    animation: inicio 1s normal;
+    height: 150px;
+    animation: inicio 1s ease-out;
+    gap: 30px;
+    padding: 20px;
 }
 
-.links a{
+.links a {
+    flex: 1 1 calc(33.33% - 40px);
     text-align: center;
-    margin: 30px;
+    margin: 15px 0;
     padding: 15px;
-    width: 250px;
     text-decoration: none;
-    color: black;
-    border-radius: 8px;
+    color: #fff;
+    border-radius: 12px;
     font-size: 18px;
-    background-color: #fdffec;
-    box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.2);
-    outline: 1px solid rgb(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+    background: linear-gradient(135deg, #FF9A8B, #FF6F61);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2), -3px -3px 10px rgba(255, 255, 255, 0.5);
+    outline: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.5s ease;
 }
 
-.links a:hover{
-    background-color: #759CBF;
-    outline: 1px solid rgb(0, 0, 0, 0.3);
-    box-shadow: 8px 8px 10px rgb(0, 0, 0, 0.5);
-    font-size: 20px;
+.links a:hover {
+    background: linear-gradient(135deg, #FF6F61, #D04F3C);
     color: white;
-    font-weight: bolder;
-    transform: scale(1.05);
+    font-weight: bold;
+    transform: scale(1.08) rotate(-1deg);
+    box-shadow: 8px 8px 18px rgba(0, 0, 0, 0.4), -8px -8px 18px rgba(255, 255, 255, 0.2);
+    font-size: 19px;
 }

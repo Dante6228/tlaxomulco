@@ -1,210 +1,157 @@
+@keyframes inicio {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 main{
-    animation: inicio 1s normal;
-}
-
-.container {
-    width: 90%;
-    margin: 20px auto;
-    text-align: center;
-}
-
-.options-container {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
-}
-
-.option-box {
-    background-color: #ffe8cc;
-    padding: 10px;
-    border-radius: 10px;
-    width: 180px;
-    box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.4);
-}
-
-.option-box select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid rgb(0, 0, 0, 0.3);
-    outline: none;
-}
-
-.option-box h3 {
-    margin-bottom: 10px;
+    animation: inicio 1s ease-in-out;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table, th, td {
-    border: 1px solid #ccc;
 }
 
 th, td {
-    padding: 10px;
+    padding: 14px;
     text-align: center;
+    border: 1px solid #ddd;
 }
 
 th {
-    background-color: #d9e6ff;
+    background-color: #34495e;
+    color: white;
 }
 
-.btn {
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #8eff94;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+tr:nth-child(even) {
+    background-color: #eeeeee;
 }
 
-.btn:hover {
-    background-color: #79d37b;
-}
-
-.delete-btn {
-    background-color: #ff8989;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100px;
-    height: 35px;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-.delete-btn:hover {
-    background-color: #e07171;
-}
-
-.update-btn {
-    background-color: #b3ffbc;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100px;
-    height: 35px;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-.update-btn:hover {
-    background-color: #99d9a3;
-}
-
-.botonInicio {
-    position: absolute;
-    top: 40px;
-    right: 160px;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #4caf50;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.botonInicio:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-}
-
-.button-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.register-btn, .update-btn {
-    background-color: #ffadad;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+td {
     transition: transform 0.3s ease;
 }
 
-.register-btn:hover, .update-btn:hover {
-    background-color: #ff6b6b;
-    transform: scale(1.05);
+td:hover {
+    transform: scale(1.1);
 }
 
-@keyframes inicio{
-    0%{
-        transform: translateY(-50px);
-        opacity: 0%;
-    }
-    100%{
-        transform: translateY(0px);
-        opacity: 100%;
-    }
+tbody tr {
+    opacity: 0;
+    animation: inicio 0.5s ease-in-out forwards;
 }
 
-#mostrar-alumnos-btn{
-    padding: 10px;
-    background-color: #8eff94;
+tbody tr:nth-child(odd) {
+    animation-delay: 0.2s;
+}
+
+tbody tr:nth-child(even) {
+    animation-delay: 0.4s;
+}
+
+button {
+    background-color: #2ecc71;
     border: none;
-    cursor: pointer;
+    padding: 12px 20px;
+    margin: 10px;
+    color: white;
     border-radius: 5px;
-    box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: 0.5s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#mostrar-alumnos-btn:hover{
-    background-color: #9def9e;
-    box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.4);
+button:hover {
+    background-color: #27ae60;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes alumnos{
-    0%{
-        transform: scale(50%);
-        opacity: 0%;
-    }
-    100%{
-        transform: scale(100%);
-        opacity: 100%
-    }
+.options-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
 }
 
-tr td{
-    animation: alumnos 1s normal;
+.option-box {
+    width: 30%;
 }
 
-.mensaje{
-    color: black;
-    font-size: 18px;
-    font-weight: bolder;
-    text-align: center;
-    background-color: #71e092;
+select {
+    width: 100%;
+    padding: 12px 16px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+}
+
+select:focus {
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+select:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    background-color: #ececec;
+}
+
+.mensaje {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
     padding: 10px;
-    width: 25%;
+    margin-top: 20px;
+    color: #155724;
+    border-radius: 5px;
+    animation: inicio 1s ease;
+}
+
+.container {
+    padding: 20px;
+    min-width: 1700px;
+    max-width: 1700px;
     margin: auto;
-    margin-top: 30px;
-    border-radius: 12px;
 }
 
-::-webkit-scrollbar {
-    width: 12px; /* Ancho de la barra de desplazamiento */
+#mostrar-alumnos-btn {
+    background-color: #8e44ad;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-::-webkit-scrollbar-track {
-    border-radius: 10px; /* Bordes redondeados */
+#mostrar-alumnos-btn:hover {
+    background-color: #732d91;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #b0b0b0; /* Color de la barra de desplazamiento */
-    transition: background-color 1s ease; /* Transición suave en color */
+.register-btn {
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background-color: #505050;
+.register-btn:hover {
+    background-color: #2980b9;
+}
+
+#mostrar-alumnos-btn.btn {
+    background-color: #f39c12;
+}
+
+#mostrar-alumnos-btn.btn:hover {
+    background-color: #e67e22;
 }
