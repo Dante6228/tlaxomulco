@@ -122,6 +122,9 @@ function generarOpciones($tabla, $pdo, $valorSeleccionado = null) {
                 case '5':
                     echo "<a href='consulta/promocion.php' class='botonInicio'>Regresar</a>";
                     break;
+                case '6':
+                    echo "<a href='consulta/genero.php' class='botonInicio'>Regresar</a>";
+                    break;
                 default:
                     echo "Error inesperado";
                     break;

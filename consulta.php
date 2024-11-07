@@ -39,7 +39,7 @@ if (!$pdo) {
             <a href="consulta/colonia.php"> Consulta por colonia </a>
             <a href="consulta/municipio.php"> Consulta por municipio </a>
             <a href="consulta/promocion.php"> Consulta por promoción </a>
-            <a href="#"> Consulta por género </a>
+            <a href="consulta/genero.php"> Consulta por género </a>
         </div>
     </main>
 </body>
