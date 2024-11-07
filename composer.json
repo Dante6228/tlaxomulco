@@ -1,0 +1,17 @@
+{
+    "name": "dante/tlaxomulco",
+    "autoload": {
+        "psr-4": {
+            "Dante\\Tlaxomulco\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dante",
+            "email": "dantealejandro35@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^3.3"
+    }
+}

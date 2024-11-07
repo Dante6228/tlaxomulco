@@ -125,6 +125,30 @@ select:hover {
     background-color: #ececec;
 }
 
+input {
+    width: 100%;
+    padding: 12px 16px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+}
+
+input:focus {
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+input:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    background-color: #ececec;
+}
+
 .mensaje {
     background-color: #d4edda;
     border: 1px solid #c3e6cb;
