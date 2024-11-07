@@ -83,6 +83,15 @@ button:hover {
     width: 30%;
 }
 
+.options-container div{
+    width: 90%;
+    margin-bottom: 15px;
+}
+
+.options-container div:last-child{
+    margin-bottom: 0;
+}
+
 select {
     width: 100%;
     padding: 12px 16px;
@@ -121,8 +130,8 @@ select:hover {
 
 .container {
     padding: 20px;
-    min-width: 1700px;
-    max-width: 1700px;
+    min-width: 100%;
+    max-width: 100%;
     margin: auto;
 }
 

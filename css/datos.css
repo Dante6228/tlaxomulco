@@ -111,8 +111,8 @@ select:hover {
 
 .container {
     padding: 20px;
-    min-width: 1700px;
-    max-width: 1700px;
+    min-width: 100%;
+    max-width: 100%;
     margin: auto;
 }
 

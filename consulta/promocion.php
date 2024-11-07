@@ -57,42 +57,45 @@ $promocion = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php } ?>
             
             <div class="options-container">
-                <div class="option-box">
-                    <h3>Nivel Educativo</h3>
-                    <select id="nivel-educativo" onchange="cargarGrados()">
-                        <option value="">Selecciona un nivel</option>
-                        <?php
-                            foreach ($nivel as $item) {
-                                echo "<option value='" . $item['id'] . "'>" . $item['descripcion'] . "</option>";
-                            }
-                        ?>
-                    </select>
-                </div>
+                <div>
+                    <div class="option-box">
+                        <h3>Nivel Educativo</h3>
+                        <select id="nivel-educativo" onchange="cargarGrados()">
+                            <option value="">Selecciona un nivel</option>
+                            <?php
+                                foreach ($nivel as $item) {
+                                    echo "<option value='" . $item['id'] . "'>" . $item['descripcion'] . "</option>";
+                                }
+                            ?>
+                        </select>
+                    </div>
 
-                <div class="option-box">
-                    <h3>Grado</h3>
-                    <select id="grado" onchange="cargarCiclos()">
-                        <option value="">Selecciona un grado</option>
-                    </select>
+                    <div class="option-box">
+                        <h3>Ciclo Escolar</h3>
+                        <select id="ciclo-escolar">
+                            <option value="">Selecciona un ciclo</option>
+                        </select>
+                    </div>
                 </div>
-
-                <div class="option-box">
-                    <h3>Ciclo Escolar</h3>
-                    <select id="ciclo-escolar">
-                        <option value="">Selecciona un ciclo</option>
-                    </select>
-                </div>
-
-                <div class="option-box">
-                    <h3>Promoción</h3>
-                    <select id="promocion">
-                        <option value="">Selecciona una promoción</option>
-                        <?php
-                            foreach ($promocion as $item) {
-                                echo "<option value='" . $item['id'] . "'>" . $item['descripcion'] . "</option>";
-                            }
-                        ?>
-                    </select>
+                
+                <div>
+                    <div class="option-box">
+                        <h3>Grado</h3>
+                        <select id="grado" onchange="cargarCiclos()">
+                            <option value="">Selecciona un grado</option>
+                        </select>
+                    </div>
+                    <div class="option-box">
+                        <h3>Promoción</h3>
+                        <select id="promocion">
+                            <option value="">Selecciona una promoción</option>
+                            <?php
+                                foreach ($promocion as $item) {
+                                    echo "<option value='" . $item['id'] . "'>" . $item['descripcion'] . "</option>";
+                                }
+                            ?>
+                        </select>
+                    </div>
                 </div>
             </div>
 
