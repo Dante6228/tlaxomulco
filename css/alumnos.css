@@ -54,6 +54,15 @@ tbody tr:nth-child(even) {
     animation-delay: 0.4s;
 }
 
+.button-container{
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.button-container button {
+    width: 100%;
+}
+
 button {
     background-color: #2ecc71;
     border: none;
@@ -130,6 +139,7 @@ select:hover {
 
 .container {
     padding: 20px;
+    padding-top: 0px;
     min-width: 100%;
     max-width: 100%;
     margin: auto;

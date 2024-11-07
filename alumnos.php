@@ -66,6 +66,11 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <button class="register-btn">Registrar nuevo alumno</button>
                 </a>
             </div>
+            <div class="button-container">
+                <a href="Registrar_alumno.php">
+                    <button class="register-btn">Importar archivo excel</button>
+                </a>
+            </div>
             
             <div class="options-container">
                 <div class="option-box">
