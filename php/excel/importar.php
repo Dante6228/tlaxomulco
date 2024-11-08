@@ -20,6 +20,23 @@ try {
 }
 
 $data = [];
+
+// Filtrar filas completamente vacías en el arreglo de $data
+$data = array_filter($data, function($row) {
+    // Comprobar si al menos un valor en la fila no está vacío
+    foreach ($row as $cell) {
+        if (!empty($cell)) {
+            return true;
+        }
+    }
+    // Si toda la fila está vacía, la excluye
+    return false;
+});
+
+// Reindexar el arreglo para evitar problemas en los índices
+$data = array_values($data);
+
+
 foreach ($worksheet->getRowIterator() as $row) {
     $cellIterator = $row->getCellIterator();
     $cellIterator->setIterateOnlyExistingCells(true);
