@@ -20,23 +20,6 @@ try {
 }
 
 $data = [];
-
-// Filtrar filas completamente vacías en el arreglo de $data
-$data = array_filter($data, function($row) {
-    // Comprobar si al menos un valor en la fila no está vacío
-    foreach ($row as $cell) {
-        if (!empty($cell)) {
-            return true;
-        }
-    }
-    // Si toda la fila está vacía, la excluye
-    return false;
-});
-
-// Reindexar el arreglo para evitar problemas en los índices
-$data = array_values($data);
-
-
 foreach ($worksheet->getRowIterator() as $row) {
     $cellIterator = $row->getCellIterator();
     $cellIterator->setIterateOnlyExistingCells(true);
@@ -58,24 +41,57 @@ if ($data) {
         throw new UnexpectedValueException("Error de conexión a la base de datos");
     }
 
+    // Función para obtener el ID del grado/semestre basándose en el nivel escolar y el grado dado
+    function obtenerIDGrado($nivel, $grado) {
+        $gradosPorNivel = [
+            "Preescolar" => [
+                "1er grado" => 1,
+                "2do grado" => 2,
+                "3er grado" => 3
+            ],
+            "Primaria" => [
+                "1er grado" => 4,
+                "2do grado" => 5,
+                "3er grado" => 6,
+                "4to grado" => 7,
+                "5to grado" => 8,
+                "6to grado" => 9
+            ],
+            "Secundaria" => [
+                "1er grado" => 10,
+                "2do grado" => 11,
+                "3er grado" => 12
+            ],
+            "Bachillerato" => [
+                "1er semestre" => 13,
+                "2do semestre" => 14,
+                "3er semestre" => 15,
+                "4to semestre" => 16,
+                "5to semestre" => 17,
+                "6to semestre" => 18
+            ]
+        ];
+
+        // Comprobar si el nivel existe en el arreglo y si el grado existe en ese nivel
+        if (isset($gradosPorNivel[$nivel]) && isset($gradosPorNivel[$nivel][$grado])) {
+            return $gradosPorNivel[$nivel][$grado];
+        } else {
+            return 'Grado no existente'; // Retorna null si el nivel o grado no es válido
+        }
+    }
+
+    // Ejemplo de uso dentro de tu bucle
     for ($i = 1; $i < count($data); $i++) {
         $row = $data[$i];
 
-        // Verificar que el índice existe antes de acceder a él
         $nombre = isset($row[0]) ? $row[0] : '';
         $apellidoPaterno = isset($row[1]) ? $row[1] : '';
         $apellidoMaterno = isset($row[2]) ? $row[2] : '';
         $matricula = isset($row[3]) ? $row[3] : '';
 
-        $query = "INSERT INTO alumno (nombre, Ap, Am, matricula) VALUES (?, ?, ?, ?)";
-
-
-        $nivel = isset($row[4]) ? $row[4] : '';
-        $grado = isset($row[5]) ? $row[5] : '';
-        $ciclo = isset($row[6]) ? $row[6] : '';
-
-        
-
+        $nivel = (string)(isset($row[4]) ? $row[4] : '');
+        $grado = (string)(isset($row[5]) ? $row[5] : '');
+        $ciclo = (string)(isset($row[6]) ? $row[6] : '');
 
         $genero = isset($row[7]) ? $row[7] : '';
         $municipio = isset($row[8]) ? $row[8] : '';
@@ -84,107 +100,123 @@ if ($data) {
         $promocion = isset($row[11]) ? $row[11] : '';
         $estado = isset($row[12]) ? $row[12] : '';
 
-        // Imprimir los valores
+        if(!$nombre){
+            echo "Sin datos por registrar";
+            exit();
+        }
+
+        /////////////////////////////////////////////////////////////////
+        // INSERCIÓN DE CICLO //
+        /////////////////////////////////////////////////////////////////
+
+        // Verificar si el ciclo ya existe en la base de datos
+        $query = "SELECT id FROM ciclo WHERE descripcion = :descripcion";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':descripcion', $ciclo);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            // El ciclo ya existe; obtener el ID
+            $cicloData = $stmt->fetch(PDO::FETCH_ASSOC);
+            $cicloId = $cicloData['id'];
+            echo "Ciclo existente: $ciclo con ID: $cicloId <br>";
+        } else {
+            // 1. Insertar el ciclo escolar
+            $sql = "INSERT INTO ciclo (descripcion) VALUES (:descripcion)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':descripcion' => $ciclo]);
+            $cicloId = $pdo->lastInsertId();
+            echo "Ciclo $ciclo creado con ID: $cicloId <br>";
+
+            // 2. Relacionar todos los grados con el nuevo ciclo escolar
+            $sqlGrados = "SELECT id, nivel_educativo_id FROM grado";
+            $stmtGrados = $pdo->prepare($sqlGrados);
+            $stmtGrados->execute();
+            $grados = $stmtGrados->fetchAll(PDO::FETCH_ASSOC);
+
+            // 3. Insertar relaciones en nivel_grado_ciclo
+            foreach ($grados as $grado) {
+                $sqlRelacion = "INSERT INTO nivel_grado_ciclo (nivel_educativo_id, grado_id, ciclo_id) VALUES (:nivel_educativo_id, :grado_id, :ciclo_id)";
+                $stmtRelacion = $pdo->prepare($sqlRelacion);
+                $stmtRelacion->execute([
+                    ':nivel_educativo_id' => $grado['nivel_educativo_id'],
+                    ':grado_id' => $grado['id'],
+                    ':ciclo_id' => $cicloId,
+                ]);
+            }
+
+            echo "Ciclo: " . $ciclo . " creado correctamente <br>";
+        }
+
+        /////////////////////////////////////////////////////////////////
+        // OBTENCIÓN DE ID DE GRADO Y NIVEL //
+        /////////////////////////////////////////////////////////////////
+
+        // Verificar si el nivel ya existe en la base de datos
+        $query = "SELECT id FROM nivel_educativo WHERE descripcion = :descripcion";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':descripcion', $nivel);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            // El nivel ya existe; obtener el ID
+            $nivelData = $stmt->fetch(PDO::FETCH_ASSOC);
+            $nivelId2 = $nivelData['id'];
+            echo "Nivel existente: $nivel con ID: $nivelId2 <br>";
+        } else{
+            die("Error: Nivel educativo no existente");
+        }
+
+        $grado = isset($row[5]) ? $row[5] : '';
+
+        if (is_array($grado)) {
+            $grado = implode(',', $grado); // Convierte el array en una cadena
+        }
+
+        if (!is_string($grado)) {
+            die("Error: grado no es una cadena válida");
+        }
+
+        // Verificar si el grado ya existe en la base de datos
+        $query = "SELECT id FROM grado WHERE nivel_educativo_id = :nivelId AND descripcion = :grado";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':nivelId', $nivelId2);
+        $stmt->bindParam(':grado', $grado);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            // El grado ya existe; obtener el ID
+            $gradoData = $stmt->fetch(PDO::FETCH_ASSOC);
+            $gradoId = $gradoData['id'];
+            echo "Grado existente: $grado con ID: $gradoId<br>";
+        } else{
+            echo "Error: grado no existente <br>";
+        }
+
+        // Conseguir nivel_grado_ciclo
+        $query = "SELECT id FROM nivel_grado_ciclo WHERE nivel_educativo_id = :nivelId AND grado_id = :gradoId AND ciclo_id = :cicloId";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':nivelId', $nivelId2);
+        $stmt->bindParam(':gradoId', $gradoId);
+        $stmt->bindParam(':cicloId', $cicloId);
+        $stmt->execute();
         
-        $nivel2 = obtenerNivel($nivel);
-        $grado = obtenerGrado($grado, $nivel);
-        $grado2 = obtenerGrado2($nivel2, $grado);
+        if ($stmt->rowCount() > 0) {
+            // El nivel_grado_ciclo ya existe; obtener el ID
+            $nivelGrcicloData = $stmt->fetch(PDO::FETCH_ASSOC);
+            $nivelGrcicloId = $nivelGrcicloData['id'];
+            echo "Nivel_grado_ciclo existente: $nivelGrcicloId <br>";
+        } else{
+            echo "a";
+        }
 
-        echo "Nivel: " . $nivel2 . "<br>" . "Grado: " . $grado . " " . $grado2;
+        echo "<br><strong>Datos nivel, grado y ciclo extraidos correctamete</strong> <hr>";
 
+        
     }
+
 
     echo "<br>Datos importados exitosamente.";
 } else {
     echo "No hay datos para importar.";
-}
-
-function obtenerNivel($nivel){
-    switch($nivel){
-        case 'Preescolar':
-            return '1';
-        case 'Primaria':
-            return '2';
-        case 'Secundaria':
-            return '3';
-        case 'Bachillerato':
-            return '4';
-        default:
-            return null;
-    }
-}
-
-function obtenerGrado($grado, $nivel){
-    if (strpos($grado, 'grado') !== false) {
-        switch($nivel){
-            case 'Preescolar':
-                return '1';
-            case 'Primaria':
-                return '2';
-            case 'Secundaria':
-                return '3';
-            default:
-                return null;
-        }
-    } else {
-        switch($grado){
-            case '1er semestre':
-                return '13';
-            case '2do semestre':
-                return '14';
-            case '3er semestre':
-                return '15';
-            case '4to semestre':
-                return '16';
-            case '5to semestre':
-                return '17';
-            case '6to semestre':
-                return '18';
-            default:
-                return null;
-        }
-    }
-}
-
-function obtenerGrado2($nivel, $grado){
-    if($nivel === 1){
-        switch($grado){
-            case '1er grado':
-                return '1';
-            case '2do grado':
-                return '2';
-            case '3er grado':
-                return '3';
-            default:
-                return null;
-        }
-    } elseif ($nivel === 2){
-        switch($grado){
-            case '1er grado':
-                return '4';
-            case '2do grado':
-                return '5';
-            case '3er grado':
-                return '6';
-            case '4to grado':
-                return '7';
-            case '5to grado':
-                return '8';
-            case '6to grado':
-                return '9';
-            default:
-                return null;
-        }
-    } elseif ($nivel === 3){
-        switch($grado){
-            case '1er grado':
-                return '10';
-            case '2do grado':
-                return '11';
-            case '3er grado':
-                return '12';
-            default:
-                return null;
-        }
-    }
 }
