@@ -357,7 +357,27 @@ if ($data) {
         // INSERCIÓN DE ALUMNO //
         /////////////////////////////////////////////////////////////////
 
-        $query = "INSERT INTO alumno () VALUES ()";
+        $query = "INSERT INTO alumno (nombre, Ap, Am, matricula, municipio, genero, colonia, medio_enterado, promocion, estado, nivel_grado_ciclo_id) VALUES (:nombre, :ap, :am, :matricula, :municipio, :genero, :colonia, :medio_enterado, :promocion, :estado, :nivel_grado_ciclo_id)";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([
+            ':nombre' => $nombre,
+            ':ap' => $apellidoPaterno,
+            ':am' => $apellidoMaterno,
+            ':matricula' => $matricula,
+            ':municipio' => $municipioId,
+            ':genero' => $generoId,
+            ':colonia' => $coloniaId,
+            ':medio_enterado' => $medioEnteradoId,
+            ':promocion' => $promocionId,
+            ':estado' => $estadoId,
+            ':nivel_grado_ciclo_id' => $nivelGrcicloId
+        ]);
+
+        if($stmt->rowCount() > 0){
+            echo "Alumno $nombre creado correctamnete";
+        } else{
+            echo "Error al insertar el alumno $nombre";
+        }
 
         echo "<hr>";
         
