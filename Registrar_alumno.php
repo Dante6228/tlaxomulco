@@ -44,8 +44,8 @@ function generarOpciones($tabla, $pdo) {
         </a>
     </header>
 
-    <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "matricula") { ?>
-            <div class="error-message">
+        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "matricula") { ?>
+            <div class="error-message" style="margin-top: 20px;">
                 <p>¡La matricula ya está registrada!</p>
             </div>
         <?php } ?>
