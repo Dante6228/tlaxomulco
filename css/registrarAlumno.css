@@ -90,6 +90,25 @@ form button[type="submit"]:hover{
     transform: scale(1.03);
 }
 
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    background-color: #edd4d4;
+    border: 1px solid #e6c3c3;
+    padding: 10px;
+    border-radius: 5px;
+    width: 40%;
+    margin: auto;
+    margin-top: 5px;
+    text-align: center;
+    animation: inicio 1s ease;
+}
+
+.input-error {
+    border: 2px solid red;
+    background-color: #f8d7da;
+}
+
 @keyframes inicio{
     0%{
         transform: translateY(-50px);

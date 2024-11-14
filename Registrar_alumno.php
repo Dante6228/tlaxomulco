@@ -44,8 +44,12 @@ function generarOpciones($tabla, $pdo) {
         </a>
     </header>
 
+    
     <div class="container">
         <form action="php/alumnos/registrarAlumno.php" method="POST">
+            <div id="nombre-error"></div>
+            <div id="matricula-error"></div>
+            <div id="error-general"></div>
             <div class="form-group">
                 <label for="nombre">Nombre completo</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre(s)" required>
@@ -57,8 +61,8 @@ function generarOpciones($tabla, $pdo) {
                 <input type="text" id="matricula" name="matricula" placeholder="0000" required>
             </div>
             <div class="form-group">
-                <label for="genero">Género:</label>
-                <select name="genero" id="genero" required onchange="limpiarSelect('genero')">
+                <label for="genero">Género</label>
+                <select name="genero" id="genero" onchange="limpiarSelect('genero')" required>
                     <option value="">Selecciona un genero</option>
                     <?php
                         generarOpciones('genero', $pdo);
@@ -67,7 +71,7 @@ function generarOpciones($tabla, $pdo) {
             </div>
             <div class="form-group">
                 <label for="medio_enterado">Medio Enterado</label>
-                <select name="medio_enterado" id="medio_enterado" required onchange="limpiarSelect('medio_enterado')">
+                <select name="medio_enterado" id="medio_enterado" onchange="limpiarSelect('medio_enterado')" required>
                     <option value="">Selecciona un medio</option>
                     <?php
                         generarOpciones('medio_enterado', $pdo);
@@ -76,7 +80,7 @@ function generarOpciones($tabla, $pdo) {
             </div>
             <div class="form-group">
                 <label for="ciclo">Ciclo escolar</label>
-                <select name="ciclo" id="ciclo" required onchange="limpiarSelect('ciclo')">
+                <select name="ciclo" id="ciclo" onchange="limpiarSelect('ciclo')" required>
                     <option value="">Selecciona un ciclo escolar</option>
                     <?php
                         generarOpciones('ciclo', $pdo);
@@ -95,7 +99,7 @@ function generarOpciones($tabla, $pdo) {
                 </div>
                 <div class="form-group">
                     <label for="grado">Grado</label>
-                    <select name="grado" id="grado" required onchange="limpiarSelect('grado')">
+                    <select name="grado" id="grado" onchange="limpiarSelect('grado')" required>
                         <option value="">Selecciona un nivel escolar primero</option>
                     </select>
                 </div>
@@ -112,7 +116,7 @@ function generarOpciones($tabla, $pdo) {
                 </div>
                 <div class="form-group">
                     <label for="colonia">Colonia</label>
-                    <select name="colonia" id="colonia" required onchange="limpiarSelect('colonia')">
+                    <select name="colonia" id="colonia" onchange="limpiarSelect('colonia')" required>
                         <option value="">Selecciona un municipio primero</option>
                     </select>
                 </div>
@@ -121,7 +125,7 @@ function generarOpciones($tabla, $pdo) {
             <div class="group-1">
                 <div class="form-group">
                     <label for="estado">Estado</label>
-                    <select name="estado" id="estado" required onchange="limpiarSelect('estado')">
+                    <select name="estado" id="estado" onchange="limpiarSelect('estado')" required>
                         <option value="">Selecciona un estado</option>
                         <?php
                             generarOpciones('estado', $pdo);
@@ -130,7 +134,7 @@ function generarOpciones($tabla, $pdo) {
                 </div>
                 <div class="form-group">
                 <label for="promocion">Promoción</label>
-                <select name="promocion" id="promocion" required onchange="limpiarSelect('promocion')">
+                <select name="promocion" id="promocion" onchange="limpiarSelect('promocion')" required>
                     <option value="">Selecciona una promoción</option>
                     <?php
                         generarOpciones('promocion', $pdo);
