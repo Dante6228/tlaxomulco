@@ -44,6 +44,11 @@ function generarOpciones($tabla, $pdo) {
         </a>
     </header>
 
+    <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "matricula") { ?>
+            <div class="error-message">
+                <p>¡La matricula ya está registrada!</p>
+            </div>
+        <?php } ?>
     
     <div class="container">
         <form action="php/alumnos/registrarAlumno.php" method="POST">
