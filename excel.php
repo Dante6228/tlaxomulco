@@ -1,18 +1,10 @@
 <?php
 
-require_once __DIR__ . "/php/conexion.php";
-
 session_start();
 
 if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     header("Location: Index.php?mensaje=error");
     exit();
-}
-
-$pdo = Conexion::connection();
-
-if (!$pdo) {
-    throw new UnexpectedValueException("Error de conexión a la base de datos");
 }
 
 ?>
@@ -29,18 +21,12 @@ if (!$pdo) {
 <body>
     <header>
         <h1>Importar excel</h1>
-        <a href="Bienvenida.php" class="botonInicio">Inicio</a>
+        <a href="alumnos.php" class="botonInicio">Regresar</a>
         <a href="usuario.php"><img src="img/usuario.png" alt="Perfil"></a>
     </header>
 
     <main>
         <div class="container">
-
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "registro") { ?>
-            <div class="mensaje">
-                <p>¡Alumno registrado correctamente!</p>
-            </div>
-        <?php } ?>
             
             <form action="php/excel/importar.php" method="post" enctype="multipart/form-data">
                 <div class="options-container">

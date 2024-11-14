@@ -74,7 +74,7 @@ CREATE TABLE alumno (
     nombre VARCHAR(60) NOT NULL,
     Ap VARCHAR(50) NOT NULL,
     Am VARCHAR(50) NOT NULL,
-    matricula INT NOT NULL,
+    matricula INT NOT NULL UNIQUE,
     municipio INT NOT NULL,
     genero INT NOT NULL,
     colonia INT NOT NULL,
@@ -310,5 +310,4 @@ INSERT INTO alumno (nombre, Ap, Am, matricula, estado, municipio, genero, coloni
 ('Omar', 'Quintero', 'Vallejo', 12397, 1, 1, 1, 1, 1, 1, 1),
 ('Araceli', 'Sandoval', 'Alarcón', 12398, 1, 2, 2, 2, 2, 2, 1),
 ('José', 'Hernández', 'Paredes', 12399, 2, 3, 1, 3, 3, 3, 1),
-('Silvia', 'Cisneros', 'Cisneros', 12400, 2, 4, 2, 4, 4, 1, 1),
 ('Silvia', 'Cisneros', 'Cisneros', 12400, 2, 4, 2, 4, 4, 1, 1);

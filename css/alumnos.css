@@ -86,6 +86,7 @@ button:hover {
     justify-content: space-between;
     margin-top: 10px;
     width: 100%;
+    gap: 10px;
 }
 
 .option-box {

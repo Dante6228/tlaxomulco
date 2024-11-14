@@ -61,6 +61,12 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         <?php } ?>
 
+        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "insercion") { ?>
+            <div class="mensaje">
+                <p>¡Excel importado correctamente!</p>
+            </div>
+        <?php } ?>
+
             <div class="button-container">
                 <a href="Registrar_alumno.php">
                     <button class="register-btn">Registrar nuevo alumno</button>

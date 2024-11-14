@@ -381,7 +381,11 @@ if ($data) {
 
         echo "<hr>";
         
+        header("Location: ../../alumnos.php?mensaje=insercion");
+        
     }
+
+    exit();
     
 } else {
     echo "No hay datos para importar.";
