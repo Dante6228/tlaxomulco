@@ -1,0 +1,77 @@
+@keyframes inicio {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+main h1{
+    font-size: 24px;
+    text-align: center;
+    background-color: rgb(247, 255, 177);
+    width: 30%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    animation: inicio 1s normal;
+    color: black;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+main h1:hover{
+    transform: scale(1.05);
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+strong{
+    color: rgb(184, 184, 184);
+    font-size: 18px;
+}
+
+.container{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #575757;
+    box-shadow: 6px 6px 9px rgba(0, 0, 0, 0.5);
+    border: 1px solid black;
+    transition: all 0.3s ease;
+    animation: inicio 1s normal;
+}
+
+.error{
+    color: black;
+    background-color: rgb(255, 117, 117);
+    padding: 10px;
+    width: 75%;
+    margin: auto;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bolder;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.succes{
+    color: black;
+    background-color: rgb(123, 255, 123);
+    padding: 10px;
+    width: 75%;
+    margin: auto;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bolder;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
