@@ -43,12 +43,6 @@ function generarOpciones($tabla, $pdo) {
             <img src="img/usuario.png" alt="Cuenta de usuario">
         </a>
     </header>
-
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "matricula") { ?>
-            <div class="error-message" style="margin-top: 20px;">
-                <p>¡La matricula ya está registrada!</p>
-            </div>
-        <?php } ?>
     
     <div class="container">
         <form action="php/alumnos/registrarAlumno.php" method="POST">

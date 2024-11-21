@@ -71,16 +71,7 @@ function registrar($datos) {
 
         header("Location: ../../alumnos.php?mensaje=registro");
         exit();
-    } catch (\PDOException $e) {
-        if ($e->getCode() == 23000) {
-            header("Location: ../../Registrar_alumno.php?mensaje=matricula");
-        } else {
-            echo "Error al registrar al alumno: " . $e->getMessage();
-            exit();
-        }
-        exit();
     } catch (\Throwable $th) {
-        // Captura cualquier otro tipo de error
         echo "Error al registrar el alumno: " . $th->getMessage();
         exit();
     }

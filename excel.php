@@ -40,5 +40,8 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
             
         </div>
     </main>
+
+    <script src="js/excel.js"></script>
+
 </body>
 </html>
