@@ -54,6 +54,7 @@ function generarOpciones($tabla, $pdo) {
         <form action="php/alumnos/registrarAlumno.php" method="POST">
             <div id="nombre-error"></div>
             <div id="matricula-error"></div>
+            <div id="matricula-error2"></div>
             <div id="error-general"></div>
             <div class="form-group">
                 <label for="nombre">Nombre completo</label>

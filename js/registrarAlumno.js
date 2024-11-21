@@ -47,13 +47,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const selects = ["genero", "medio_enterado", "ciclo", "nivel_escolar", "grado", "municipio", "colonia", "estado", "promocion"];
     const errorNom = document.getElementById("nombre-error");
     const errorMat = document.getElementById("matricula-error");
+    const errorMat2 = document.getElementById("matricula-error2");
     const error = document.getElementById("error-general");
-    
-    form.addEventListener("submit", (e) => {
-        let valid = true;
-        
+
+    form.addEventListener("submit", async (e) => {
+        let valid = true;  // Inicialmente se asume que es válido
+
+        e.preventDefault();
+
         const nameRegex = /^[A-Za-záéíóúÁÉÍÓÚñÑ]+$/;  // Expresión regular que permite solo letras
 
+        // Validación del nombre
         if (!nombre.value.trim() || !ap.value.trim() || !am.value.trim()) {
             document.getElementById("nombre-error").innerText = "Por favor, completa todos los campos de nombre.";
             nombre.classList.add("input-error");
@@ -68,13 +72,50 @@ document.addEventListener("DOMContentLoaded", () => {
             am.classList.add("input-error");
             errorNom.classList.add("error-message");
             valid = false;
+        } else {
+            errorNom.innerText = ""; // Limpiar errores
+            nombre.classList.remove("input-error");
+            ap.classList.remove("input-error");
+            am.classList.remove("input-error");
+            errorNom.classList.remove("error-message");
         }
-        
+
         // Validación del campo de matrícula (asegura que solo contenga números)
         if (!/^\d+$/.test(matricula.value)) {
             document.getElementById("matricula-error").innerText = "La matricula debe ir con números.";
             errorMat.classList.add("error-message");
             matricula.classList.add("input-error");
+            valid = false;
+        } else {
+            errorMat.innerText = ""; // Limpiar errores
+            errorMat.classList.remove("error-message");
+            matricula.classList.remove("input-error");
+        }
+
+        // Verificación de matrícula en el servidor
+        try {
+            const response = await fetch("php/alumnos/obtener_matricula.php", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `matricula=${encodeURIComponent(matricula.value)}`,
+            });
+
+            const data = await response.text();
+
+            if (data.includes("ya existe")) {
+                errorMat2.innerText = "La matrícula ya está registrada.";
+                errorMat2.classList.add("error-message");
+                matricula.classList.add("input-error");
+                valid = false;
+            } else {
+                errorMat2.innerText = ""; // Limpiar errores
+                errorMat2.classList.remove("error-message");
+                matricula.classList.remove("input-error");
+            }
+        } catch (error) {
+            console.error("Error al comprobar matrícula:", error);
             valid = false;
         }
 
@@ -86,11 +127,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 error.classList.add('error-message');
                 selectElement.classList.add('input-error');
                 valid = false;
+            } else {
+                error.innerText = ""; // Limpiar errores
+                error.classList.remove('error-message');
+                selectElement.classList.remove('input-error');
             }
         });
 
-        if (!valid) {
-            e.preventDefault(); // Evita que se envíe el formulario si hay errores
+        if (valid) {
+            form.submit();
         }
     });
 });
+
