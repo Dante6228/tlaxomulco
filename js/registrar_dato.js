@@ -10,30 +10,36 @@ function actualizarFormulario() {
                 case 'estado':
                     formularioContainer2.innerHTML = `
                         <h2>Dato a crear</h2>
-                        <form action="php/datos/acciones/registrar_dato.php" method="POST">
+                        <form id="form-estado" action="php/datos/acciones/registrar_dato.php" method="POST">
                             <input type="hidden" name="tipo" value="1">    
                             <div class="form-group">
                                 <label for="estado">Estado nuevo</label>
                                 <input type="text" name="estado" placeholder="Estado a crear">
+                                <div>
+                                    <p id="error-estado" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
+                                </div>
                             </div>
                             <button type="submit">Registrar estado</button>
                         </form>
                     `;
+                    agregarValidacion('form-estado', ['estado']);
                     break;
                 case 'colonia':
                     formularioContainer2.innerHTML = `
                         <h2>Dato a crear</h2>
-                        <form action="php/datos/acciones/registrar_dato.php" method="POST">
+                        <form id="form-colonia" action="php/datos/acciones/registrar_dato.php" method="POST">
                             <input type="hidden" name="tipo" value="2">    
                             <div class="form-group">
                                 <label for="colonia">Colonia nueva</label>
                                 <input type="text" name="colonia" placeholder="Colonia a crear">
+                                <div>
+                                    <p id="error-colonia" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="municipio">Municipio al que pertenece</label>
                                 <select name="municipio" id="municipio">
                                     <option value="">Selecciona un municipio</option>
-                                    <?php obtenerMunicipios($pdo); ?>
                                 </select>
                             </div>
                             <button type="submit">Registrar estado</button>
@@ -41,6 +47,8 @@ function actualizarFormulario() {
                     `;
 
                     cargarMunicipios();
+
+                    agregarValidacion('form-colonia', ['colonia']);
                     break;
                 case 'municipio':
                     formularioContainer2.innerHTML = `
@@ -121,6 +129,7 @@ function cargarMunicipios() {
     fetch('php/datos/obtener_municipios.php')
         .then(response => response.json())
         .then(data => {
+            console.log(data); // Agregado para depurar
             const selectMunicipio = document.getElementById('municipio');
             selectMunicipio.innerHTML = '';
             if (data.error) {
@@ -140,3 +149,48 @@ function cargarMunicipios() {
             selectMunicipio.innerHTML = `<option value="">Error al cargar municipios</option>`;
         });
 }
+
+
+function agregarValidacion(formId, campos) {
+    const formulario = document.getElementById(formId);
+
+    formulario.addEventListener('submit', (event) => {
+        let valid = true;
+
+        event.preventDefault();
+
+        campos.forEach((campoId) => {
+            const campo = formulario.querySelector(`[name="${campoId}"]`);
+            const mensajeError = formulario.querySelector(`#error-${campoId}`);
+
+            if (mensajeError) {
+                mensajeError.style.display = 'none';
+            }
+
+            if (!campo.value.trim()) {
+                valid = false;
+                campo.style.borderColor = 'red';
+
+                if (mensajeError) {
+                    mensajeError.textContent = 'Este campo no puede estar vacío';
+                    mensajeError.style.display = 'block';
+                }
+
+                // Eliminar la marca de error cuando se empieza a escribir
+                campo.addEventListener('input', () => {
+                    campo.style.borderColor = '';
+                    if (mensajeError) mensajeError.style.display = 'none';
+                });
+            } else {
+                campo.style.borderColor = '';
+                if (mensajeError) mensajeError.style.display = 'none';
+            }
+        });
+
+        if (valid) {
+            formulario.submit();
+        }
+    });
+}
+
+
