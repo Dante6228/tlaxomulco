@@ -15,6 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST'){
 
 $tipo = $_POST['tipo'];
 
+echo $tipo;
+
 switch ($tipo) {
     case '1': // Tipo 1: Crear en la tabla de 'estado'
         if (isset($_POST['estado'])) {
@@ -32,9 +34,9 @@ switch ($tipo) {
         }
         break;
     case '2': // Tipo 2: Cambiar en la tabla de 'colonia'
-        if (isset($_POST['colonia']) && isset($_POST['municipio'])) {
+        if (isset($_POST['colonia']) && isset($_POST['municipio2'])) {
             $colonia = $_POST['colonia'];
-            $municipio = $_POST['municipio'];
+            $municipio = $_POST['municipio2'];
             
             try {
                 $sql = "INSERT INTO colonia (descripcion, municipio_id) VALUES (:descripcion, :municipio_id)";

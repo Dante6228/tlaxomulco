@@ -38,7 +38,7 @@ function actualizarFormulario() {
                             </div>
                             <div class="form-group">
                                 <label for="municipio">Municipio al que pertenece</label>
-                                <select name="municipio" id="municipio">
+                                <select name="municipio2" id="municipio2">
                                     <option value="">Selecciona un municipio</option>
                                 </select>
                             </div>
@@ -130,22 +130,19 @@ function cargarMunicipios() {
         .then(response => response.json())
         .then(data => {
             console.log(data); // Agregado para depurar
-            const selectMunicipio = document.getElementById('municipio');
+            const selectMunicipio = document.getElementById('municipio2');
+            console.log(selectMunicipio);
             selectMunicipio.innerHTML = '';
-            if (data.error) {
-                selectMunicipio.innerHTML = `<option value="">Error cargando municipios</option>`;
-            } else {
-                data.forEach(municipio => {
-                    const option = document.createElement('option');
-                    option.value = municipio.id;
-                    option.textContent = municipio.descripcion;
-                    selectMunicipio.appendChild(option);
-                });
-            }
+            data.forEach(municipio => {
+                const option = document.createElement('option');
+                option.value = municipio.id;
+                option.textContent = municipio.descripcion;
+                selectMunicipio.appendChild(option);
+            });
         })
         .catch(error => {
             console.error('Error al cargar los municipios:', error);
-            const selectMunicipio = document.getElementById('municipio');
+            const selectMunicipio = document.getElementById('municipio2');
             selectMunicipio.innerHTML = `<option value="">Error al cargar municipios</option>`;
         });
 }
