@@ -51,8 +51,8 @@ switch ($tipo) {
         break;
 
     case '3': // Tipo 3: Crear en la tabla de 'municipio'
-        if (isset($_POST['municipio'])) {
-            $municipio = $_POST['municipio'];
+        if (isset($_POST['municipio3'])) {
+            $municipio = $_POST['municipio3'];
 
             try {
                 $sql = "INSERT INTO municipio (descripcion) VALUES (:descripcion)";
