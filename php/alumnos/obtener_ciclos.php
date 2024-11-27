@@ -12,9 +12,11 @@ if (isset($_POST['gradoId'])) {
     $gradoId = $_POST['gradoId'];
 
     $query = "SELECT ciclo.id, ciclo.descripcion
-                FROM nivel_grado_ciclo AS ngc
-                JOIN ciclo ON ngc.ciclo_id = ciclo.id
-                WHERE ngc.grado_id = ?";
+    FROM nivel_grado_ciclo AS ngc
+    JOIN ciclo ON ngc.ciclo_id = ciclo.id
+    WHERE ngc.grado_id = ?
+    ORDER BY ciclo.descripcion DESC";
+
     $stmt = $pdo->prepare($query);
     $stmt->execute([$gradoId]);
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
