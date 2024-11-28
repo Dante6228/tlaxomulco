@@ -34,7 +34,7 @@ $promocion = $stmt->fetch(PDO::FETCH_ASSOC);
 <body>
     <header>
         <h1>Actualizar promoción</h1>
-        <a href="../datos.php" class="botonInicio">Regresar</a>
+        <a href="../Datos.php" class="botonInicio">Regresar</a>
         <a href="../usuario.php"><img src="../img/usuario.png" alt="Perfil"></a>
     </header>
     <div class="container">
