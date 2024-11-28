@@ -3,7 +3,12 @@ async function filtrarDatos() {
     const tbody = document.getElementById("dataRows");
 
     if (datoSeleccionado === "") {
-        alert("Seleccione un dato válido");
+        Swal.fire({
+            title: 'Dato incorrecto',
+            text: 'Por favor, seleccione un dato válido.',
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
     }
 
     limpiarSelect("dato");
@@ -144,7 +149,12 @@ async function eliminarDato(event) {
             });
 
             if (response.ok) {
-                alert(`${datoSeleccionado} eliminado con éxito.`);
+                Swal.fire({
+                    title: '¡Eliminación exitosa!',
+                    text: `${datoSeleccionado} eliminado con éxito.`,
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });                
                 filtrarDatos();
             } else {
             throw new Error(`Error al eliminar ${datoSeleccionado}`);
@@ -182,7 +192,12 @@ async function actualizarDato(event) {
             window.location.href = `datos/genero.php?id=${encodeURIComponent(id)}`;
                 break;
         default:
-            alert("Por favor, selecciona un dato válido.");
+            Swal.fire({
+                title: 'Dato incorrecto',
+                text: 'Por favor, seleccione un dato válido.',
+                icon: 'warning',
+                confirmButtonText: 'Aceptar'
+            });
             break;
     }
 }

@@ -71,7 +71,12 @@ async function mostrarAlumnos() {
             console.error('Error:', error);
         }
     } else {
-        alert("Por favor, selecciona un nivel educativo, grado y ciclo escolar.");
+        Swal.fire({
+            title: 'Faltan datos',
+            text: 'Por favor, selecciona un nivel educativo, grado, ciclo escolar y colonia.',
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
     }
 }
 
@@ -123,7 +128,12 @@ async function eliminarAlumno(event) {
             });
 
             if (response.ok) {
-                alert('Alumno eliminado con éxito.');
+                Swal.fire({
+                    title: 'Alumno eliminado',
+                    text: 'El alumno ha sido eliminado con éxito.',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });                
                 mostrarAlumnos();
             } else {
                 throw new Error('Error al eliminar el alumno');
@@ -163,7 +173,12 @@ async function generarPDF() {
     });
 
     if (alumnos.length === 0) {
-        alert("No hay alumnos para generar el PDF.");
+        Swal.fire({
+            title: 'Sin alumnos',
+            text: 'No hay alumnos para generar el pdf.',
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
         return;
     }
 
