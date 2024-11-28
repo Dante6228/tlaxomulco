@@ -27,7 +27,7 @@ switch ($tipo) {
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([':descripcion' => $estado]);
                 
-                header("Location: ../../../datos.php?mensaje=registro");
+                header("Location: ../../../Datos.php?mensaje=registro");
             } catch (PDOException $e) {
                 echo "Error al insertar el estado: " . $e->getMessage();
             }
@@ -43,7 +43,7 @@ switch ($tipo) {
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([':descripcion' => $colonia, ':municipio_id' => $municipio]);
                 
-                header("Location: ../../../datos.php?mensaje=registro");
+                header("Location: ../../../Datos.php?mensaje=registro");
             } catch (PDOException $e) {
                 echo "Error al insertar la colonia: " . $e->getMessage();
             }
@@ -59,7 +59,7 @@ switch ($tipo) {
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([':descripcion' => $municipio]);
                 
-                header("Location: ../../../datos.php?mensaje=registro");
+                header("Location: ../../../Datos.php?mensaje=registro");
             } catch (PDOException $e) {
                 echo "Error al insertar el municipio: " . $e->getMessage();
             }
@@ -96,7 +96,7 @@ switch ($tipo) {
                         ]);
                     }
         
-                    header("Location: ../../../datos.php?mensaje=registro");
+                    header("Location: ../../../Datos.php?mensaje=registro");
                 } catch (PDOException $e) {
                     echo "Error al insertar el ciclo escolar: " . $e->getMessage();
                 }
@@ -113,7 +113,7 @@ switch ($tipo) {
                     $stmt = $pdo->prepare(query: $sql);
                     $stmt->execute([':descripcion' => $promocion]);
                     
-                    header("Location: ../../../datos.php?mensaje=registro");
+                    header("Location: ../../../Datos.php?mensaje=registro");
                 } catch (PDOException $e) {
                     echo "Error al insertar la promoción: " . $e->getMessage();
                 }
@@ -129,7 +129,7 @@ switch ($tipo) {
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([':descripcion' => $medio]);
                 
-                header("Location: ../../../datos.php?mensaje=registro");
+                header("Location: ../../../Datos.php?mensaje=registro");
             } catch (PDOException $e) {
                 echo "Error al insertar el medio enterado: " . $e->getMessage();
             }
@@ -145,7 +145,7 @@ switch ($tipo) {
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([':descripcion' => $genero]);
                 
-                header("Location: ../../../datos.php?mensaje=registro");
+                header("Location: ../../../Datos.php?mensaje=registro");
             } catch (PDOException $e) {
                 echo "Error al insertar el género: " . $e->getMessage();
             }

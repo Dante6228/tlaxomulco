@@ -28,7 +28,7 @@ switch ($tipo) {
                 $stmt->execute();
 
                 if ($stmt->rowCount() > 0) {
-                    header("Location: ../../../datos.php?mensaje=actualizacion");
+                    header("Location: ../../../Datos.php?mensaje=actualizacion");
                     exit();
                 }
             } catch (PDOException $e) {
@@ -50,7 +50,7 @@ switch ($tipo) {
                 $stmt->execute();
 
                 if ($stmt->rowCount() > 0) {
-                    header("Location: ../../../datos.php?mensaje=actualizacion");
+                    header("Location: ../../../Datos.php?mensaje=actualizacion");
                     exit();
                 }
             } catch (PDOException $e) {
@@ -71,7 +71,7 @@ switch ($tipo) {
                 $stmt->execute();
 
                 if ($stmt->rowCount() > 0) {
-                    header("Location: ../../../datos.php?mensaje=actualizacion");
+                    header("Location: ../../../Datos.php?mensaje=actualizacion");
                     exit();
                 }
             } catch (PDOException $e) {
@@ -92,7 +92,7 @@ switch ($tipo) {
                     $stmt->execute();
 
                     if ($stmt->rowCount() > 0) {
-                        header("Location: ../../../datos.php?mensaje=actualizacion");
+                        header("Location: ../../../Datos.php?mensaje=actualizacion");
                         exit();
                     }
                 } catch (PDOException $e) {
@@ -114,7 +114,7 @@ switch ($tipo) {
                 $stmt->execute();
 
                 if ($stmt->rowCount() > 0) {
-                    header("Location: ../../../datos.php?mensaje=actualizacion");
+                    header("Location: ../../../Datos.php?mensaje=actualizacion");
                     exit();
                 }
             } catch (PDOException $e) {
@@ -135,7 +135,7 @@ switch ($tipo) {
                 $stmt->execute();
 
                 if ($stmt->rowCount() > 0) {
-                    header("Location: ../../../datos.php?mensaje=actualizacion");
+                    header("Location: ../../../Datos.php?mensaje=actualizacion");
                     exit();
                 }
             } catch (PDOException $e) {
@@ -156,7 +156,7 @@ switch ($tipo) {
                 $stmt->execute();
 
                 if ($stmt->rowCount() > 0) {
-                    header("Location: ../../../datos.php?mensaje=actualizacion");
+                    header("Location: ../../../Datos.php?mensaje=actualizacion");
                     exit();
                 }
             } catch (PDOException $e) {
