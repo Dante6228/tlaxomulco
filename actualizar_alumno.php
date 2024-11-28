@@ -137,13 +137,16 @@ function generarOpciones($tabla, $pdo, $valorSeleccionado = null) {
 
     <div class="container">
         <form action="php/alumnos/actualizarAlumno.php" method="POST">
+            <div id="nombre-error"></div>
+            <div id="matricula-error"></div>
+            <div id="matricula-error2"></div>
+            <div id="error-general"></div>
+            <input id="matriculaExistente" type="hidden" name="matriculaExistente" value="<?php echo htmlspecialchars($alumno['matricula']) ?>" required>
             <div class="form-group">
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($alumno['id']); ?>" required>
                 <label for="nombre">Nombre completo</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre(s)" value="<?php echo htmlspecialchars($alumno['nombre']); ?>" required>
-                
                 <input type="text" id="ap" name="ap" placeholder="Apellido Paterno" value="<?php echo htmlspecialchars($alumno['Ap']); ?>" required>
-                
                 <input type="text" id="am" name="am" placeholder="Apellido Materno" value="<?php echo htmlspecialchars($alumno['Am']); ?>" required>
             </div>
             <div class="form-group">
@@ -254,6 +257,6 @@ function generarOpciones($tabla, $pdo, $valorSeleccionado = null) {
         </form>
     </div>
 
-    <script src="js/registrarAlumno.js"></script>
+    <script src="js/actualizarAlumno.js"></script>
 </body>
 </html>
