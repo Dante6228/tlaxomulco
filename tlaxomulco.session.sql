@@ -7,7 +7,7 @@ USE tlaxomulco;
 CREATE TABLE usuario (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     usuario VARCHAR(30) NOT NULL,
-    contraseña VARCHAR(30) NOT NULL
+    contraseña VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE nivel_educativo (
@@ -93,7 +93,7 @@ CREATE TABLE alumno (
 
 -- Inserciones iniciales
 INSERT INTO usuario (usuario, contraseña) VALUES
-('Dante', '123');
+('SuperAdmin2024Tlax', '$2y$10$NFX2D5z2RS6zHwaHTWD.nOCN2MtD5GeZrihqn0AdzK8oPH2ZS8ooy');
 
 INSERT INTO nivel_educativo (descripcion) VALUES
 ('Preescolar'),

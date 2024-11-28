@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     exit();
 }
 
-function iniciar($usuario, $contrasena){
+function iniciar($usuario, $contrasena) {
     try {
         $pdo = Conexion::connection();
 
@@ -26,21 +26,24 @@ function iniciar($usuario, $contrasena){
             throw new UnexpectedValueException("Error de conexión a la base de datos");
         }
 
-        $query = "SELECT * FROM usuario WHERE usuario = :usuario AND contraseña = :contrasena";
-
+        $query = "SELECT * FROM usuario WHERE usuario = :usuario";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':usuario', $usuario);
-        $stmt->bindParam(':contrasena', $contrasena);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            session_start();
-            $_SESSION["usuario"] = $row['usuario'];
-            $_SESSION["contraseña"] = $row['contraseña'];
-            $_SESSION["idUsuario"] = $row['id'];
-            return 1;
+
+            // Verifica el hash de la contraseña
+            if (password_verify($contrasena, $row['contraseña'])) {
+                session_start();
+                $_SESSION["usuario"] = $row['usuario'];
+                $_SESSION["idUsuario"] = $row['id'];
+                return 1;
+            }
         }
+
+        return 0;
 
     } catch (Exception $e) {
         echo "Error en la consulta: " . $e->getMessage();
