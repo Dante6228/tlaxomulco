@@ -136,9 +136,16 @@ function limpiarSelect(id) {
 async function eliminarDato(event) {
     const datoSeleccionado = document.getElementById("dato").value;
     const id = event.target.getAttribute('data-id');
-    const confirmDelete = confirm("ADVERTENCIA \n¿Estás seguro de eliminar este dato?\nEl hacer tal acción eliminará TODOS los registros asociados a dicho dato, incluyendo alumnos registrados o algún dato de cualquier otro tipo.");
+    const result = await Swal.fire({
+        title: 'ADVERTENCIA',
+        text: '¿Estás seguro de eliminar este dato?\nEl hacer tal acción eliminará TODOS los registros asociados a dicho dato, incluyendo alumnos registrados o algún dato de cualquier otro tipo.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+    });
     
-    if (confirmDelete) {
+    if (result.isConfirmed) {
         try {
             const response = await fetch('php/datos/eliminar_dato.php', {
                 method: 'POST',
@@ -147,22 +154,22 @@ async function eliminarDato(event) {
                 },
                 body: `id=${id}&dato=${datoSeleccionado}`
             });
-
+    
             if (response.ok) {
                 Swal.fire({
                     title: '¡Eliminación exitosa!',
                     text: `${datoSeleccionado} eliminado con éxito.`,
                     icon: 'success',
                     confirmButtonText: 'Aceptar'
-                });                
+                });
                 filtrarDatos();
             } else {
-            throw new Error(`Error al eliminar ${datoSeleccionado}`);
+                throw new Error(`Error al eliminar ${datoSeleccionado}`);
             }
         } catch (error) {
             console.error('Error:', error);
         }
-    }
+    }    
 }
 
 async function actualizarDato(event) {

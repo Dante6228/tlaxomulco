@@ -117,9 +117,16 @@ function cargarDatosAlumnos(alumnos, tbody) {
 
 async function eliminarAlumno(event) {
     const alumnoId = event.target.getAttribute('data-id');
-    const confirmDelete = confirm("¿Estás seguro de que deseas eliminar este alumno?");
+    const result = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'Esto eliminará al alumno de forma permanente.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+    });
     
-    if (confirmDelete) {
+    if (result.isConfirmed) {
         try {
             const response = await fetch('../php/alumnos/eliminar_alumno.php', {
                 method: 'POST',
@@ -128,14 +135,14 @@ async function eliminarAlumno(event) {
                 },
                 body: `id=${alumnoId}`
             });
-
+    
             if (response.ok) {
                 Swal.fire({
                     title: 'Alumno eliminado',
                     text: 'El alumno ha sido eliminado con éxito.',
                     icon: 'success',
                     confirmButtonText: 'Aceptar'
-                });                
+                });
                 mostrarAlumnos();
             } else {
                 throw new Error('Error al eliminar el alumno');

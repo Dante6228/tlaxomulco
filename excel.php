@@ -16,6 +16,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/alumnos.css">
     <link rel="stylesheet" href="css/header.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Importar excel</title>
 </head>
 <body>
