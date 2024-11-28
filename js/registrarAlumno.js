@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         e.preventDefault();
 
-        const nameRegex = /^[A-Za-záéíóúÁÉÍÓÚñÑ]+$/;  // Expresión regular que permite solo letras
+        const nameRegex = /^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/;  // Expresión regular que permite solo letras
 
         // Validación del nombre
         if (!nombre.value.trim() || !ap.value.trim() || !am.value.trim()) {
