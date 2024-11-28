@@ -44,3 +44,32 @@
     box-shadow: 8px 8px 18px rgba(0, 0, 0, 0.4), -8px -8px 18px rgba(255, 255, 255, 0.2);
     font-size: 19px;
 }
+
+/* Responsive design */
+
+@media (max-width: 768px) {
+    .links {
+        width: 90%;
+        height: auto;
+        gap: 20px;
+    }
+
+    .links a {
+        flex: 1 1 calc(50% - 30px);
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .links {
+        width: 100%;
+        height: auto;
+        gap: 10px;
+    }
+
+    .links a {
+        flex: 1 1 calc(100% - 20px);
+        font-size: 14px;
+        padding: 12px;
+    }
+}

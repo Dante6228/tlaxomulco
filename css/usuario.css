@@ -244,3 +244,26 @@ table tr td a:hover{
     z-index: -1;
     margin-top: 35px;
 }
+
+@media (max-width: 1200px) {
+    
+    .modal-content {
+        width: 90%;
+    }
+    
+    .master{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 30px;
+        overflow: hidden;
+    }
+    
+    .seccion1 img{
+        width: 160px;
+    }
+
+    .seccion2{
+        max-width: 100%;
+    }
+}

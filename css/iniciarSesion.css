@@ -142,3 +142,33 @@ table input[type="submit"]:hover{
         display: flex;
     }
 }
+
+/* Responsive design*/
+
+@media (max-width: 1208px) {
+    .cabecera {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    table {
+        width: 90%;
+        height: auto;
+        padding: 15px;
+    }
+
+    table input[type="text"], table input[type="password"] {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    table input[type="submit"] {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .error, .cierre {
+        font-size: medium;
+        padding: 10px;
+    }
+}

@@ -30,7 +30,7 @@
     color: #333;
     border-radius: 12px;
     font-size: 18px;
-    background: linear-gradient(135deg, #e0e7ff, #c7d2fe); /* tonos de azul claro y lila */
+    background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2), -3px -3px 10px rgba(255, 255, 255, 0.5);
     outline: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.5s ease;
@@ -45,4 +45,21 @@
     font-size: 19px;
 }
 
+/* Responsive design */
+@media (max-width: 1024px) {
+    .links a {
+        flex: 1 1 calc(50% - 40px);
+    }
+}
 
+@media (max-width: 768px) {
+    .links a {
+        flex: 1 1 calc(100% - 40px);
+        font-size: 16px;
+    }
+
+    .links {
+        width: 90%;
+        padding: 15px;
+    }
+}

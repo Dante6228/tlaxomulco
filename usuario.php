@@ -80,12 +80,6 @@ if ($stmt->rowCount() > 0) {
                             <td> <?php echo $_SESSION['usuario'];?> </td>
                         </tr>
                         <tr>
-                            <td>
-                                <p>Contraseña:</p>
-                            </td>
-                            <td> <?php echo $_SESSION['contraseña'];?> </td>
-                        </tr>
-                        <tr>
                             <td colspan="2">
                                 <br>
                                 <a href="#">Cambiar datos</a>

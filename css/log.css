@@ -15,6 +15,7 @@ main h1{
     background-color: rgb(247, 255, 177);
     width: 30%;
     margin: auto;
+    margin-bottom: 14px;
     padding: 10px;
     border-radius: 15px;
     transition: all 0.3s ease;
@@ -74,4 +75,23 @@ strong{
     margin-bottom: 10px;
     font-weight: bolder;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive design */
+
+@media (max-width: 1200px) {
+    main h1 {
+        width: 60%;
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .container {
+        width: 80%;
+    }
+
+    .error, .succes {
+        width: 80%;
+        font-size: 16px;
+    }
 }
