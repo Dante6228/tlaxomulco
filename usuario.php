@@ -23,6 +23,7 @@ $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $_SESSION["nombre"] = $row["nombre"];
     $_SESSION["usuario"] = $row['usuario'];
     $_SESSION["contraseña"] = $row['contraseña'];
 }
@@ -75,6 +76,13 @@ if ($stmt->rowCount() > 0) {
                     <tbody>
                         <tr>
                             <td>
+                                <p>Nombre:</p>
+                            </td>
+                            <td> <?php echo $_SESSION['nombre'];?> </td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td>
                                 <p>Usuario:</p>
                             </td>
                             <td> <?php echo $_SESSION['usuario'];?> </td>
@@ -95,11 +103,17 @@ if ($stmt->rowCount() > 0) {
                 <span class="close">&times;</span>
                 <h2>Editar Datos</h2>
                 <form action="php/usuario/actualizarUsuario.php" method="POST">
+                    <label for="nuevoNombre">Nuevo Nombre:</label>
+                    <input type="text" id="nuevoNombre" name="nuevoNombre">
+                    <div id="nombreUs-error" class="nombreUs-error"></div><br>
+
                     <label for="nuevoUsuario">Nuevo Usuario:</label>
-                    <input type="text" id="nuevoUsuario" name="usuario"><br>
+                    <input type="text" id="nuevoUsuario" name="nuevoUsuario">
+                    <div id="nombre-error" class="nombre-error"></div><br>
 
                     <label for="nuevaContraseña">Nueva Contraseña:</label>
-                    <input type="password" id="nuevaContraseña" name="contrasena"><br>
+                    <input type="password" id="nuevaContraseña" name="nuevaContraseña">
+                    <div id="contrasena-error" class="contrasena-error"></div><br>
 
                     <input type="submit" value="Guardar Cambios">
                 </form>

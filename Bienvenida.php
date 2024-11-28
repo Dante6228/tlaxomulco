@@ -19,7 +19,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
 </head>
 <body>
     <header>
-        <h1>Bienvenido <?php echo $_SESSION["usuario"]?></h1>
+        <h1>Bienvenido <?php echo $_SESSION["nombre"]?></h1>
         <a href="usuario.php">
             <img src="img/usuario.png" alt="Cuenta de usuario">
         </a>

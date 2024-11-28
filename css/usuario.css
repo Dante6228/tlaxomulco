@@ -245,6 +245,25 @@ table tr td a:hover{
     margin-top: 35px;
 }
 
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    background-color: #edd4d4;
+    border: 1px solid #e6c3c3;
+    padding: 10px;
+    border-radius: 5px;
+    width: 40%;
+    margin: auto;
+    margin-top: 5px;
+    text-align: center;
+    animation: inicio 1s ease;
+}
+
+.input-error {
+    border: 2px solid red;
+    background-color: #f8d7da;
+}
+
 @media (max-width: 1200px) {
     
     .modal-content {

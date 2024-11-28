@@ -37,6 +37,7 @@ function iniciar($usuario, $contrasena) {
             // Verifica el hash de la contraseña
             if (password_verify($contrasena, $row['contraseña'])) {
                 session_start();
+                $_SESSION['nombre'] = $row['nombre'];
                 $_SESSION["usuario"] = $row['usuario'];
                 $_SESSION["idUsuario"] = $row['id'];
                 return 1;

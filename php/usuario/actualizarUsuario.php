@@ -10,10 +10,11 @@ if ($_SESSION["usuario"] === "") {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $usuario = $_POST["usuario"];
-    $contrasena = $_POST["contrasena"];
+    $usuario = $_POST["nuevoUsuario"];
+    $contrasena = $_POST["nuevaContraseña"];
+    $nombre = $_POST["nuevoNombre"];
     $idUsuario = $_SESSION["idUsuario"];
-    $actualizacion = actualizarUsuario($usuario, $contrasena, $idUsuario);
+    $actualizacion = actualizarUsuario($nombre, $usuario, $contrasena, $idUsuario);
     if ($actualizacion === 1) {
         header("Location: ../../usuario.php?mensaje=actualizacion");
         exit();
@@ -26,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     exit();
 }
 
-function actualizarUsuario($usuario, $contrasena, $idUsuario) {
+function actualizarUsuario($nombre, $usuario, $contrasena, $idUsuario) {
     try {
         $pdo = Conexion::connection();
 
@@ -34,10 +35,13 @@ function actualizarUsuario($usuario, $contrasena, $idUsuario) {
             throw new UnexpectedValueException("Error de conexión a la base de datos");
         }
 
-        $query = "UPDATE usuario SET contraseña = :contrasena, usuario = :usuario WHERE id = :id";
+        $hashedPassword = password_hash($contrasena, PASSWORD_BCRYPT);
+
+        $query = "UPDATE usuario SET nombre = :nombre, contraseña = :contrasena, usuario = :usuario WHERE id = :id";
 
         $stmt = $pdo->prepare($query);
-        $stmt->bindParam(":contrasena", $contrasena);
+        $stmt->bindParam(":nombre", $nombre);
+        $stmt->bindParam(":contrasena", $hashedPassword);
         $stmt->bindParam(":usuario", $usuario);
         $stmt->bindParam(":id", $idUsuario);
         $stmt->execute();

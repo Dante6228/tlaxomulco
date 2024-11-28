@@ -6,6 +6,7 @@ USE tlaxomulco;
 
 CREATE TABLE usuario (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
     usuario VARCHAR(30) NOT NULL,
     contraseña VARCHAR(255) NOT NULL
 );
@@ -92,8 +93,8 @@ CREATE TABLE alumno (
 );
 
 -- Inserciones iniciales
-INSERT INTO usuario (usuario, contraseña) VALUES
-('SuperAdmin2024Tlax', '$2y$10$NFX2D5z2RS6zHwaHTWD.nOCN2MtD5GeZrihqn0AdzK8oPH2ZS8ooy');
+INSERT INTO usuario (nombre, usuario, contraseña) VALUES
+('Admin', 'SuperAdmin2024Tlax', '$2y$10$NFX2D5z2RS6zHwaHTWD.nOCN2MtD5GeZrihqn0AdzK8oPH2ZS8ooy');
 
 INSERT INTO nivel_educativo (descripcion) VALUES
 ('Preescolar'),
@@ -130,6 +131,8 @@ INSERT INTO grado (descripcion, nivel_educativo_id) VALUES
 ('Semestre 4', 4),
 ('Semestre 5', 4),  
 ('Semestre 6', 4);
+
+-- Datos de prueba
 
 INSERT INTO ciclo (descripcion) VALUES
 ('2020-2021'),
