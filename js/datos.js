@@ -161,25 +161,25 @@ async function actualizarDato(event) {
 
     switch (datoSeleccionado) {
         case "medio_enterado":
-            window.location.href = `datos/medio_enterado.php?id=${id}`;
+            window.location.href = `datos/medio_enterado.php?id=${encodeURIComponent(id)}`;
             break;
         case "municipio":
-            window.location.href = `datos/municipio.php?id=${id}`;
+            window.location.href = `datos/municipio.php?id=${encodeURIComponent(id)}`;
             break;
         case "colonia":
-            window.location.href = `datos/colonia.php?id=${id}`;
+            window.location.href = `datos/colonia.php?id=${encodeURIComponent(id)}`;
             break;
         case "promocion":
-            window.location.href = `datos/promocion.php?id=${id}`;
+            window.location.href = `datos/promocion.php?id=${encodeURIComponent(id)}`;
             break;
         case "ciclo":
-            window.location.href = `datos/ciclo.php?id=${id}`;
+            window.location.href = `datos/ciclo.php?id=${encodeURIComponent(id)}`;
             break;
         case "estado":
-            window.location.href = `datos/estado.php?id=${id}`;
+            window.location.href = `datos/estado.php?id=${encodeURIComponent(id)}`;
             break;
         case "genero":
-            window.location.href = `datos/genero.php?id=${id}`;
+            window.location.href = `datos/genero.php?id=${encodeURIComponent(id)}`;
                 break;
         default:
             alert("Por favor, selecciona un dato válido.");
