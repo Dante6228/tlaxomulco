@@ -50,17 +50,21 @@ if ($stmt->rowCount() > 0) {
     </header>
     <main>
 
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "actualizacion") { ?>
-            <div class="actualizacion">
-                <p>¡Datos de usuario actualizados correctamente!</p>
-            </div>
-        <?php } ?>
+        <?php
+            $mensajes = [
+                "actualizacion" => "¡Datos de usuario actualizados correctamente!",
+                "error" => "Error al intentar actualizar los datos de usuario",
+            ];
 
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "error") { ?>
-            <div class="error">
-                <p>Error al intentar actualizar los datos de usuario</p>
-            </div>
-        <?php } ?>
+            if (isset($_GET["mensaje"]) && isset($mensajes[$_GET["mensaje"]])) {
+                $tipoClase = ($_GET["mensaje"] === "actualizacion") ? "actualizacion" : "error";
+                ?>
+                <div class="<?= $tipoClase ?>">
+                    <p><?= $mensajes[$_GET["mensaje"]] ?></p>
+                </div>
+                <?php
+            }
+        ?>
 
         <div class="master">
             <div class="seccion1">

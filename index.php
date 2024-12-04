@@ -19,29 +19,23 @@
 
     <main>
 
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "0") { ?>
-            <div class="error">
-                <p>Inicio de sesión fallido, por favor vuelve a intentarlo</p>
-            </div>
-        <?php } ?>
+        <?php
+            $mensajes = [
+                "0" => "Inicio de sesión fallido, por favor vuelve a intentarlo",
+                "cierre" => "Sesión cerrada exitosamente",
+                "error" => "Debes iniciar sesión para entrar al sitio web",
+                "err1" => "No dispones de los permisos necesarios para acceder a esa URL"
+            ];
 
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "cierre") { ?>
-            <div class="cierre">
-                <p>Sesión cerrada exitosamente</p>
-            </div>
-        <?php } ?>
-
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "error") { ?>
-            <div class="error">
-                <p>Debes iniciar sesión para entrar al sitio web</p>
-            </div>
-        <?php } ?>
-
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "err1") { ?>
-            <div class="error">
-                <p>No dispones de los permisos necesarios para acceder a esa url</p>
-            </div>
-        <?php } ?>
+            if (isset($_GET["mensaje"]) && isset($mensajes[$_GET["mensaje"]])) {
+                $tipoClase = ($_GET["mensaje"] === "cierre") ? "cierre" : "error";
+                ?>
+                <div class="<?= $tipoClase ?>">
+                    <p><?= $mensajes[$_GET["mensaje"]] ?></p>
+                </div>
+                <?php
+            }
+        ?>
 
         <table>
             <thead>

@@ -44,29 +44,22 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <main>
         <div class="container">
 
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "registro") { ?>
-            <div class="mensaje">
-                <p>¡Alumno registrado correctamente!</p>
-            </div>
-        <?php } ?>
+            <?php
+                $mensajes = [
+                    "registro" => "¡Alumno registrado correctamente!",
+                    "actualizado" => "¡Alumno actualizado correctamente!",
+                    "pdf"=> "¡PDF generado correctamente!",
+                    "insercion"=> "¡Excel importado correctamente!",
+                ];
 
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "actualizado") { ?>
-            <div class="mensaje">
-                <p>¡Alumno actualizado correctamente!</p>
-            </div>
-        <?php } ?>
-
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "pdf") { ?>
-            <div class="mensaje">
-                <p>¡PDF generado correctamente!</p>
-            </div>
-        <?php } ?>
-
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "insercion") { ?>
-            <div class="mensaje">
-                <p>¡Excel importado correctamente!</p>
-            </div>
-        <?php } ?>
+                if (isset($_GET["mensaje"]) && isset($mensajes[$_GET["mensaje"]])) {
+                    ?>
+                    <div class="<= mensaje ?>">
+                        <p><?= $mensajes[$_GET["mensaje"]] ?></p>
+                    </div>
+                    <?php
+                }
+            ?>
 
             <div class="button-container">
                 <a href="Registrar_alumno.php">

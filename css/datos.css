@@ -96,17 +96,19 @@ select:hover {
     background-color: #ececec;
 }
 
-.mensaje {
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-    padding: 10px;
-    color: #155724;
-    border-radius: 5px;
-    animation: inicio 1s ease;
-    width: 30%;
-    margin: auto;
-    margin-top: 50px;
+.mensaje{
+    background-color: #9dfab7;
+    padding: 15px;
     text-align: center;
+    font-size: large;
+    font-weight: bolder;
+    border-radius: 12px;
+    width: 30%;
+    box-shadow: 6px 6px 12px rgb(0, 0, 0, 0.4);
+    animation: inicio 1s normal;
+    z-index: -1;
+    margin: auto;
+    margin-top: 40px;
 }
 
 .container {

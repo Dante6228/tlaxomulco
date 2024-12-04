@@ -26,18 +26,20 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
         <a href="usuario.php"><img src="img/usuario.png" alt="Perfil"></a>
     </header>
 
-    <div class="aviso">
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "registro") { ?>
-            <div class="mensaje">
-                <p>Dato creado correctamente!</p>
+    <?php
+        $mensajes = [
+            "actualizacion" => "Dato actualizado correctamente!",
+            "registro" => "Dato creado correctamente!",
+        ];
+
+        if (isset($_GET["mensaje"]) && isset($mensajes[$_GET["mensaje"]])) {
+            ?>
+            <div class="<= mensaje ?>">
+                <p><?= $mensajes[$_GET["mensaje"]] ?></p>
             </div>
-        <?php } ?>
-        <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "actualizacion") { ?>
-            <div class="mensaje">
-                <p>Dato actualizado correctamente!</p>
-            </div>
-        <?php } ?>
-    </div>
+            <?php
+        }
+    ?>
 
     <main>
         <div class="container">
