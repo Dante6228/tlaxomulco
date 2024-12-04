@@ -155,7 +155,8 @@ async function eliminarAlumno(event) {
 
 async function actualizarAlumno(event) {
     const alumnoId = event.target.getAttribute('data-id');
-    window.location.href = `../actualizar_alumno.php?id=${alumnoId}&from=5`;
+    const sanitizedAlumnoId = encodeURIComponent(alumnoId);
+    window.location.href = `../actualizar_alumno.php?id=${sanitizedAlumnoId}&from=5`;
 }
 
 async function generarPDF() {
