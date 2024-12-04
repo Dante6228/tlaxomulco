@@ -154,7 +154,7 @@ async function eliminarAlumno(event) {
 }
 
 async function actualizarAlumno(event) {
-    const alumnoId = event.target.getAttribute('data-id');
+    const alumnoId = encodeURIComponent(event.target.getAttribute('data-id'));
     window.location.href = `../actualizar_alumno.php?id=${alumnoId}&from=3`;
 }
 
