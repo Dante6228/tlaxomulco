@@ -92,15 +92,26 @@ CREATE TABLE alumno (
     FOREIGN KEY (genero) REFERENCES genero(id) ON DELETE CASCADE
 );
 
--- Inserciones iniciales
+-- ==============================================================
+-- INSERT DE USUARIO --
+-- ==============================================================
+
 INSERT INTO usuario (nombre, usuario, contraseña) VALUES
-('Admin', 'SuperAdmin2024Tlax', '$2y$10$NFX2D5z2RS6zHwaHTWD.nOCN2MtD5GeZrihqn0AdzK8oPH2ZS8ooy');
+('Admin', 'Admin', '$2y$10$NFX2D5z2RS6zHwaHTWD.nOCN2MtD5GeZrihqn0AdzK8oPH2ZS8ooy');
+
+-- ==============================================================
+-- INSERT DE NIVELES ESCOLARES --
+-- ==============================================================
 
 INSERT INTO nivel_educativo (descripcion) VALUES
 ('Preescolar'),
 ('Primaria'),
 ('Secundaria'),
 ('Bachillerato');
+
+-- ==============================================================
+-- INSERT DE GRADOS ESCOLARES --
+-- ==============================================================
 
 -- Grados para Preescolar
 INSERT INTO grado (descripcion, nivel_educativo_id) VALUES
@@ -132,85 +143,159 @@ INSERT INTO grado (descripcion, nivel_educativo_id) VALUES
 ('Semestre 5', 4),  
 ('Semestre 6', 4);
 
--- Datos de prueba
+-- ==============================================================
+-- INSERT DE CICLOS ESCOLARES --
+-- ==============================================================
 
+-- Ciclos escolares
 INSERT INTO ciclo (descripcion) VALUES
 ('2020-2021'),
 ('2021-2022'),
-('2022-2023');
+('2022-2023'),
+('2023-2024'),
+('2024-2025');
+
+-- =====================================================================
+-- RELACIÓN ENTRE CICLOS ESCOLARES, CON GRADOS Y NIVELES EDUCATIVOS --
+-- =====================================================================
 
 -- Relación entre Preescolar y sus grados
 INSERT INTO nivel_grado_ciclo (nivel_educativo_id, grado_id, ciclo_id) VALUES
 (1, 1, 1),  -- Preescolar, Primero, 2020-2021
 (1, 1, 2),  -- Preescolar, Primero, 2021-2022
 (1, 1, 3),  -- Preescolar, Primero, 2022-2023
+(1, 1, 4),  -- Preescolar, Primero, 2023-2024
+(1, 1, 5),  -- Preescolar, Primero, 2024-2025
 (1, 2, 1),  -- Preescolar, Segundo, 2020-2021
 (1, 2, 2),  -- Preescolar, Segundo, 2021-2022
 (1, 2, 3),  -- Preescolar, Segundo, 2022-2023
+(1, 2, 4),  -- Preescolar, Segundo, 2023-2024
+(1, 2, 5),  -- Preescolar, Segundo, 2024-2025
 (1, 3, 1),  -- Preescolar, Tercero, 2020-2021
 (1, 3, 2),  -- Preescolar, Tercero, 2021-2022
-(1, 3, 3);  -- Preescolar, Tercero, 2022-2023
+(1, 3, 3),  -- Preescolar, Tercero, 2022-2023
+(1, 3, 4),  -- Preescolar, Tercero, 2023-2024
+(1, 3, 5);  -- Preescolar, Tercero, 2024-2025
 
 -- Relación entre Primaria y sus grados
 INSERT INTO nivel_grado_ciclo (nivel_educativo_id, grado_id, ciclo_id) VALUES
 (2, 4, 1),  -- Primaria, Primero, 2020-2021
 (2, 4, 2),  -- Primaria, Primero, 2021-2022
 (2, 4, 3),  -- Primaria, Primero, 2022-2023
+(2, 4, 4),  -- Primaria, Primero, 2023-2024
+(2, 4, 5),  -- Primaria, Primero, 2024-2025
 (2, 5, 1),  -- Primaria, Segundo, 2020-2021
 (2, 5, 2),  -- Primaria, Segundo, 2021-2022
 (2, 5, 3),  -- Primaria, Segundo, 2022-2023
+(2, 5, 4),  -- Primaria, Segundo, 2023-2024
+(2, 5, 5),  -- Primaria, Segundo, 2024-2025
 (2, 6, 1),  -- Primaria, Tercero, 2020-2021
 (2, 6, 2),  -- Primaria, Tercero, 2021-2022
 (2, 6, 3),  -- Primaria, Tercero, 2022-2023
+(2, 6, 4),  -- Primaria, Tercero, 2023-2024
+(2, 6, 5),  -- Primaria, Tercero, 2024-2025
 (2, 7, 1),  -- Primaria, Cuarto, 2020-2021
 (2, 7, 2),  -- Primaria, Cuarto, 2021-2022
 (2, 7, 3),  -- Primaria, Cuarto, 2022-2023
+(2, 7, 4),  -- Primaria, Cuarto, 2023-2024
+(2, 7, 5),  -- Primaria, Cuarto, 2024-2025
 (2, 8, 1),  -- Primaria, Quinto, 2020-2021
 (2, 8, 2),  -- Primaria, Quinto, 2021-2022
 (2, 8, 3),  -- Primaria, Quinto, 2022-2023
+(2, 8, 4),  -- Primaria, Quinto, 2023-2024
+(2, 8, 5),  -- Primaria, Quinto, 2024-2025
 (2, 9, 1),  -- Primaria, Sexto, 2020-2021
 (2, 9, 2),  -- Primaria, Sexto, 2021-2022
-(2, 9, 3);  -- Primaria, Sexto, 2022-2023
+(2, 9, 3),  -- Primaria, Sexto, 2022-2023
+(2, 9, 4),  -- Primaria, Sexto, 2023-2024
+(2, 9, 5);  -- Primaria, Sexto, 2024-2025
 
 -- Relación entre Secundaria y sus grados
 INSERT INTO nivel_grado_ciclo (nivel_educativo_id, grado_id, ciclo_id) VALUES
 (3, 10, 1),  -- Secundaria, Primero, 2020-2021
 (3, 10, 2),  -- Secundaria, Primero, 2021-2022
 (3, 10, 3),  -- Secundaria, Primero, 2022-2023
+(3, 10, 4),  -- Secundaria, Primero, 2023-2024
+(3, 10, 5),  -- Secundaria, Primero, 2024-2025
 (3, 11, 1),  -- Secundaria, Segundo, 2020-2021
 (3, 11, 2),  -- Secundaria, Segundo, 2021-2022
 (3, 11, 3),  -- Secundaria, Segundo, 2022-2023
+(3, 11, 4),  -- Secundaria, Segundo, 2023-2024
+(3, 11, 5),  -- Secundaria, Segundo, 2024-2025
 (3, 12, 1),  -- Secundaria, Tercero, 2020-2021
 (3, 12, 2),  -- Secundaria, Tercero, 2021-2022
-(3, 12, 3);  -- Secundaria, Tercero, 2022-2023
+(3, 12, 3),  -- Secundaria, Tercero, 2022-2023
+(3, 12, 4),  -- Secundaria, Tercero, 2023-2024
+(3, 12, 5);  -- Secundaria, Tercero, 2024-2025
 
 -- Relación entre Bachillerato y sus grados
 INSERT INTO nivel_grado_ciclo (nivel_educativo_id, grado_id, ciclo_id) VALUES
 (4, 13, 1),  -- Bachillerato, Semestre 1, 2020-2021
 (4, 13, 2),  -- Bachillerato, Semestre 1, 2021-2022
 (4, 13, 3),  -- Bachillerato, Semestre 1, 2022-2023
+(4, 13, 4),  -- Bachillerato, Semestre 1, 2023-2024
+(4, 13, 5),  -- Bachillerato, Semestre 1, 2024-2025
 (4, 14, 1),  -- Bachillerato, Semestre 2, 2020-2021
 (4, 14, 2),  -- Bachillerato, Semestre 2, 2021-2022
 (4, 14, 3),  -- Bachillerato, Semestre 2, 2022-2023
+(4, 14, 4),  -- Bachillerato, Semestre 2, 2023-2024
+(4, 14, 5),  -- Bachillerato, Semestre 2, 2024-2025
 (4, 15, 1),  -- Bachillerato, Semestre 3, 2020-2021
 (4, 15, 2),  -- Bachillerato, Semestre 3, 2021-2022
 (4, 15, 3),  -- Bachillerato, Semestre 3, 2022-2023
+(4, 15, 4),  -- Bachillerato, Semestre 3, 2023-2024
+(4, 15, 5),  -- Bachillerato, Semestre 3, 2024-2025
 (4, 16, 1),  -- Bachillerato, Semestre 4, 2020-2021
 (4, 16, 2),  -- Bachillerato, Semestre 4, 2021-2022
 (4, 16, 3),  -- Bachillerato, Semestre 4, 2022-2023
+(4, 16, 4),  -- Bachillerato, Semestre 4, 2023-2024
+(4, 16, 5),  -- Bachillerato, Semestre 4, 2024-2025
 (4, 17, 1),  -- Bachillerato, Semestre 5, 2020-2021
 (4, 17, 2),  -- Bachillerato, Semestre 5, 2021-2022
 (4, 17, 3),  -- Bachillerato, Semestre 5, 2022-2023
+(4, 17, 4),  -- Bachillerato, Semestre 5, 2023-2024
+(4, 17, 5),  -- Bachillerato, Semestre 5, 2024-2025
 (4, 18, 1),  -- Bachillerato, Semestre 6, 2020-2021
 (4, 18, 2),  -- Bachillerato, Semestre 6, 2021-2022
-(4, 18, 3);  -- Bachillerato, Semestre 6, 2022-2023
+(4, 18, 3),  -- Bachillerato, Semestre 6, 2022-2023
+(4, 18, 4),  -- Bachillerato, Semestre 6, 2023-2024
+(4, 18, 5);  -- Bachillerato, Semestre 6, 2024-2025
+
+-- ==============================================================
+-- INSERT DE MUNICIPIOS --
+-- ==============================================================
 
 -- Inserciones de estados
 INSERT INTO municipio (descripcion) VALUES
-('Cuautitlan'),
+('Cuautitlán'),
 ('Xaltipa'),
 ('San Blas'),
-('Melchor');
+('Melchor'),
+('Toluca'),
+('Acapulco'),
+('Mazatlán'),
+('Oaxaca de Juárez'),
+('Guadalajara'),
+('Monterrey'),
+('Puebla'),
+('Mérida'),
+('Cancún'),
+('Veracruz'),
+('León'),
+('Chihuahua'),
+('Tijuana'),
+('Hermosillo'),
+('Morelia'),
+('Culiacán'),
+('Cuernavaca'),
+('Villahermosa'),
+('Durango'),
+('Torreón'),
+('Saltillo');
+
+-- ==============================================================
+-- RELACIÓN DE MUNICIPIO CON SU RESPECTIVA COLONIA --
+-- ==============================================================
 
 -- Inserciones de colonias para Cuautitlán (municipio_id = 1)
 INSERT INTO colonia (descripcion, municipio_id) VALUES
@@ -221,17 +306,150 @@ INSERT INTO colonia (descripcion, municipio_id) VALUES
 -- Inserciones de colonias para Xaltipa (municipio_id = 2)
 INSERT INTO colonia (descripcion, municipio_id) VALUES
 ('Centro', 2),
-('El Cerrito', 2);
+('El Cerrito', 2),
+('La Loma', 2);
 
 -- Inserciones de colonias para San Blas (municipio_id = 3)
 INSERT INTO colonia (descripcion, municipio_id) VALUES
-('San Blas Centro', 3),
-('La Concepción', 3);
+('Centro Histórico', 3),
+('Playa Norte', 3),
+('Residencial San Blas', 3);
 
--- Inserciones de colonias para Melchor Ocampo (municipio_id = 4)
+-- Inserciones de colonias para Melchor (municipio_id = 4)
 INSERT INTO colonia (descripcion, municipio_id) VALUES
-('Melchor Ocampo Centro', 4),
-('Visitación', 4);
+('Barrio de San Pedro', 4),
+('Melchor Centro', 4),
+('Los Pinos', 4);
+
+-- Inserciones de colonias para Toluca (municipio_id = 5)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Centro de Toluca', 5),
+('Santa Ana Tlapaltitlán', 5),
+('San Mateo Otzacatipan', 5);
+
+-- Inserciones de colonias para Acapulco (municipio_id = 6)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Costera Miguel Alemán', 6),
+('La Garita', 6),
+('Barra Vieja', 6);
+
+-- Inserciones de colonias para Mazatlán (municipio_id = 7)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Centro Histórico', 7),
+('Playa Sur', 7),
+('Sábalo Country Club', 7);
+
+-- Inserciones de colonias para Oaxaca de Juárez (municipio_id = 8)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Jalatlaco', 8),
+('Centro Histórico', 8),
+('Xochimilco', 8);
+
+-- Inserciones de colonias para Guadalajara (municipio_id = 9)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Chapalita', 9),
+('Colonia Americana', 9),
+('Providencia', 9);
+
+-- Inserciones de colonias para Monterrey (municipio_id = 10)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('San Pedro Garza García', 10),
+('Cumbres', 10),
+('Contry', 10);
+
+-- Inserciones de colonias para Puebla (municipio_id = 11)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Centro Histórico', 11),
+('Angelópolis', 11),
+('La Paz', 11);
+
+-- Inserciones de colonias para Mérida (municipio_id = 12)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Altabrisa', 12),
+('Francisco de Montejo', 12),
+('Centro de Mérida', 12);
+
+-- Inserciones de colonias para Cancún (municipio_id = 13)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Zona Hotelera', 13),
+('Supermanzana 20', 13),
+('Puerto Juárez', 13);
+
+-- Inserciones de colonias para Veracruz (municipio_id = 14)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Centro Histórico', 14),
+('Los Pinos', 14),
+('Costa Verde', 14);
+
+-- Inserciones de colonias para León (municipio_id = 15)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('El Coecillo', 15),
+('San Isidro', 15),
+('Obregón', 15);
+
+-- Inserciones de colonias para Chihuahua (municipio_id = 16)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Centro Histórico', 16),
+('Santa Rita', 16),
+('Los Portales', 16);
+
+-- Inserciones de colonias para Tijuana (municipio_id = 17)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Playas de Tijuana', 17),
+('Zona Río', 17),
+('Otay', 17);
+
+-- Inserciones de colonias para Hermosillo (municipio_id = 18)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Villa Satélite', 18),
+('Colonia Pitic', 18),
+('Centro de Hermosillo', 18);
+
+-- Inserciones de colonias para Morelia (municipio_id = 19)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Villas del Pedregal', 19),
+('Centro Histórico', 19),
+('Bosques Camelinas', 19);
+
+-- Inserciones de colonias para Culiacán (municipio_id = 20)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Tres Ríos', 20),
+('Centro de Culiacán', 20),
+('Jardines del Sol', 20);
+
+-- Inserciones de colonias para Cuernavaca (municipio_id = 21)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Lomas de Cortés', 21),
+('Vista Hermosa', 21),
+('Acapantzingo', 21);
+
+-- Inserciones de colonias para Villahermosa (municipio_id = 22)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Tabasco 2000', 22),
+('Centro de Villahermosa', 22),
+('Tierra Colorada', 22);
+
+-- Inserciones de colonias para Durango (municipio_id = 23)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Centro de Durango', 23),
+('Guadalupe Victoria', 23),
+('Las Arboledas', 23);
+
+-- Inserciones de colonias para Torreón (municipio_id = 24)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Centro Histórico', 24),
+('Residencial Campestre', 24),
+('San Isidro', 24);
+
+-- Inserciones de colonias para Saltillo (municipio_id = 25)
+INSERT INTO colonia (descripcion, municipio_id) VALUES
+('Zona Centro', 25),
+('Villas de Guadalupe', 25),
+('San Ramón', 25);
+
+-- ==============================================================
+-- INSERT DE GÉNEROS --
+-- ==============================================================
 
 -- Inserciones de géneros
 INSERT INTO genero (descripcion) VALUES
@@ -239,18 +457,49 @@ INSERT INTO genero (descripcion) VALUES
 ('Femenino'),
 ('No binario');
 
+-- ==============================================================
+-- INSERT DE MEDIOS ENTERADOS --
+-- ==============================================================
+
 -- Inserciones de medios enterados
 INSERT INTO medio_enterado (descripcion) VALUES
 ('Internet'),
 ('Amigos'),
 ('Familia'),
-('Publicidad');
+('Publicidad'),
+('Redes Sociales'),
+('Televisión'),
+('Radio'),
+('Correo Electrónico'),
+('Periódico'),
+('Eventos'),
+('Volantes'),
+('Recomendaciones Personales'),
+('Llamadas Telefónicas'),
+('Anuncios en Sitios Web');
 
 -- Inserciones de promociones
 INSERT INTO promocion (descripcion) VALUES
 ('Descuento del 10%'),
 ('Descuento del 20%'),
-('Beca del 50%');
+('Beca del 50%'),
+('Beca completa'),
+('2x1 en inscripción'),
+('Matrícula gratuita'),
+('Primera mensualidad sin costo'),
+('Regalo de materiales'),
+('Descuento del 15% en pagos anuales'),
+('Descuento del 30% por pronto pago'),
+('Promoción especial para estudiantes destacados'),
+('Descuento familiar del 25%'),
+('Promoción por recomendación'),
+('Inscripción a mitad de precio'),
+('Curso introductorio gratis'),
+('Certificación gratuita'),
+('Descuento del 5% en pagos en efectivo'),
+('Descuento para grupos'),
+('Descuento por membresía'),
+('Promoción de fin de año');
 
 INSERT INTO estado (descripcion) VALUES
 ('Nuevo ingreso'),
