@@ -102,8 +102,8 @@ foreach ($worksheet->getRowIterator() as $row) {
                     }
                 }
 
-                // Bucle for desde el indice 3 para evitar la inserción de encabezados
-                for ($i = 3; $i < count($data); $i++) {
+                // Bucle for desde el indice 2 para evitar la inserción de encabezados
+                for ($i = 2; $i < count($data); $i++) {
                     $row = $data[$i];
 
                     $nombre = isset($row[0]) ? $row[0] : '';
@@ -127,7 +127,7 @@ foreach ($worksheet->getRowIterator() as $row) {
                         exit();
                     }
 
-                    echo  "<h1>" . "Alumno ", ($i - 2) . "</h1>";
+                    echo  "<h1>" . "Alumno ", ($i - 1) . "</h1>";
 
                     /////////////////////////////////////////////////////////////////
                     // INSERCIÓN DE CICLO //
