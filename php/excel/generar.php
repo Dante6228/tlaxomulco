@@ -112,13 +112,25 @@ $sheet->setCellValue('A2', 'ALUMNOS');
 $sheet->getStyle('A2:M2')->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FDD868');
 $sheet->getStyle('A3:M3')->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FDE49B');
 
+for ($i=4; $i <= 100; $i += 2){
+    $sheet->getStyle('A' . $i . ':M' . $i)->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FCD5B4');
+    $sheet->getStyle('A' . $i . ':M' . $i)->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
+    $sheet->getStyle('A' . $i . ':M' . $i)->getBorders()->getAllBorders()->getColor()->setRGB('000000');
+}
+
+for ($i=5; $i <= 99; $i += 2){
+    $sheet->getStyle('A' . $i . ':M' . $i)->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FDE9D9');
+    $sheet->getStyle('A' . $i . ':M' . $i)->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
+    $sheet->getStyle('A' . $i . ':M' . $i)->getBorders()->getAllBorders()->getColor()->setRGB('000000');
+}
+
 // Aplicar negrita
 $sheet->getStyle('A2')->getFont()->setBold(true);
 $sheet->getStyle('A3:M3')->getFont()->setBold(true);
 
 // Ajustar el tamaño de la fuente y el alineado
-$sheet->getStyle('A2:M2')->getFont()->setSize(13);
-$sheet->getStyle('A3:M3')->getFont()->setSize(10);
+$sheet->getStyle('A2:M2')->getFont()->setSize(24);
+$sheet->getStyle('A3:M3')->getFont()->setSize(12);
 $sheet->getStyle('A2:M2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 $sheet->getStyle('A2:M2')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 $sheet->getStyle('A3:M3')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
@@ -129,10 +141,10 @@ $sheet->getStyle('A2:M2')->getBorders()->getAllBorders()->getColor()->setRGB('00
 $sheet->getStyle('A3:M3')->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
 $sheet->getStyle('A3:M3')->getBorders()->getAllBorders()->getColor()->setRGB('000000');
 
-// Establecer el ancho de las columnas de A a M (puedes ajustarlo según sea necesario)
+// Establecer el ancho de las columnas de A a M
 foreach (range('A3', 'M3') as $columnID) {
     $sheet->getColumnDimension($columnID)->setAutoSize(false);
-    $sheet->getColumnDimension($columnID)->setWidth(18);
+    $sheet->getColumnDimension($columnID)->setWidth(21);
 }
 
 // Encabezados de título de datos
@@ -154,6 +166,7 @@ $sheet->setCellValue('M3', 'Estado');
 function validarLista($column, $errorTitle, $error, $promptTitle, $prompt, $datos, $spreadsheet){
     // Agregar la validación de datos para la lista desplegable en la columna
     for ($row = 4; $row <= 100; $row++) {
+        $spreadsheet->getActiveSheet()->getRowDimension($row)->setRowHeight(20);
         $cell = $column . $row;
         $validation = $spreadsheet->getActiveSheet()->getCell($cell)->getDataValidation();
         
