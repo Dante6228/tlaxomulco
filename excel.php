@@ -28,6 +28,29 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
 
     <main>
         <div class="container">
+
+            <?php
+                $mensajes = [
+                    "error" => ["¡Error!", "¡Hubo un error al subir el archivo excel, por favor, intentelo de nuevo.", "error"],
+                ];
+
+                if (isset($_GET['mensaje']) && isset($mensajes[$_GET['mensaje']])) {
+                    $mensaje = $mensajes[$_GET['mensaje']];
+                }
+            ?>
+
+            <?php if (isset($mensaje)): ?>
+                <script>
+                    Swal.fire({
+                        title: "<?= $mensaje[0] ?>",
+                        text: "<?= $mensaje[1] ?>",
+                        icon: "<?= $mensaje[2] ?>",
+                        timer: 4000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    });
+                </script>
+            <?php endif; ?>
             
             <form action="php/excel/importar.php" method="post" enctype="multipart/form-data">
                 <div class="options-container">
@@ -41,8 +64,6 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
             
         </div>
     </main>
-
-    <script src="js/excel.js"></script>
 
 </body>
 </html>

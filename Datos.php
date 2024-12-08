@@ -27,19 +27,30 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     </header>
 
     <?php
+
         $mensajes = [
-            "actualizacion" => "Dato actualizado correctamente!",
-            "registro" => "Dato creado correctamente!",
+            "registro" => ["¡Éxito!", "¡Dato registrado correctamente!", "success"],
+            "actualizacion" => ["¡Actualizado!", "¡Dato actualizado correctamente!", "info"],
         ];
 
-        if (isset($_GET["mensaje"]) && isset($mensajes[$_GET["mensaje"]])) {
-            ?>
-            <div class="<= mensaje ?>">
-                <p><?= $mensajes[$_GET["mensaje"]] ?></p>
-            </div>
-            <?php
+        if (isset($_GET['mensaje']) && isset($mensajes[$_GET['mensaje']])) {
+            $mensaje = $mensajes[$_GET['mensaje']];
         }
+
     ?>
+
+    <?php if (isset($mensaje)): ?>
+        <script>
+            Swal.fire({
+                title: "<?= $mensaje[0] ?>",
+                text: "<?= $mensaje[1] ?>",
+                icon: "<?= $mensaje[2] ?>",
+                timer: 4000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
+        </script>
+    <?php endif; ?>
 
     <main>
         <div class="container">
@@ -76,10 +87,6 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                     </tbody>
                 </table>
             </section>
-        </div>
-        <div id="modalForm" class="modal">
-</div>
-
     </main>
 
     <script src="js/datos.js"></script>

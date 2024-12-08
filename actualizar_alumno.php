@@ -97,7 +97,6 @@ function generarOpciones($tabla, $pdo, $valorSeleccionado = null) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/registrarAlumno.css">
     <link rel="stylesheet" href="css/header.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Actualizar alumno</title>
 </head>
 <body>

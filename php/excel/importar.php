@@ -9,7 +9,8 @@ if (isset($_FILES['excelFile']) && $_FILES['excelFile']['error'] === UPLOAD_ERR_
     $fileTmpPath = $_FILES['excelFile']['tmp_name'];
     $fileName = $_FILES['excelFile']['name'];
 } else {
-    die("Error al subir el archivo.");
+    header("Location: ../../excel.php?mensaje=error");
+    exit();
 }
 
 try {

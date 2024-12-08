@@ -52,19 +52,27 @@ if ($stmt->rowCount() > 0) {
 
         <?php
             $mensajes = [
-                "actualizacion" => "¡Datos de usuario actualizados correctamente!",
-                "error" => "Error al intentar actualizar los datos de usuario",
+                "actualizacion" => ["¡Actualizado!", "¡Datos de usuario actualizados correctamente!", "info"],
+                "error" => ["¡Error!", "Error al intentar actualizar los datos de usuario.", "error"],
             ];
 
-            if (isset($_GET["mensaje"]) && isset($mensajes[$_GET["mensaje"]])) {
-                $tipoClase = ($_GET["mensaje"] === "actualizacion") ? "actualizacion" : "error";
-                ?>
-                <div class="<?= $tipoClase ?>">
-                    <p><?= $mensajes[$_GET["mensaje"]] ?></p>
-                </div>
-                <?php
+            if (isset($_GET['mensaje']) && isset($mensajes[$_GET['mensaje']])) {
+                $mensaje = $mensajes[$_GET['mensaje']];
             }
         ?>
+
+        <?php if (isset($mensaje)): ?>
+            <script>
+                Swal.fire({
+                    title: "<?= $mensaje[0] ?>",
+                    text: "<?= $mensaje[1] ?>",
+                    icon: "<?= $mensaje[2] ?>",
+                    timer: 4000,
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                });
+            </script>
+        <?php endif; ?>
 
         <div class="master">
             <div class="seccion1">
