@@ -216,3 +216,70 @@ async function generarPDF() {
         console.error('Error:', error);
     }
 }
+
+async function generarExcel() {
+    const alumnos = [];
+    const rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const alumno = {
+            id: cells[11].querySelector('.update-btn').dataset.id,
+            nombre: cells[0].innerText,
+            Ap: cells[1].innerText,
+            Am: cells[2].innerText,
+            matricula: cells[3].innerText,
+            genero: cells[4].innerText,
+            municipio: cells[5].innerText,
+            colonia: cells[6].innerText,
+            medio_enterado: cells[7].innerText,
+            promocion: cells[8].innerText,
+            estado_alumno: cells[9].innerText,
+            ngc: cells[10].innerText
+        };
+        alumnos.push(alumno);
+    });
+
+    if (alumnos.length === 0) {
+        Swal.fire({
+            title: 'Sin alumnos',
+            text: 'No hay alumnos para generar el excel.',
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+        return;
+    }
+
+    const params = new URLSearchParams();
+    params.append('alumnos', JSON.stringify(alumnos));
+
+    try {
+        const response = await fetch('../php/excel/consulta/generar_excel_colonia.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: params.toString()
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al generar el excel');
+        }
+
+        // Descarga el excel
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = 'Listado_de_Alumnos_Por_Colonia.xlsx';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+
+        window.location.href = '/tlaxomulco/consulta/colonia.php?mensaje=excel';
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}

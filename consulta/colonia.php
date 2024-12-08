@@ -51,11 +51,29 @@ $colonia = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <main>
         <div class="container">
 
-            <?php if (isset($_GET["mensaje"]) && $_GET["mensaje"] == "pdf") { ?>
-                <div style="margin-bottom: 25px;" class="mensaje">
-                    <p>¡PDF generado correctamente!</p>
-                </div>
-            <?php } ?>
+            <?php
+                $mensajes = [
+                    "pdf" => ["¡PDF Generado!", "El archivo PDF se generó correctamente.", "success"],
+                    "excel" => ["Éxito!", "¡Excel generado correctamente!", "success"],
+                ];
+
+                if (isset($_GET['mensaje']) && isset($mensajes[$_GET['mensaje']])) {
+                    $mensaje = $mensajes[$_GET['mensaje']];
+                }
+            ?>
+
+            <?php if (isset($mensaje)): ?>
+                <script>
+                    Swal.fire({
+                        title: "<?= $mensaje[0] ?>",
+                        text: "<?= $mensaje[1] ?>",
+                        icon: "<?= $mensaje[2] ?>",
+                        timer: 4000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    });
+                </script>
+            <?php endif; ?>
             
             <div class="options-container">
                 <div>
@@ -122,6 +140,7 @@ $colonia = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
 
             <button id="mostrar-alumnos-btn" class="btn" onclick="generarPDF()">Generar PDF</button>
+            <button id="mostrar-alumnos-btn" class="btn" onclick="generarExcel()">Generar Excel</button>
         </div>
     </main>
 
