@@ -95,13 +95,6 @@ $sheet->setCellValue('A2', 'ALUMNOS ' . $nivel_grado_ciclo['nivel_educativo'] . 
 $sheet->getStyle('A2:J2')->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FDD868');
 $sheet->getStyle('A3:J3')->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FDE49B');
 
-for ($i = 4; $i <= 50; $i++) {
-    $color = $i % 2 === 0 ? 'FCD5B4' : 'FDE9D9';
-    $sheet->getStyle("A$i:J$i")->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB($color);
-    $sheet->getStyle("A$i:J$i")->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
-    $sheet->getStyle("A$i:J$i")->getBorders()->getAllBorders()->getColor()->setRGB('000000');
-}
-
 $sheet->getStyle('A2')->getFont()->setBold(true);
 $sheet->getStyle('A3:J3')->getFont()->setBold(true);
 
