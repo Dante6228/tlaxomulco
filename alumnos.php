@@ -46,21 +46,30 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <?php
                 $mensajes = [
-                    "registro" => "¡Alumno registrado correctamente!",
-                    "actualizado" => "¡Alumno actualizado correctamente!",
-                    "pdf"=> "¡PDF generado correctamente!",
-                    "excel"=> "¡Excel generado correctamente!",
-                    "insercion"=> "¡Excel importado correctamente!",
+                    "registro" => ["¡Éxito!", "¡Alumno registrado correctamente!", "success"],
+                    "actualizado" => ["¡Actualizado!", "¡Alumno actualizado correctamente!", "info"],
+                    "pdf" => ["¡PDF Generado!", "El archivo PDF se generó correctamente.", "success"],
+                    "excel" => ["Éxito!", "¡Excel generado correctamente!", "success"],
+                    "insercion"=> ["Éxito", "¡Excel importado correctamente!", "info"],
                 ];
 
-                if (isset($_GET["mensaje"]) && isset($mensajes[$_GET["mensaje"]])) {
-                    ?>
-                    <div id="mensaje" class="mensaje">
-                        <p><?= $mensajes[$_GET["mensaje"]] ?></p>
-                    </div>
-                    <?php
+                if (isset($_GET['mensaje']) && isset($mensajes[$_GET['mensaje']])) {
+                    $mensaje = $mensajes[$_GET['mensaje']];
                 }
             ?>
+
+            <?php if (isset($mensaje)): ?>
+                <script>
+                    Swal.fire({
+                        title: "<?= $mensaje[0] ?>",
+                        text: "<?= $mensaje[1] ?>",
+                        icon: "<?= $mensaje[2] ?>",
+                        timer: 4000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    });
+                </script>
+            <?php endif; ?>
 
             <div class="button-container">
                 <a href="Registrar_alumno.php">

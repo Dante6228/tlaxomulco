@@ -289,11 +289,3 @@ async function generarExcel() {
         console.error('Error:', error);
     }
 }
-
-setTimeout(() => {
-    const mensajeDiv = document.getElementById('mensaje');
-    if (mensajeDiv) {
-        mensajeDiv.classList.add('ocultar');
-        setTimeout(() => mensajeDiv.remove(), 1000);
-    }
-}, 2500);

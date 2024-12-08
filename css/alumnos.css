@@ -150,26 +150,6 @@ input:hover {
     background-color: #ececec;
 }
 
-.mensaje {
-    width: 25%;
-    margin: auto;
-    background-color: #9dfab7;
-    padding: 15px;
-    text-align: center;
-    font-size: large;
-    font-weight: bolder;
-    border-radius: 12px;
-    box-shadow: 6px 6px 12px rgb(0, 0, 0, 0.4);
-    animation: inicio 1s ease;
-    z-index: -1;
-    margin-top: 35px;
-}
-
-.mensaje.ocultar {
-    opacity: 0;
-    transition: opacity 0.7s ease-in-out;
-}
-
 .container {
     padding: 20px;
     padding-top: 0px;
@@ -247,10 +227,6 @@ input:hover {
         padding: 10px;
     }
 
-    .mensaje {
-        width: 90%;
-    }
-
     button {
         font-size: 1rem;
         padding: 12px 20px;
@@ -275,10 +251,6 @@ input:hover {
     }
 
     table {
-        font-size: 0.8rem;
-    }
-
-    .mensaje {
         font-size: 0.8rem;
     }
 
