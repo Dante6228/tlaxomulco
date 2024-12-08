@@ -55,7 +55,7 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 if (isset($_GET["mensaje"]) && isset($mensajes[$_GET["mensaje"]])) {
                     ?>
-                    <div class="<= mensaje ?>">
+                    <div id="mensaje" class="mensaje">
                         <p><?= $mensajes[$_GET["mensaje"]] ?></p>
                     </div>
                     <?php
