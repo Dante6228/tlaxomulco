@@ -5,7 +5,7 @@
 }
 
 html{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: "Inter", sans-serif;
     background-color: #D9D9D9;
 }
 
@@ -39,18 +39,12 @@ h1{
     font-size: 20px;
     margin-top: 15px;
     margin-bottom: 15px;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 700;
-    font-style: normal;
 }
 
 label{
     display: block;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
+    font-weight: 600;
 }
 
 input[type="text"], input[type="password"]{
@@ -59,10 +53,7 @@ input[type="text"], input[type="password"]{
     margin: 8px 0px;
     border-radius: 5px;
     border: 1px solid #D9D9D9;
-}
-
-input[type="text"], input[type="password"]:focus{
-    border: 1px solid #2C2C2C;
+    outline: none;
 }
 
 input[type="submit"]{
@@ -73,10 +64,7 @@ input[type="submit"]{
     background-color: #2C2C2C;
     color: white;
     cursor: pointer;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 700;
-    font-style: normal;
 }
 
 input[type="submit"]:hover{
@@ -85,10 +73,7 @@ input[type="submit"]:hover{
 
 a{
     color: #2C2C2C;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 500;
-    font-style: normal;
 }
 
 input::placeholder{
@@ -109,6 +94,16 @@ form{
     width: 100%;
 }
 
+@keyframes mensaje{
+    0%{
+        transform: translateY(-100px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
 
 .error{
     background-color: #faa39d;
@@ -119,20 +114,9 @@ form{
     border-radius: 12px;
     box-shadow: 6px 6px 12px rgb(0, 0, 0, 0.4);
     margin-bottom: 35px;
-    animation: animacionError 1s normal;
+    animation: mensaje 1s normal;
     transition: opacity 0.5s ease;
     z-index: -1;
-}
-
-@keyframes animacionError{
-    0%{
-        transform: translateY(-100px);
-        opacity: 0%;
-    }
-    100%{
-        transform: translateY(0px);
-        opacity: 100%;
-    }
 }
 
 .cierre{
@@ -144,24 +128,24 @@ form{
     border-radius: 12px;
     box-shadow: 6px 6px 12px rgb(0, 0, 0, 0.4);
     margin-bottom: 35px;
-    animation: animacionCierre 1s normal;
+    animation: mensaje 1s normal;
     transition: opacity 0.5s ease;
     z-index: -1;
 }
 
-@keyframes animacionCierre{
+@keyframes desaparecer{
     0%{
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+    100%{
         transform: translateY(-100px);
         opacity: 0%;
         display: none;
     }
-    100%{
-        transform: translateY(0px);
-        opacity: 100%;
-        display: flex;
-    }
 }
 
 .desaparecer {
+    animation: desaparecer 1s normal;
     opacity: 0;
 }
