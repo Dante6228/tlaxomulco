@@ -82,8 +82,8 @@ if (isset($_POST['alumnos'])) {
         $pdf->Cell(0, 10, $titulo, 0, 1, 'C');
         $pdf->Ln(10);
 
-        $ancho_columna_nombre = 70;
-        $ancho_columna_matricula = 25;
+        $ancho_columna_nombre = 50;
+        $ancho_columna_matricula = 23;
         $ancho_columna_ubicacion = 65;
         $ancho_columna_genero = 20;
         $ancho_columna_estado_alumno = 30;
@@ -110,7 +110,7 @@ if (isset($_POST['alumnos'])) {
         $pdf->Ln();
 
         $pdf->SetTextColor(50, 50, 50);
-        $pdf->SetFont('Arial', '', 10);
+        $pdf->SetFont('Arial', '', 9);
 
         foreach ($alumnosData as $alumno) {
             $nombre_completo = $alumno['nombre'] . ' ' . $alumno['Ap'] . ' ' . $alumno['Am'];
