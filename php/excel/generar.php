@@ -58,7 +58,7 @@ $sheet->setCellValue('A2', 'ALUMNOS');
 $sheet->getStyle('A2:M2')->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FDD868');
 $sheet->getStyle('A3:M3')->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FDE49B');
 
-for ($i = 4; $i <= 100; $i++) {
+for ($i = 4; $i <= 50; $i++) {
     $color = $i % 2 === 0 ? 'FCD5B4' : 'FDE9D9';
     $sheet->getStyle("A$i:M$i")->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB($color);
     $sheet->getStyle("A$i:M$i")->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
@@ -106,8 +106,8 @@ $sheet->setCellValue('M3', 'Estado');
 // Adición de validación de datos
 function validarLista($column, $errorTitle, $error, $promptTitle, $prompt, $datos, $spreadsheet){
     // Agregar la validación de datos para la lista desplegable en la columna
-    for ($row = 4; $row <= 100; $row++) {
-        $spreadsheet->getActiveSheet()->getRowDimension($row)->setRowHeight(20);
+    for ($row = 4; $row <= 50; $row++) {
+        $spreadsheet->getActiveSheet()->getRowDimension($row)->setRowHeight(18);
         $cell = $column . $row;
         $validation = $spreadsheet->getActiveSheet()->getCell($cell)->getDataValidation();
         
@@ -127,14 +127,11 @@ function validarLista($column, $errorTitle, $error, $promptTitle, $prompt, $dato
 }
 
 function addError($column, $sheet){
-    for($row = 4; $row <= 100; $row){
-        $cell = $column . $row;
-        $comment = $sheet->getComment($cell);
-        $comment->getText()->createTextRun('Demasiados datos en la base de datos, error de importación.');
-
-        $comment->setWidth('150pt');
-        $comment->setHeight('50pt');
-    }
+    $cell = $column;
+    $comment = $sheet->getComment($cell);
+    $comment->getText()->createTextRun('Demasiados datos en la base de datos, error de importación.');
+    $comment->setWidth('150pt');
+    $comment->setHeight('50pt');
 }
 
 function contarCaracteresDatos($datos) {
@@ -150,46 +147,64 @@ $prompt = "Por favor seleccione un elemento de la lista";
 
 if (contarCaracteresDatos($nivelesDescripcion) <= 255) {
     validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $nivelesDescripcion, $spreadsheet);
+} else{
+    addError("E4", $sheet);
 }
 
 if (contarCaracteresDatos($gradosDescripcion) <= 255) {
     $column = "F";
     validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $gradosDescripcion, $spreadsheet);
+} else{
+    addError("F4", $sheet);
 }
 
 if (contarCaracteresDatos($ciclosDescripcion) <= 255) {
     $column = "G";
     validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $ciclosDescripcion, $spreadsheet);
+} else{
+    addError("G4", $sheet);
 }
 
 if (contarCaracteresDatos($generosDescripcion) <= 255) {
     $column = "H";
     validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $generosDescripcion, $spreadsheet);
+} else{
+    addError("H4", $sheet);
 }
 
 if (contarCaracteresDatos($municipiosDescripcion) <= 255) {
     $column = "I";
     validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $municipiosDescripcion, $spreadsheet);
+} else{
+    addError("I4", $sheet);
 }
 
 if (contarCaracteresDatos($coloniasDescripcion) <= 255) {
     $column = "J";
     validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $coloniasDescripcion, $spreadsheet);
+} else{
+    addError("J4", $sheet);
 }
 
 if (contarCaracteresDatos($mediosDescripcion) <= 255) {
     $column = "K";
     validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $mediosDescripcion, $spreadsheet);
+} else{
+    addError("K4", $sheet);
 }
 
 if (contarCaracteresDatos($promocionesDescripcion) <= 255) {
     $column = "L";
     validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $promocionesDescripcion, $spreadsheet);
+} else{
+    addError("L4", $sheet);
 }
 
 if (contarCaracteresDatos($estadosDescripcion) <= 255) {
     $column = "M";
     validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $estadosDescripcion, $spreadsheet);
+} else{
+    addError("M4", $sheet);
 }
 
 $writer = new Xlsx($spreadsheet);
@@ -199,4 +214,4 @@ header('Content-Disposition: attachment;filename="Excel_De_Importacion.xlsx"');
 header('Cache-Control: max-age=0');
 
 $writer->save('php://output');
-exit;
+exit();
