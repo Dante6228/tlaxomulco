@@ -81,7 +81,7 @@ try {
             a.id IN ($placeholders) -- Usar los placeholders para los IDs
     ";
     $stmtAlumnos = $pdo->prepare($queryAlumnos);
-    $stmtAlumnos->execute($ids); // Pasar los IDs como parámetros
+    $stmtAlumnos->execute($ids);
     $alumnosData = $stmtAlumnos->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {
     echo 'Error: ' . $e->getMessage();

@@ -254,7 +254,7 @@ async function generarExcel() {
     params.append('alumnos', JSON.stringify(alumnos));
 
     try {
-        const response = await fetch('../php/excel/consulta/generar_excel_colonia.php', {
+        const response = await fetch('../php/excel/consulta/generar_excel.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

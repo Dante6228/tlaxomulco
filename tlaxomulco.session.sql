@@ -454,8 +454,7 @@ INSERT INTO colonia (descripcion, municipio_id) VALUES
 -- Inserciones de géneros
 INSERT INTO genero (descripcion) VALUES
 ('Masculino'),
-('Femenino'),
-('No binario');
+('Femenino');
 
 -- ==============================================================
 -- INSERT DE MEDIOS ENTERADOS --

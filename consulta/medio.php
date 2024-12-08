@@ -140,6 +140,7 @@ $medio = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
 
             <button id="mostrar-alumnos-btn" class="btn" onclick="generarPDF()">Generar PDF</button>
+            <button id="mostrar-alumnos-btn" class="btn" onclick="generarExcel()">Generar Excel</button>
         </div>
     </main>
 
