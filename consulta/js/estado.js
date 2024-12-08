@@ -75,7 +75,7 @@ async function mostrarAlumnos() {
     } else {
         Swal.fire({
             title: 'Faltan datos',
-            text: 'Por favor, selecciona un nivel educativo, grado, ciclo escolar y colonia.',
+            text: 'Por favor, selecciona un nivel educativo, grado, ciclo escolar y estado.',
             icon: 'warning',
             confirmButtonText: 'Aceptar'
         });
