@@ -104,10 +104,11 @@ $sheet->setCellValue('L3', 'Promoción');
 $sheet->setCellValue('M3', 'Estado');
 
 // Adición de validación de datos
-function validarLista($column, $errorTitle, $error, $promptTitle, $prompt, $datos, $spreadsheet){
+function validarLista($column, $errorTitle, $error, $promptTitle, $prompt, $datos, $spreadsheet, $sheet){
     // Agregar la validación de datos para la lista desplegable en la columna
     for ($row = 4; $row <= 50; $row++) {
         $spreadsheet->getActiveSheet()->getRowDimension($row)->setRowHeight(18);
+        $sheet->getStyle('A' . $row . ":M" . $row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
         $cell = $column . $row;
         $validation = $spreadsheet->getActiveSheet()->getCell($cell)->getDataValidation();
         
@@ -146,63 +147,63 @@ $prompTitle = "Seleccione un elemento";
 $prompt = "Por favor seleccione un elemento de la lista";
 
 if (contarCaracteresDatos($nivelesDescripcion) <= 255) {
-    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $nivelesDescripcion, $spreadsheet);
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $nivelesDescripcion, $spreadsheet, $sheet);
 } else{
     addError("E4", $sheet);
 }
 
 if (contarCaracteresDatos($gradosDescripcion) <= 255) {
     $column = "F";
-    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $gradosDescripcion, $spreadsheet);
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $gradosDescripcion, $spreadsheet, $sheet);
 } else{
     addError("F4", $sheet);
 }
 
 if (contarCaracteresDatos($ciclosDescripcion) <= 255) {
     $column = "G";
-    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $ciclosDescripcion, $spreadsheet);
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $ciclosDescripcion, $spreadsheet, $sheet);
 } else{
     addError("G4", $sheet);
 }
 
 if (contarCaracteresDatos($generosDescripcion) <= 255) {
     $column = "H";
-    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $generosDescripcion, $spreadsheet);
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $generosDescripcion, $spreadsheet, $sheet);
 } else{
     addError("H4", $sheet);
 }
 
 if (contarCaracteresDatos($municipiosDescripcion) <= 255) {
     $column = "I";
-    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $municipiosDescripcion, $spreadsheet);
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $municipiosDescripcion, $spreadsheet, $sheet);
 } else{
     addError("I4", $sheet);
 }
 
 if (contarCaracteresDatos($coloniasDescripcion) <= 255) {
     $column = "J";
-    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $coloniasDescripcion, $spreadsheet);
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $coloniasDescripcion, $spreadsheet, $sheet);
 } else{
     addError("J4", $sheet);
 }
 
 if (contarCaracteresDatos($mediosDescripcion) <= 255) {
     $column = "K";
-    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $mediosDescripcion, $spreadsheet);
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $mediosDescripcion, $spreadsheet, $sheet);
 } else{
     addError("K4", $sheet);
 }
 
 if (contarCaracteresDatos($promocionesDescripcion) <= 255) {
     $column = "L";
-    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $promocionesDescripcion, $spreadsheet);
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $promocionesDescripcion, $spreadsheet, $sheet);
 } else{
     addError("L4", $sheet);
 }
 
 if (contarCaracteresDatos($estadosDescripcion) <= 255) {
     $column = "M";
-    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $estadosDescripcion, $spreadsheet);
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $estadosDescripcion, $spreadsheet, $sheet);
 } else{
     addError("M4", $sheet);
 }
@@ -214,4 +215,5 @@ header('Content-Disposition: attachment;filename="Excel_De_Importacion.xlsx"');
 header('Cache-Control: max-age=0');
 
 $writer->save('php://output');
+
 exit();

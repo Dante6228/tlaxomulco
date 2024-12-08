@@ -49,6 +49,7 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     "registro" => "¡Alumno registrado correctamente!",
                     "actualizado" => "¡Alumno actualizado correctamente!",
                     "pdf"=> "¡PDF generado correctamente!",
+                    "excel"=> "¡Excel generado correctamente!",
                     "insercion"=> "¡Excel importado correctamente!",
                 ];
 
@@ -129,6 +130,7 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
 
             <button id="mostrar-alumnos-btn" class="btn" onclick="generarPDF()">Generar PDF</button>
+            <button id="mostrar-alumnos-btn" class="btn" onclick="generarExcel()">Generar Excel</button>
         </div>
     </main>
 
