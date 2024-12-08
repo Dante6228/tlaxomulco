@@ -6,30 +6,7 @@
 
 html{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: #f0f8ff;
-}
-
-header{
-    background-color: #333;
-    padding: 3px;
-    color: #fff;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.cabecera{
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    justify-content: center;
-    gap: 35px;
-}
-
-header img{
-    width: 100px;
-    display: inline;
+    background-color: #D9D9D9;
 }
 
 main{
@@ -37,61 +14,101 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 55vh;
+    height: 100vh;
 }
 
-table{
-    background-color: #FFF9F0;
-    box-shadow: 8px 8px 18px rgb(0, 0, 0, 0.25);
+.container{
+    background-color: #FFFFFF;
+    width: 23%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
-    border-radius: 12px;
-    width: 30%;
-    height: 60%;
-    border: 1px solid rgb(0, 0, 0, 0.3);
+    border-radius: 5px;
+    box-shadow: 3px 2px 12px rgb(0, 0, 0, 0.3);
 }
 
-table input[type="text"],
-table input[type="password"]{
-    padding: 6px;
-    border: 1px solid rgb(0, 0, 0, 0.2);
-    border-radius: 4px;
+img{
+    width: 80px;
+    height: auto;
+    border-radius: 12px 12px 0px 0px;
+}
+
+h1{
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+label{
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+input[type="text"], input[type="password"]{
     width: 100%;
-    outline: none;
-    transition: .3s;
+    padding: 6px;
+    margin: 8px 0px;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
 }
 
-table input[type="text"]:hover,
-table input[type="password"]:hover{
-    outline: 0.1px solid rgb(0, 0, 0, 0.2);
-    box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.3);
+input[type="text"], input[type="password"]:focus{
+    border: 1px solid #2C2C2C;
 }
 
-table td[colspan="2"]{
-    text-align: center;
+input[type="submit"]{
+    width: 100%;
     padding: 10px;
-    padding-bottom: 0px;
-}
-
-table input[type="submit"]{
-    width: 80%;
-    padding: 8px;
-    border-radius: 6px;
-    border: 1px solid rgb(0, 0, 0, 0.1);
-    background-color: #dffae8;
-    box-shadow: 3px 3px 10px rgb(0, 0, 0, 0.2);
-    transition: .5s;
-    outline: none;
-}
-
-table input[type="submit"]:hover{
-    background-color: #a9f8c3;
-    font-weight: bolder;
+    margin: 8px 0px;
+    border-radius: 7px;
+    background-color: #2C2C2C;
+    color: white;
     cursor: pointer;
-    box-shadow: 4px 5px 10px rgb(0, 0, 0, 0.4);
-    border: 0.2px solid rgb(7, 124, 52, 0.2);
-    padding: 12px;
-    outline: 1px solid rgb(0, 0, 0, 0.2);
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
 }
+
+input[type="submit"]:hover{
+    background-color: #4C4C4C;
+}
+
+a{
+    color: #2C2C2C;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+input::placeholder{
+    color: #cacaca;
+}
+
+.form-input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
 
 .error{
     background-color: #faa39d;
@@ -140,35 +157,5 @@ table input[type="submit"]:hover{
         transform: translateY(0px);
         opacity: 100%;
         display: flex;
-    }
-}
-
-/* Responsive design*/
-
-@media (max-width: 1208px) {
-    .cabecera {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    table {
-        width: 90%;
-        height: auto;
-        padding: 15px;
-    }
-
-    table input[type="text"], table input[type="password"] {
-        padding: 5px;
-        font-size: 14px;
-    }
-
-    table input[type="submit"] {
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    .error, .cierre {
-        font-size: medium;
-        padding: 10px;
     }
 }
