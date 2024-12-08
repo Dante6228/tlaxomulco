@@ -36,22 +36,21 @@
                 <img src="img/logo.png" alt="Logo del instituto Tlaxomulco">
                 <h1 class="inter-newFont">Iniciar sesión</h1>
                 <div class="form-input">
-                    <label for="usuario">User</label>
+                    <label for="usuario">Usuario</label>
                     <input type="text" name="usuario" id="usuario" placeholder="User" required>
                 </div>
                 <div class="form-input">
-                    <label for="contraseña">Password</label>
+                    <label for="contraseña">Contraseña</label>
                     <input type="password" name="contraseña" id="contraseña" placeholder="Password" required>
                 </div>
                 <div class="form-input">
-                    <a href="#">Forgot password?</a>
+                    <a href="#">¿Olvidaste la contraseña?</a>
                 </div>
                 <div class="form-input">
-                    <input type="submit" value="Log In">
+                    <input type="submit" value="Iniciar sesión">
                 </div>
             </form>
         </div>
-
         
     </main>
 </body>
