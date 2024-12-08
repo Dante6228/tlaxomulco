@@ -24,9 +24,18 @@
             if (isset($_GET["mensaje"]) && isset($mensajes[$_GET["mensaje"]])) {
                 $tipoClase = ($_GET["mensaje"] === "cierre") ? "cierre" : "error";
                 ?>
-                <div class="<?= $tipoClase ?>">
+                <div id="mensaje-temporal" class="<?= $tipoClase ?>">
                     <p><?= $mensajes[$_GET["mensaje"]] ?></p>
                 </div>
+                <script>
+                    setTimeout(() => {
+                        const mensaje = document.getElementById('mensaje-temporal');
+                        if (mensaje) {
+                            mensaje.classList.add('desaparecer');
+                            setTimeout(() => mensaje.remove(), 500);
+                        }
+                    }, 5000);
+                </script>
                 <?php
             }
         ?>
