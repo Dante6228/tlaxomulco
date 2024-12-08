@@ -481,7 +481,6 @@ INSERT INTO medio_enterado (descripcion) VALUES
 -- Inserciones de promociones
 INSERT INTO promocion (descripcion) VALUES
 ('Beca completa'),
-('2x1 en inscripción'),
 ('Matrícula gratuita'),
 ('Primera mensualidad sin costo'),
 ('Regalo de materiales'),
@@ -489,10 +488,8 @@ INSERT INTO promocion (descripcion) VALUES
 ('Promoción por recomendación'),
 ('Inscripción a mitad de precio'),
 ('Curso introductorio gratis'),
-('Certificación gratuita'),
-('Descuento para grupos'),
-('Descuento por membresía'),
-('Promoción de fin de año');
+('Promoción de fin de año'),
+('Promocion de debug');
 
 INSERT INTO estado (descripcion) VALUES
 ('Nuevo ingreso'),

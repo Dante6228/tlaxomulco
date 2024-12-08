@@ -14,85 +14,31 @@ use PhpOffice\PhpSpreadsheet\Style\Border;
 // CONSULTAS NECESARIAS A LA BASE DE DATOS
 // =================================================================
 
-// Conseguimos los niveles educativos
-$query = "SELECT descripcion FROM nivel_educativo";
+function obtenerDescripciones($pdo, $tabla) {
+    $query = "SELECT descripcion FROM $tabla";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return array_column($resultados, 'descripcion');
+}
 
-$stmt = $pdo->prepare($query);
-$stmt->execute();
+$nivelesDescripcion = obtenerDescripciones($pdo, 'nivel_educativo');
 
-$niveles = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$nivelesDescripcion = array_column($niveles, 'descripcion');
+$gradosDescripcion = obtenerDescripciones($pdo, 'grado');
 
-// Conseguimos los grados escolares
-$query = "SELECT descripcion FROM grado";
+$ciclosDescripcion = obtenerDescripciones($pdo, 'ciclo');
 
-$stmt = $pdo->prepare($query);
-$stmt->execute();
+$generosDescripcion = obtenerDescripciones($pdo, 'genero');
 
-$grados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$gradosDescripcion = array_column($grados, 'descripcion');
+$municipiosDescripcion = obtenerDescripciones($pdo, 'municipio');
 
-// Conseguimos los ciclos escolares
-$query = "SELECT descripcion FROM ciclo";
+$coloniasDescripcion = obtenerDescripciones($pdo, 'colonia');
 
-$stmt = $pdo->prepare($query);
-$stmt->execute();
+$mediosDescripcion = obtenerDescripciones($pdo, 'medio_enterado');
 
-$ciclos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$ciclosDescripcion = array_column($ciclos, 'descripcion');
+$promocionesDescripcion = obtenerDescripciones($pdo, 'promocion');
 
-// Conseguimos los géneros
-$query = "SELECT descripcion FROM genero";
-
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-
-$generos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$generosDescripcion = array_column($generos, 'descripcion');
-
-// Conseguimos los municipios
-$query = "SELECT descripcion FROM municipio";
-
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-
-$municipios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$municipiosDescripcion = array_column($municipios, 'descripcion');
-
-//Conseguimos las colonias
-$query = "SELECT * FROM colonia";
-
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-
-$colonias = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// Conseguimos los medios enterados
-$query = "SELECT descripcion FROM medio_enterado";
-
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-
-$medios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$mediosDescripcion = array_column($medios, 'descripcion');
-
-// Conseguimos las promociones
-$query = "SELECT descripcion FROM promocion";
-
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-
-$promociones = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$promocionesDescripcion = array_column($promociones, 'descripcion');
-
-// Conseguimos los estados
-$query = "SELECT descripcion FROM estado";
-
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-
-$estados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$estadosDescripcion = array_column($estados, 'descripcion');
+$estadosDescripcion = obtenerDescripciones($pdo, 'estado');
 
 // =================================================================
 // CREACIÓN DEL EXCEL
@@ -112,16 +58,11 @@ $sheet->setCellValue('A2', 'ALUMNOS');
 $sheet->getStyle('A2:M2')->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FDD868');
 $sheet->getStyle('A3:M3')->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FDE49B');
 
-for ($i=4; $i <= 100; $i += 2){
-    $sheet->getStyle('A' . $i . ':M' . $i)->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FCD5B4');
-    $sheet->getStyle('A' . $i . ':M' . $i)->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
-    $sheet->getStyle('A' . $i . ':M' . $i)->getBorders()->getAllBorders()->getColor()->setRGB('000000');
-}
-
-for ($i=5; $i <= 99; $i += 2){
-    $sheet->getStyle('A' . $i . ':M' . $i)->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FDE9D9');
-    $sheet->getStyle('A' . $i . ':M' . $i)->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
-    $sheet->getStyle('A' . $i . ':M' . $i)->getBorders()->getAllBorders()->getColor()->setRGB('000000');
+for ($i = 4; $i <= 100; $i++) {
+    $color = $i % 2 === 0 ? 'FCD5B4' : 'FDE9D9';
+    $sheet->getStyle("A$i:M$i")->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB($color);
+    $sheet->getStyle("A$i:M$i")->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
+    $sheet->getStyle("A$i:M$i")->getBorders()->getAllBorders()->getColor()->setRGB('000000');
 }
 
 // Aplicar negrita
@@ -185,44 +126,77 @@ function validarLista($column, $errorTitle, $error, $promptTitle, $prompt, $dato
     }
 }
 
+function addError($column, $sheet){
+    for($row = 4; $row <= 100; $row){
+        $cell = $column . $row;
+        $comment = $sheet->getComment($cell);
+        $comment->getText()->createTextRun('Demasiados datos en la base de datos, error de importación.');
+
+        $comment->setWidth('150pt');
+        $comment->setHeight('50pt');
+    }
+}
+
+function contarCaracteresDatos($datos) {
+    $datosCadena = implode(',', array_map('addslashes', $datos));
+    return strlen($datosCadena);
+}
+
 $column = "E";
 $errorTitle = "Dato inválido";
 $error = "El valor no es alguno dentro de la lista";
 $prompTitle = "Seleccione un elemento";
 $prompt = "Por favor seleccione un elemento de la lista";
 
-validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $nivelesDescripcion, $spreadsheet);
+if (contarCaracteresDatos($nivelesDescripcion) <= 255) {
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $nivelesDescripcion, $spreadsheet);
+}
 
-$column = "F";
-validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $gradosDescripcion, $spreadsheet);
+if (contarCaracteresDatos($gradosDescripcion) <= 255) {
+    $column = "F";
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $gradosDescripcion, $spreadsheet);
+}
 
-$column = "G";
-validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $ciclosDescripcion, $spreadsheet);
+if (contarCaracteresDatos($ciclosDescripcion) <= 255) {
+    $column = "G";
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $ciclosDescripcion, $spreadsheet);
+}
 
-$column = "H";
-validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $generosDescripcion, $spreadsheet);
+if (contarCaracteresDatos($generosDescripcion) <= 255) {
+    $column = "H";
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $generosDescripcion, $spreadsheet);
+}
 
-$column = "I";
-validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $municipiosDescripcion, $spreadsheet);
+if (contarCaracteresDatos($municipiosDescripcion) <= 255) {
+    $column = "I";
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $municipiosDescripcion, $spreadsheet);
+}
 
-// FALTA COLONIAS
+if (contarCaracteresDatos($coloniasDescripcion) <= 255) {
+    $column = "J";
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $coloniasDescripcion, $spreadsheet);
+}
 
-$column = "K";
-validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $mediosDescripcion, $spreadsheet);
+if (contarCaracteresDatos($mediosDescripcion) <= 255) {
+    $column = "K";
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $mediosDescripcion, $spreadsheet);
+}
 
-// FALTA PROMOCION
+if (contarCaracteresDatos($promocionesDescripcion) <= 255) {
+    $column = "L";
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $promocionesDescripcion, $spreadsheet);
+}
 
-$column = "M";
-validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $estadosDescripcion, $spreadsheet);
+if (contarCaracteresDatos($estadosDescripcion) <= 255) {
+    $column = "M";
+    validarLista($column, $errorTitle, $error, $prompTitle, $prompt, $estadosDescripcion, $spreadsheet);
+}
 
-// Guardar el archivo Excel
 $writer = new Xlsx($spreadsheet);
 
-// Forzar descarga del archivo Excel generado
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header('Content-Disposition: attachment;filename="Excel_De_Importacion.xlsx"');
 header('Cache-Control: max-age=0');
 
-// Guardar el archivo directamente en el flujo de salida para que el usuario lo descargue
 $writer->save('php://output');
 exit;
