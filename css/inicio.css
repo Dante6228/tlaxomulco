@@ -26,15 +26,17 @@
 main{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 30px;
+    width: 100%;
 }
 
 main h1{
     font-weight: 400;
     width: 100%;
     text-align: center;
-    animation: aparecer 1s ease-in-out;
+    animation: aparecer 1.5s ease-in-out;
 }
 
 .master{
@@ -42,6 +44,7 @@ main h1{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    
     gap: 20px;
     width: 100%;
     margin-top: 20px;
