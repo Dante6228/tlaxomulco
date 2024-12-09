@@ -8,7 +8,8 @@ CREATE TABLE usuario (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
     usuario VARCHAR(30) NOT NULL,
-    contraseña VARCHAR(255) NOT NULL
+    contraseña VARCHAR(255) NOT NULL,
+    imagen_perfil VARCHAR(255)
 );
 
 CREATE TABLE nivel_educativo (
@@ -96,8 +97,8 @@ CREATE TABLE alumno (
 -- INSERT DE USUARIO --
 -- ==============================================================
 
-INSERT INTO usuario (nombre, usuario, contraseña) VALUES
-('Admin', 'Admin', '$2y$10$NFX2D5z2RS6zHwaHTWD.nOCN2MtD5GeZrihqn0AdzK8oPH2ZS8ooy');
+INSERT INTO usuario (nombre, usuario, contraseña, imagen_perfil) VALUES
+('Admin', 'Admin', '$2y$10$NFX2D5z2RS6zHwaHTWD.nOCN2MtD5GeZrihqn0AdzK8oPH2ZS8ooy', 'img/perfiles/profile1.jpg');
 
 -- ==============================================================
 -- INSERT DE NIVELES ESCOLARES --

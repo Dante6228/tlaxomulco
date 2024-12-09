@@ -36,7 +36,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
         </nav>
         <div class="saludoContainer">
             <a href="usuario.php">
-                <img src="img/usuario.png" alt="Foto de usuario">
+                <img src="<?php echo $_SESSION['picture']; ?>" alt="Foto de usuario">
             </a>
             <div class="saludo">
                 <h2>Hola</h2>

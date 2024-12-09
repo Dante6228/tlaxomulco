@@ -40,6 +40,7 @@ function iniciar($usuario, $contrasena) {
                 $_SESSION['nombre'] = $row['nombre'];
                 $_SESSION["usuario"] = $row['usuario'];
                 $_SESSION["idUsuario"] = $row['id'];
+                $_SESSION["picture"] = $row['imagen_perfil'];
                 return 1;
             }
         }
