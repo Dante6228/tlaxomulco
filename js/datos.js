@@ -1,6 +1,6 @@
 async function filtrarDatos() {
     const datoSeleccionado = document.getElementById("dato").value;
-    const tbody = document.getElementById("dataRows");
+    const section = document.getElementById("filter-section");
 
     if (datoSeleccionado === "") {
         Swal.fire({
@@ -9,11 +9,12 @@ async function filtrarDatos() {
             icon: 'warning',
             confirmButtonText: 'Aceptar'
         });
+        exit();
     }
 
     limpiarSelect("dato");
     
-    tbody.innerHTML = "";
+    section.innerHTML = "";
 
     const fetchData = async (url, params) => {
         try {
@@ -43,42 +44,39 @@ async function filtrarDatos() {
     if (datoSeleccionado === "colonia") {
         datos = await fetchData("php/datos/obtener_colonias_datos.php", params);
         if (datos) {
-            cargarColonias(datos, tbody);
+            cargarColonias(datos, section);
         }
     } else {
         datos = await fetchData("php/datos/obtener_datos.php", params);
         if (datos) {
-            cargarDatos(datos, tbody);
+            cargarDatos(datos, section);
         }
     }
 }
 
-function cargarColonias(datos, tbody) {
-    tbody.innerHTML = '';
+function cargarColonias(datos, container) {
+    container.innerHTML = '';
 
-    const thead = tbody.closest('table').querySelector('thead');
-    thead.innerHTML = '';
+    datos.forEach((dato, index) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.style.animationDelay = `${index * 0.1}s`;
 
-    let headers = '<tr>';
-    headers += `
-    <th>Colonia</th>
-    <th>Municipio</th>
-    <th>Acciones</th>`;
-    headers += '</tr>';
-    thead.innerHTML = headers;
-
-    datos.forEach(dato => {
-        const row = document.createElement('tr');
-        row.classList.add('animar');
-        row.innerHTML = `
-            <td>${dato.colonia}</td>
-            <td>${dato.municipio}</td>
-            <td>
-                <button class="delete-btn" data-id="${dato.id}">Eliminar</button>
-                <button class="update-btn" data-id="${dato.id}">Actualizar</button>
-            </td>
+        card.innerHTML = `
+            <div class="icon">
+                <img src="img/info.png" alt="Icono de información">
+            </div>
+            <div class="content">
+                <h3>${dato.colonia}</h3>
+                <p>Municipio: ${dato.municipio}</p>
+                <div class="links">
+                    <button class="delete-btn" data-id="${dato.id}">Eliminar</button>
+                    <button class="update-btn" data-id="${dato.id}">Actualizar</button>
+                </div>
+            </div>
         `;
-        tbody.appendChild(row);
+
+        container.appendChild(card);
     });
 
     document.querySelectorAll('.delete-btn').forEach(button => {
@@ -90,30 +88,29 @@ function cargarColonias(datos, tbody) {
     });
 }
 
-function cargarDatos(datos, tbody) {
-    tbody.innerHTML = '';
+function cargarDatos(datos, container) {
+    container.innerHTML = '';
 
-    const thead = tbody.closest('table').querySelector('thead');
-    thead.innerHTML = '';
+    datos.forEach((dato, index) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.style.animationDelay = `${index * 0.1}s`;
 
-    let headers = '<tr>';
-    headers += `
-    <th>Dato</th>
-    <th>Acciones</th>`;
-    headers += '</tr>';
-    thead.innerHTML = headers;
-
-    datos.forEach(dato => {
-        const row = document.createElement('tr');
-        row.classList.add('animar');
-        row.innerHTML = `
-            <td>${dato.descripcion}</td>
-            <td>
-                <button class="delete-btn" data-id="${dato.id}">Eliminar</button>
-                <button class="update-btn" data-id="${dato.id}">Actualizar</button>
-            </td>
+        card.innerHTML = `
+            <div class="icon">
+                <img src="img/info.png" alt="Icono de información">
+            </div>
+            <div class="content">
+                <h3>${dato.descripcion}</h3>
+                <p></p>
+                <div class="links">
+                    <button class="delete-btn" data-id="${dato.id}">Eliminar</button>
+                    <button class="update-btn" data-id="${dato.id}">Actualizar</button>
+                </div>
+            </div>
         `;
-        tbody.appendChild(row);
+
+        container.appendChild(card);
     });
 
     document.querySelectorAll('.delete-btn').forEach(button => {
@@ -124,6 +121,7 @@ function cargarDatos(datos, tbody) {
         button.addEventListener('click', actualizarDato);
     });
 }
+
 
 function limpiarSelect(id) {
     const select = document.getElementById(id);

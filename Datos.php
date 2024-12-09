@@ -20,6 +20,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Datos</title>
 </head>
 <body>
@@ -74,14 +75,9 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     <?php endif; ?>
 
     <main>
-        <div class="container">
-            <div class="button-container">
-                <a href="registrar_dato.php">
-                    <button class="register-btn">Registrar nuevo dato</button>
-                </a>
-            </div>
-            <section class="filter-section">
-                <h2>Dato a mostrar</h2>
+        <section>
+            <h2>Consultar datos</h2>
+            <div class="search">
                 <select name="dato" id="dato">
                     <option value="">Selecciona un dato</option>
                     <option value="medio_enterado">Medio enterado</option>
@@ -92,22 +88,15 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                     <option value="estado">Estado de alumno</option>
                     <option value="genero">Género</option>
                 </select>
-                <button type="button" class="search-btn" onclick="filtrarDatos()">Buscar</button>
-            </section>
-    
-            <section class="data-section">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Dato</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dataRows">
-                        <!-- Aquí se mostrarán los datos filtrados -->
-                    </tbody>
-                </table>
-            </section>
+                <button type="button" class="search-btn" onclick="filtrarDatos()">
+                    <i class="fas fa-search"></i> Buscar
+                </button>
+            </div>
+        </section>
+        <a href="registrar_dato.php">Registar nuevo dato</a>
+        <div class="filter-section" id="filter-section">
+            <!-- Aquí se insertarán los datos filtrados -->
+        </div>
     </main>
 
     <script src="js/datos.js"></script>
