@@ -54,14 +54,82 @@ if (!$pdo) {
         </div>
     </header>
     <main>
-        <div class="links">
-            <a href="consulta/medio.php"> Consulta por medio enterado </a>
-            <a href="consulta/estado.php"> Consulta por estado </a>
-            <a href="consulta/colonia.php"> Consulta por colonia </a>
-            <a href="consulta/municipio.php"> Consulta por municipio </a>
-            <a href="consulta/promocion.php"> Consulta por promoción </a>
-            <a href="consulta/genero.php"> Consulta por género </a>
-        </div>
+        <section>
+            <div class="card">
+                <div class="icon">
+                    <img src="img/campaña.png" alt="Icono de información">
+                </div>
+                <div class="content">
+                    <h3>Consulta por medio enterado</h3>
+                    <p>Filtra los datos de los alumnos según cómo se enteraron del instituto.</p>
+                    <div class="links">
+                        <a href="consulta/medio.php">Ir allá</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <img src="img/person.png" alt="Icono de información">
+                </div>
+                <div class="content">
+                    <h3>Consulta por estado del alumno</h3>
+                    <p>Filtra los datos de los alumnos según el estado del mismo.</p>
+                    <div class="links">
+                        <a href="consulta/estado.php">Ir allá</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <img src="img/location.png" alt="Icono de información">
+                </div>
+                <div class="content">
+                    <h3>Consulta por colonia</h3>
+                    <p>Filtra los datos de los alumnos según la colonia en la que viven.</p>
+                    <div class="links">
+                        <a href="consulta/colonia.php">Ir allá</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="card">
+                <div class="icon">
+                    <img src="img/global.png" alt="Icono de información">
+                </div>
+                <div class="content">
+                    <h3>Consulta por municipio</h3>
+                    <p>Filtra los datos de los alumnos según el municipio en el que que viven.</p>
+                    <div class="links">
+                        <a href="consulta/municipio.php">Ir allá</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <img src="img/tag.png" alt="Icono de información">
+                </div>
+                <div class="content">
+                    <h3>Consulta por promoción</h3>
+                    <p>Filtra los datos de los alumnos según la promoción que tienen.</p>
+                    <div class="links">
+                        <a href="consulta/promocion.php">Ir allá</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <img src="img/genero.png" alt="Icono de información">
+                </div>
+                <div class="content">
+                    <h3>Consulta por género</h3>
+                    <p>Filtra los datos de los alumnos según el género al que pertenecen.</p>
+                    <div class="links">
+                        <a href="consulta/genero.php">Ir allá</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 </body>
 </html>
