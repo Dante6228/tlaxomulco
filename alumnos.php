@@ -104,7 +104,7 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="button-container">
                 <a href="php/excel/generar.php">
-                    <button class="register-btn">Generar excel</button>
+                    <button class="register-btn">Generar excel de importación</button>
                 </a>
             </div>
             
