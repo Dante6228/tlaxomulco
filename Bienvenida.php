@@ -67,7 +67,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                     </div>
                     <div class="content">
                         <h3>Datos</h3>
-                        <p>Crear un nuevo dato o actualizar algún dato ya existente.</p>
+                        <p>Crear un dato nuevo, eliminar o actualizar algún dato ya existente.</p>
                         <div class="link">
                             <a href="Datos.php">ir allá</a>
                         </div>
