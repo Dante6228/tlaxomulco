@@ -46,7 +46,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     </header>
 
     <main>
-        <h1>¡Bienvenido <?php echo $_SESSION["nombre"]?>!</h1>
+        <h1 id="bienvenida">¡Bienvenido <?php echo $_SESSION["nombre"]?>!</h1>
         <div class="master">
             <div class="cards">
                 <div class="card">
@@ -85,6 +85,18 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="icon">
+                        <img src="img/grafica.png" alt="Icono de alumnos">
+                    </div>
+                    <div class="content">
+                        <h3>Gráficas</h3>
+                        <p>Crear alumno, importar excel, generar excel de importación, generar pdf/excel a partir de consulta de alumno o actualizar datos de alumno.</p>
+                        <div class="link">
+                            <a href="alumnos.php">ir allá</a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="graphics">
                 <section>
@@ -110,5 +122,22 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
             </div>
         </div>
     </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const saludo = document.getElementById('bienvenida');
+
+    const tiempoParaOcultar = 5000;
+    const tiempoParaEliminar = tiempoParaOcultar + 600;
+
+    setTimeout(() => {
+        saludo.classList.add('hide');
+    }, tiempoParaOcultar);
+
+    setTimeout(() => {
+        saludo.remove();
+    }, tiempoParaEliminar);
+});
+    </script>
 </body>
 </html>
