@@ -89,6 +89,11 @@ function cargarColonias(datos, container) {
 }
 
 function cargarDatos(datos, container) {
+    const datoSeleccionado = document.getElementById("dato").value;
+
+    const selectElement = document.getElementById("dato");
+    const textoSeleccionado = selectElement.selectedOptions[0].textContent;
+
     container.innerHTML = '';
 
     datos.forEach((dato, index) => {
@@ -105,8 +110,25 @@ function cargarDatos(datos, container) {
                 <p></p>
                 <div class="links">
                     <button class="delete-btn" data-id="${dato.id}">Eliminar</button>
-                    <button class="update-btn" data-id="${dato.id}">Actualizar</button>
+                    <button class="update-btn" data-id="${dato.id}" data-descripcion="${dato.descripcion}">Actualizar</button>
                 </div>
+            </div>
+            <div class="update-form hidden">
+                <form action="../php/datos/acciones/actualizar_dato.php" method="POST">
+                <input type="hidden" name="tipo" value="${datoSeleccionado}" required>
+                <input type="hidden" name="id" value="${dato.id}" required>
+                <div class="form-group">
+                    <div class="content2">
+                        <h3>${dato.descripcion}</h3>
+                        <button class="action" type="button">X</button>
+                    </div>
+                        <div>
+                            <label for="descripcion">${textoSeleccionado}</label>
+                            <input type="text" id="descripcion" name="descripcion" placeholder="Nuevo dato" required>
+                            </div>
+                        <button type="submit">Actualizar</button>
+                    </div>
+                </form>
             </div>
         `;
 
@@ -118,7 +140,26 @@ function cargarDatos(datos, container) {
     });
 
     document.querySelectorAll('.update-btn').forEach(button => {
-        button.addEventListener('click', actualizarDato);
+        button.addEventListener('click', (event) => {
+            const card = event.target.closest('.card');
+            const content = card.querySelector('.content');
+            const updateForm = card.querySelector('.update-form');
+            content.classList.add('hidden');
+            updateForm.classList.remove('hidden');
+            card.classList.add('modal');
+        });
+    });
+
+    document.querySelectorAll('.action').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            const card = event.target.closest('.card');
+            const content = card.querySelector('.content');
+            const updateForm = card.querySelector('.update-form');
+            content.classList.remove('hidden');
+            updateForm.classList.add('hidden');
+            card.classList.remove('modal');
+        });
     });
 }
 

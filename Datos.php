@@ -93,7 +93,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                 </button>
             </div>
         </section>
-        <a href="registrar_dato.php">Registar nuevo dato</a>
+        <a href="registrar_dato.php">Registrar nuevo dato</a>
         <div class="filter-section" id="filter-section">
             <!-- Aquí se insertarán los datos filtrados -->
         </div>

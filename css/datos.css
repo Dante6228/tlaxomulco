@@ -210,3 +210,79 @@ main a{
     margin-top: 30px;
     animation: aparecer .8s ease-in-out;
 }
+
+.card.modal {
+    transition: all 1s ease-in-out;
+    z-index: 1000;
+    background-color: rgb(237, 237, 237);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: fit-content;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card.modal input{
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #dfdfdf;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+    outline: none;
+}
+
+.card.modal label{
+    font-size: 14px;
+    font-weight: 300;
+    background-color: rgb(227, 227, 227);
+    padding: 8px;
+}
+
+.card.modal button{
+    padding: 8px 15px;
+    border-radius: 6px;
+    background-color: #2C2C2C;
+    color: white;
+    font-size: 13px;
+    font-weight: 300;
+    transition: all 0.3s ease;
+}
+
+.card.modal button:hover{
+    background-color: #3a3a3a;
+    cursor: pointer;
+    transform: scale(1.04);
+}
+
+.action{
+    width: 55px;
+    text-align: center;
+    align-self: flex-end;
+    background-color: rgb(255, 152, 152) !important;
+    transform: scale(0.80) !important;
+}
+
+.action:hover{
+    background-color: rgb(255, 100, 100) !important;
+    transform: scale(0.90) !important;
+}
+
+.hidden {
+    display: none;
+}
+
+.update-form {
+    padding: 6px 14px;
+}
+
+.content2{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
