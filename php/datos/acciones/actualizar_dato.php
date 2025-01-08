@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST'){
 $tipo = $_POST['tipo'];
 
 switch ($tipo) {
-    case '1': // Tipo 1: Actualizar la tabla de 'ciclo'
+    case 'ciclo': // Tipo 1: Actualizar la tabla de 'ciclo'
         if (isset($_POST['descripcion'])) {
             $id = $_POST["id"];
             $descripcion = $_POST["descripcion"];
@@ -36,7 +36,7 @@ switch ($tipo) {
             }
         }
         break;
-    case '2': // Tipo 2: Actualizar la tabla de 'colonia'
+    case 'colonia': // Tipo 2: Actualizar la tabla de 'colonia'
         if (isset($_POST['descripcion'])) {
             $id = $_POST["id"];
             $descripcion = $_POST["descripcion"];
@@ -59,7 +59,7 @@ switch ($tipo) {
         }
         break;
 
-    case '3': // Tipo 3: Actualizar la tabla de 'estado'
+    case 'estado': // Tipo 3: Actualizar la tabla de 'estado'
         if (isset($_POST['descripcion'])) {
             $id = $_POST["id"];
             $descripcion = $_POST["descripcion"];
@@ -80,7 +80,7 @@ switch ($tipo) {
         }
         break;
     
-        case '4': // Tipo 4: Actualizar la tabla de 'genero'
+        case 'genero': // Tipo 4: Actualizar la tabla de 'genero'
             if (isset($_POST['descripcion'])) {
                 $id = $_POST["id"];
                 $descripcion = $_POST["descripcion"];
@@ -102,7 +102,7 @@ switch ($tipo) {
             break;
         
 
-    case '5': // Tipo 5: Actualizar en la tabla de 'promocion'
+    case 'medio_enterado': // Tipo 5: Actualizar en la tabla de 'medio'
         if (isset($_POST['descripcion'])) {
             $id = $_POST["id"];
             $descripcion = $_POST["descripcion"];
@@ -123,7 +123,7 @@ switch ($tipo) {
         } //////////////////////////////////////////////////////////////////
             break;
 
-    case '6': // Tipo 6: Actualizar en la tabla de 'medio'
+    case 'municipio': // Tipo 6: Actualizar en la tabla de 'municipio'
         if (isset($_POST['descripcion'])) {
             $id = $_POST["id"];
             $descripcion = $_POST["descripcion"];
@@ -144,7 +144,7 @@ switch ($tipo) {
         }
         break;
 
-    case '7': // Tipo 7: Actualizar en la tabla de 'promocion'
+    case 'promocion': // Tipo 7: Actualizar en la tabla de 'promocion'
         if (isset($_POST['descripcion'])) {
             $id = $_POST["id"];
             $descripcion = $_POST["descripcion"];

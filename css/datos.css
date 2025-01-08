@@ -239,7 +239,7 @@ main a{
 .card.modal label{
     font-size: 14px;
     font-weight: 300;
-    background-color: rgb(227, 227, 227);
+    background-color: rgb(218, 218, 218);
     padding: 8px;
 }
 
@@ -285,4 +285,9 @@ main a{
     justify-content: space-between;
     text-align: center;
     align-items: center;
+}
+
+.form-group2{
+    display: flex;
+    justify-content: space-between;
 }
