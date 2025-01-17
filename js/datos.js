@@ -1,5 +1,6 @@
 async function filtrarDatos() {
-    const datoSeleccionado = document.getElementById("dato").value;
+    const selectElement = document.getElementById("dato");
+    const datoSeleccionado = selectElement.value;
     const section = document.getElementById("filter-section");
 
     if (datoSeleccionado === "") {
@@ -9,7 +10,7 @@ async function filtrarDatos() {
             icon: 'warning',
             confirmButtonText: 'Aceptar'
         });
-        exit();
+        return;
     }
 
     limpiarSelect("dato");
@@ -43,8 +44,9 @@ async function filtrarDatos() {
 
     if (datoSeleccionado === "colonia") {
         datos = await fetchData("php/datos/obtener_colonias_datos.php", params);
-        if (datos) {
-            cargarColonias(datos, section);
+        const municipios = await fetchData("php/datos/obtener_municipios.php", params);
+        if (datos && municipios) {
+            cargarColonias(datos, section, municipios);
         }
     } else {
         datos = await fetchData("php/datos/obtener_datos.php", params);
@@ -54,7 +56,7 @@ async function filtrarDatos() {
     }
 }
 
-function cargarColonias(datos, container) {
+function cargarColonias(datos, container, municipios) {
     const datoSeleccionado = document.getElementById("dato").value;
 
     const selectElement = document.getElementById("dato");
@@ -66,6 +68,12 @@ function cargarColonias(datos, container) {
         const card = document.createElement('div');
         card.classList.add('card');
         card.style.animationDelay = `${index * 0.1}s`;
+
+        const municipioOptions = municipios.map(municipio => `
+            <option value="${municipio.id}" ${municipio.id === dato.municipio_id ? 'selected' : ''}>
+                ${municipio.descripcion}
+            </option>
+        `).join('');
 
         card.innerHTML = `
             <div class="icon">
@@ -81,20 +89,22 @@ function cargarColonias(datos, container) {
             </div>
             <div class="update-form hidden">
                 <form action="php/datos/acciones/actualizar_dato.php" method="POST">
-                <input type="hidden" name="tipo" value="${datoSeleccionado}" required>
-                <input type="hidden" name="id" value="${dato.id}" required>
-                <div class="form-group">
-                    <div class="content2">
-                        <h3>${dato.colonia}</h3>
-                        <button class="action" type="button">X</button>
-                    </div>
-                        <div class="form-group2">
-                            <label for="descripcion">${textoSeleccionado}</label>
-                            <input type="text" id="descripcion" name="descripcion" placeholder="Nuevo dato" required>
+                    <input type="hidden" name="tipo" value="${datoSeleccionado}" required>
+                    <input type="hidden" name="id" value="${dato.id}" required>
+                    <div class="form-group">
+                        <div class="content2">
+                            <h3>${dato.colonia}</h3>
+                            <button class="action" type="button">X</button>
                         </div>
                         <div class="form-group2">
-                            <label for="descripcion">Municipio</label>
-                            <input type="text" id="municipio" name="municipio" placeholder="Nuevo dato" required>
+                            <label for="descripcion">${textoSeleccionado}</label>
+                            <input type="text" id="descripcion" name="descripcion" value="${dato.colonia}" required>
+                        </div>
+                        <div class="form-group2">
+                            <label for="municipio">Municipio</label>
+                            <select id="municipio-${dato.id}" name="municipio" required>
+                                ${municipioOptions}
+                            </select>
                         </div>
                         <button type="submit">Actualizar</button>
                     </div>
@@ -207,7 +217,6 @@ function cargarDatos(datos, container) {
         });
     });
 }
-
 
 function limpiarSelect(id) {
     const select = document.getElementById(id);
