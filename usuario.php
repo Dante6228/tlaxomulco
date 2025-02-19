@@ -96,6 +96,7 @@ if ($stmt->rowCount() > 0) {
         <div class="master">
             <div class="seccion1">
                 <img src="<?php echo $_SESSION['picture']; ?>" alt="Foto de perfil">
+                <a href="asd">Actualizar imagen de perfil</a>
             </div>
             <div class="seccion2">
                 <table>

@@ -25,16 +25,33 @@ main{
 .master{
     display: flex;
     align-items: center;
-    background-color: #FFF9F0;
-    box-shadow: 8px 8px 18px rgb(0, 0, 0, 0.25);
+    border: 1px solid #dfdfdf;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.45);
     padding: 20px;
     padding-right: 50px;
     border-radius: 12px;
     width: auto;
     height: 60%;
-    border: 1px solid rgb(0, 0, 0, 0.3);
     margin-top: 50px;
     animation: inicio 1s normal;
+}
+
+.seccion1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.seccion1 a{
+    text-decoration: none;
+    color: black;
+    background-color: aquamarine;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.2);
+    font-size: 13px;
 }
 
 table td:last-child{
@@ -54,7 +71,6 @@ table tr td a{
 table tr td a:hover{
     background-color: #54f88a;
     cursor: pointer;
-    font-weight: bolder;
     box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.5);
     transform: scale(1.05);
 }
@@ -119,7 +135,7 @@ table tr td a:hover{
 }
 
 .modal-content h2{
-    background-color: rgb(255, 245, 233);
+    background-color: rgb(222, 222, 222);
     box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.3);
     width: 32%;
     text-align: center;
