@@ -95,8 +95,8 @@ if ($stmt->rowCount() > 0) {
 
         <div class="master">
             <div class="seccion1">
-                <img src="<?php echo $_SESSION['picture']; ?>" alt="Foto de perfil">
-                <a href="asd">Actualizar imagen de perfil</a>
+                <img src="<?php echo isset($_SESSION['picture']) && !empty($_SESSION['picture']) ? $_SESSION['picture'] : 'img/default.webp'; ?>" alt="Foto de usuario">
+                <a href="fotoDePerfil.php">Actualizar foto de perfil</a>
             </div>
             <div class="seccion2">
                 <table>

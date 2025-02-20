@@ -58,7 +58,7 @@ table td:last-child{
     text-align: center;
 }
 
-table tr td a{
+main a{
     background-color: aquamarine;
     padding: 10px;
     text-decoration: none;
@@ -68,7 +68,7 @@ table tr td a{
     box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.2);
 }
 
-table tr td a:hover{
+main a:hover{
     background-color: #54f88a;
     cursor: pointer;
     box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.5);
