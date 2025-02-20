@@ -47,51 +47,54 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     </header>
 
     <main>
-        <div class="container1">
-            <form onchange="actualizarFormulario()">
-                <ul>
-                    <li>
-                        <input type="radio" id="estado" name="opcion" value="estado">
-                        <label for="estado" class="radio-label"></label>
-                        <span>Estado del alumno</span>
-                    </li>
-                    <li>
-                        <input type="radio" id="colonia" name="opcion" value="colonia">
-                        <label for="colonia" class="radio-label"></label>
-                        <span>Colonia</span>
-                    </li>
-                    <li>
-                        <input type="radio" id="municipio" name="opcion" value="municipio">
-                        <label for="municipio" class="radio-label"></label>
-                        <span>Municipio</span>
-                    </li>
-                    <li>
-                        <input type="radio" id="ciclo" name="opcion" value="ciclo">
-                        <label for="ciclo" class="radio-label"></label>
-                        <span>Ciclo escolar</span>
-                    </li>
-                    <li>
-                        <input type="radio" id="promocion" name="opcion" value="promocion">
-                        <label for="promocion" class="radio-label"></label>
-                        <span>Promoción</span>
-                    </li>
-                    <li>
-                        <input type="radio" id="medio" name="opcion" value="medio">
-                        <label for="medio" class="radio-label"></label>
-                        <span>Medio de enterado</span>
-                    </li>
-                    <li>
-                        <input type="radio" id="genero" name="opcion" value="genero">
-                        <label for="genero" class="radio-label"></label>
-                        <span>Género</span>
-                    </li>
-                </ul>
-            </form>
-        </div>
-
-        <div class="container2">
-            <strong>Selecciona alguna opción</strong>
-        </div>
+        <section>
+            <div class="container1">
+                <form onchange="actualizarFormulario()">
+                    <ul>
+                        <li>
+                            <input type="radio" id="estado" name="opcion" value="estado">
+                            <label for="estado" class="radio-label"></label>
+                            <span>Estado del alumno</span>
+                        </li>
+                        <li>
+                            <input type="radio" id="colonia" name="opcion" value="colonia">
+                            <label for="colonia" class="radio-label"></label>
+                            <span>Colonia</span>
+                        </li>
+                        <li>
+                            <input type="radio" id="municipio" name="opcion" value="municipio">
+                            <label for="municipio" class="radio-label"></label>
+                            <span>Municipio</span>
+                        </li>
+                        <li>
+                            <input type="radio" id="ciclo" name="opcion" value="ciclo">
+                            <label for="ciclo" class="radio-label"></label>
+                            <span>Ciclo escolar</span>
+                        </li>
+                        <li>
+                            <input type="radio" id="promocion" name="opcion" value="promocion">
+                            <label for="promocion" class="radio-label"></label>
+                            <span>Promoción</span>
+                        </li>
+                        <li>
+                            <input type="radio" id="medio" name="opcion" value="medio">
+                            <label for="medio" class="radio-label"></label>
+                            <span>Medio de enterado</span>
+                        </li>
+                        <li>
+                            <input type="radio" id="genero" name="opcion" value="genero">
+                            <label for="genero" class="radio-label"></label>
+                            <span>Género</span>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+    
+            <div class="container2">
+                <strong>Selecciona alguna opción</strong>
+            </div>
+        </section>
+        <a href="Datos.php" id="regresar">Regresar</a>
     </main>
 
     <script src="js/registrar_dato.js"></script>
