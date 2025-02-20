@@ -15,9 +15,9 @@ function actualizarFormulario() {
                             <div class="form-group">
                                 <label for="estado">Estado nuevo</label>
                                 <input type="text" name="estado" placeholder="Estado a crear">
-                                <div>
-                                    <p id="error-estado" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
-                                </div>
+                            </div>
+                            <div>
+                                <p id="error-estado" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
                             </div>
                             <button type="submit">Registrar estado</button>
                         </form>
@@ -32,9 +32,9 @@ function actualizarFormulario() {
                             <div class="form-group">
                                 <label for="colonia">Colonia nueva</label>
                                 <input type="text" name="colonia" placeholder="Colonia a crear">
-                                <div>
-                                    <p id="error-colonia" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
-                                </div>
+                            </div>
+                            <div>
+                                <p id="error-colonia" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
                             </div>
                             <div class="form-group">
                                 <label for="municipio2">Municipio al que pertenece</label>
@@ -58,9 +58,9 @@ function actualizarFormulario() {
                             <div class="form-group">
                                 <label for="municipio3">Municipio nuevo</label>
                                 <input type="text" name="municipio3" placeholder="Municipio a crear">
-                                <div>
-                                    <p id="error-municipio3" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
-                                </div>
+                            </div>
+                            <div>
+                                <p id="error-municipio3" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
                             </div>
                             <button type="submit">Registrar Municipio</button>
                         </form>
@@ -76,9 +76,9 @@ function actualizarFormulario() {
                             <div class="form-group">
                                 <label for="ciclo">Ciclo escolar nuevo</label>
                                 <input type="text" name="ciclo" placeholder="2022-2023">
-                                <div>
-                                    <p id="error-ciclo" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
-                                </div>
+                            </div>
+                            <div>
+                                <p id="error-ciclo" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
                             </div>
                             <button type="submit">Registrar ciclo escolar</button>
                         </form>
@@ -94,9 +94,9 @@ function actualizarFormulario() {
                             <div class="form-group">
                                 <label for="promocion">Promoción nueva</label>
                                 <input type="text" name="promocion" placeholder="Promoción a crear">
-                                <div>
-                                    <p id="error-promocion" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
-                                </div>
+                            </div>
+                            <div>
+                                <p id="error-promocion" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
                             </div>
                             <button type="submit">Registrar promoción</button>
                         </form>
@@ -112,9 +112,9 @@ function actualizarFormulario() {
                             <div class="form-group">
                                 <label for="medio">Medio de enterado nuevo</label>
                                 <input type="text" name="medio" placeholder="Medio a crear">
-                                <div>
-                                    <p id="error-medio" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
-                                </div>
+                            </div>
+                            <div>
+                                <p id="error-medio" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
                             </div>
                             <button type="submit">Registrar medio</button>
                         </form>
@@ -130,9 +130,9 @@ function actualizarFormulario() {
                                 <div class="form-group">
                                     <label for="genero">Género nuevo</label>
                                     <input type="text" name="genero" placeholder="Género a crear">
-                                    <div>
-                                        <p id="error-genero" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
-                                    </div>
+                                </div>
+                                <div>
+                                    <p id="error-genero" class="mensaje-error" style="color: red; font-size: 12px; display: none;">
                                 </div>
                                 <button type="submit">Registrar género</button>
                             </form>

@@ -19,10 +19,11 @@ main {
     margin-top: 100px;
 }
 
-ul {
+main ul {
     list-style-type: none;
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    gap: 1px;
     justify-content: center;
 }
 
@@ -30,34 +31,25 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(255, 183, 183);
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #eeeeee;
+    padding: 12px;
+    gap: 1px;
+    border-radius: 10px;
+    box-shadow: 12px 8px 15px rgba(0, 0, 0, 0.35);
     transition: transform 1s ease;
 }
 
-.container1 form:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
-}
-
 .container2 {
-    background-color: #f1e6d7;
+    background-color: #eeeeee;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 35px;
-    width: 50%;
-    border-radius: 14px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    width: 40%;
+    border-radius: 10px;
+    box-shadow: 12px 8px 15px rgba(0, 0, 0, 0.35);
     transition: transform 0.3s ease;
-}
-
-.container2:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 form {
@@ -65,6 +57,10 @@ form {
     flex-direction: column;
     align-items: center;
     animation: inicio 0.7s backwards;
+}
+
+h2{
+    font-weight: bolder;
 }
 
 .form-group {
@@ -78,14 +74,14 @@ form {
     width: 100%;
     text-align: center;
     margin-right: 10px;
-    background-color: #ffd966;
+    background-color: #d6d6d6;
     padding: 8px;
     border-radius: 8px;
     transition: background-color 0.3s ease;
 }
 
 .form-group label:hover {
-    background-color: #f3c23d;
+    background-color: #bdbdbd;
 }
 
 .form-group select {
@@ -116,22 +112,20 @@ form input[type="text"]:hover {
 }
 
 form button[type="submit"] {
-    width: 50%;
-    margin: auto;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    background-color: #dffae8;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 200;
+    padding: 8px 15px;
+    border-radius: 6px;
+    background-color: #2C2C2C;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
 }
 
 form button[type="submit"]:hover {
-    font-weight: bolder;
-    box-shadow: 4px 5px 12px rgba(0, 0, 0, 0.3);
-    background-color: #c8f2d6;
     transform: scale(1.05);
+    cursor: pointer;
 }
 
 /* Ocultar el radio button original */
@@ -140,15 +134,15 @@ input[type="radio"] {
 }
 
 .radio-label:hover {
-    background-color: #f3c23d;
+    background-color: #c0c0c0;
     border: 1px solid black;
 }
 
 main li {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin: 10px;
+    gap: 12px;
+    margin: 8px;
 }
 
 .radio-label {
@@ -156,9 +150,9 @@ main li {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
-    background-color: #ffd966;
+    width: 25px;
+    height: 25px;
+    background-color: #d6d6d6;
     border-radius: 50%;
     transition: background-color 0.4s ease;
     cursor: pointer;
@@ -166,14 +160,13 @@ main li {
 }
 
 input[type="radio"]:checked + .radio-label {
-    background-color: #6ccf94;
+    background-color: #8a8a8a;
 }
 
 .mensaje-error {
     font-size: 13px !important;
     width: 230px;
-    margin-top: 6px;
-    margin-left: 10px;
+    margin-bottom: 12px;
     background-color: rgb(255, 114, 114);
     padding: 4px;
     border-radius: 8px;
