@@ -40,28 +40,30 @@ main form{
 }
 
 main form label{
-    padding: 8px;
-    background-color: #474747;
-    color: #FFFFFF;
+    padding: 10px;
+    background-color: #a7ffc4;
     border-radius: 6px;
+    transition: all 0.3s normal;
 }
 
-#nuevaImagen{
-    color: #FFFFFF;
-    background-color: #777777;
-    padding: 8px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.25);
-    transition: all 0.5s normal;
-}
-
-#nuevaImagen:hover{
-    background-color: #646464;
-    box-shadow: 2px 2px 8px rgb(0, 0, 0, 0.5);
+main form label:hover{
     cursor: pointer;
+    background-color: #6fff9f;
+    scale: 1.05;
 }
 
-input{
+.form-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+input[type='file']{
+    display: none;
+}
+
+input[type='submit']{
     background-color: aquamarine;
     padding: 10px;
     text-decoration: none;

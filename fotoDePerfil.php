@@ -45,11 +45,11 @@ session_start();
         <a href="usuario.php">Regresar</a>
         <form action="php/usuario/actualizarImagen.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="nuevaImagen">Nueva Imagen de Perfil</label>
+                <label for="nuevaImagen">Seleccionar nueva Imagen de Perfil</label>
                 <input type="file" id="nuevaImagen" name="nuevaImagen" accept="image/*" required>
             </div>
             <div class="form-group">
-                <input type="submit" value="Actualizar Imagen">
+                <input type="submit" value="Subir Imagen">
             </div>
         </form>
     </main>
