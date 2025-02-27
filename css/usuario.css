@@ -44,14 +44,15 @@ main{
 }
 
 .seccion1 a{
+    font-size: 15px;
     text-decoration: none;
-    color: black;
-    background-color: aquamarine;
-    padding: 8px;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.2);
-    font-size: 13px;
+    color: #FFFFFF;
+    font-weight: 200;
+    padding: 8px 15px;
+    border-radius: 6px;
+    background-color: #2C2C2C;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
 }
 
 table td:last-child{
@@ -59,20 +60,21 @@ table td:last-child{
 }
 
 main a{
-    background-color: aquamarine;
-    padding: 10px;
+    font-size: 15px;
     text-decoration: none;
-    color: black;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    font-weight: 200;
+    padding: 8px 15px;
+    border-radius: 6px;
+    background-color: #2C2C2C;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
 }
 
 main a:hover{
-    background-color: #54f88a;
-    cursor: pointer;
-    box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.5);
     transform: scale(1.05);
+    cursor: pointer;
+    background-color: #494949;
 }
 
 .master h2{
@@ -210,7 +212,7 @@ main a:hover{
     color: black;
     box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.2);
     outline: none;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     animation: inicio 1s normal;
 }
 

@@ -14,7 +14,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/inicio.css">
-    <link rel="stylesheet" href="css/header.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -32,6 +32,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                 <li><a href="alumnos.php">Alumnos</a></li>
                 <li><a href="Datos.php">Datos</a></li>
                 <li><a href="consulta.php">Consulta específica</a></li>
+                <li><button id="toggleTheme">🌙</button></li>
             </ul>
         </nav>
         <div class="saludoContainer">
@@ -124,20 +125,45 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     </main>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-    const saludo = document.getElementById('bienvenida');
+        document.addEventListener('DOMContentLoaded', () => {
+        const saludo = document.getElementById('bienvenida');
 
-    const tiempoParaOcultar = 5000;
-    const tiempoParaEliminar = tiempoParaOcultar + 600;
+        const tiempoParaOcultar = 5000;
+        const tiempoParaEliminar = tiempoParaOcultar + 600;
 
-    setTimeout(() => {
-        saludo.classList.add('hide');
-    }, tiempoParaOcultar);
+        setTimeout(() => {
+            saludo.classList.add('hide');
+        }, tiempoParaOcultar);
 
-    setTimeout(() => {
-        saludo.remove();
-    }, tiempoParaEliminar);
-});
+        setTimeout(() => {
+                saludo.remove();
+            }, tiempoParaEliminar);
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleThemeBtn = document.getElementById("toggleTheme");
+            const body = document.documentElement;
+
+            // Cargar el tema guardado
+            if (localStorage.getItem("theme") === "dark") {
+                body.classList.add("dark-mode");
+                toggleThemeBtn.textContent = "☀️";
+            }
+
+            // Cambiar entre temas
+            toggleThemeBtn.addEventListener("click", () => {
+                if (body.classList.contains("dark-mode")) {
+                    body.classList.remove("dark-mode");
+                    localStorage.setItem("theme", "light");
+                    toggleThemeBtn.textContent = "🌙";
+                } else {
+                    body.classList.add("dark-mode");
+                    localStorage.setItem("theme", "dark");
+                    toggleThemeBtn.textContent = "☀️";
+                }
+            });
+        });
+
     </script>
 </body>
 </html>

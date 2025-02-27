@@ -1,3 +1,133 @@
+/* HEADER */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*::selection {
+    background: #D9D9D9;
+}
+
+html {
+    font-family: "Inter", sans-serif;
+    background-color: #FFFFFF;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F5F5F5;
+    padding: 20px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    max-width: 150px;
+}
+
+header img {
+    width: 60px;
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+header img:hover {
+    transform: scale(1.05);
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    transition: color 0.2s ease;
+}
+
+li a:hover {
+    color: #acacac;
+}
+
+.saludoContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.saludoContainer img {
+    width: 60px;
+    height: auto;
+    border-radius: 50%;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+header p {
+    font-size: 15px;
+    color: #a7a7a7;
+}
+
+a {
+    transition: transform 0.3s ease;
+}
+
+a:hover {
+    transform: scale(1.05);
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #b0b0b0; /* Color de la barra de desplazamiento */
+    transition: background-color 1s ease; /* Transición suave en color */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #505050;
+}
+
+/* INICIO */
+
 @keyframes inicio {
     0% {
         transform: translateY(-30px);
@@ -33,15 +163,6 @@
         opacity: 0;
         z-index: -99;
     }
-}
-
-main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    width: 100%;
 }
 
 main h1{
@@ -165,4 +286,69 @@ section{
 
 #bienvenida.hide {
     animation: desaparecer 1s ease-in-out;
+}
+
+
+
+
+
+#toggleTheme {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: transform 0.2s ease-in-out;
+}
+
+#toggleTheme:hover {
+    transform: scale(1.1);
+}
+
+/* Modo Claro */
+:root {
+    --bg-color: #FFFFFF;
+    --header-bg: #F5F5F5;
+    --text-color: #333;
+    --card-bg: #FFFFFF;
+    --card-border: #dfdfdf;
+    --link-bg: #2C2C2C;
+    --scrollbar-bg: #b0b0b0;
+}
+
+/* Modo Oscuro */
+.dark-mode {
+    --bg-color: #181818;
+    --header-bg: #282828;
+    --text-color: #EAEAEA;
+    --card-bg: #222;
+    --card-border: #444;
+    --link-bg: #444;
+    --scrollbar-bg: #666;
+}
+
+/* Aplicar las variables */
+html {
+    background-color: var(--bg-color);
+}
+
+header {
+    background-color: var(--header-bg);
+}
+
+h1, h2, p, a {
+    color: var(--text-color);
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+}
+
+.card a {
+    background-color: var(--link-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-bg);
 }
