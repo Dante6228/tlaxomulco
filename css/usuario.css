@@ -318,6 +318,7 @@ label{
 
 #cerrar{
     margin-top: 30px;
+    font-weight: 400;
     text-align: center;
     background-color: #97ffb9;
     padding: 12px;
@@ -436,7 +437,7 @@ label{
     --icon-theme: #ececec;
     --selection: #a0a0a0;
     --bg-h2: #6d6d6d;
-    --input-text: #d3d3d3;
+    --input-text: #c7c7c7;
 }
 
 #toggleTheme{
