@@ -23,7 +23,6 @@ if (!$pdo) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/consulta.css">
-    <link rel="stylesheet" href="css/header.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -41,6 +40,7 @@ if (!$pdo) {
                 <li><a href="alumnos.php">Alumnos</a></li>
                 <li><a href="Datos.php">Datos</a></li>
                 <li><a href="consulta.php">Consulta específica</a></li>
+                <li><button id="toggleTheme">🌙</button></li>
             </ul>
         </nav>
         <div class="saludoContainer">
@@ -73,7 +73,7 @@ if (!$pdo) {
                 </div>
                 <div class="content">
                     <h3>Consulta por estado del alumno</h3>
-                    <p>Filtra los datos de los alumnos según el estado del mismo.</p>
+                    <p>Filtra los datos de los alumnos según el estado en el que se encuentre el mismo.</p>
                     <div class="links">
                         <a href="consulta/estado.php">Ir allá</a>
                     </div>
@@ -131,5 +131,6 @@ if (!$pdo) {
             </div>
         </section>
     </main>
+    <script src="js/theme.js"></script>
 </body>
 </html>
