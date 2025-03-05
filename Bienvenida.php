@@ -14,7 +14,6 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/inicio.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -140,30 +139,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
             }, tiempoParaEliminar);
         });
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const toggleThemeBtn = document.getElementById("toggleTheme");
-            const body = document.documentElement;
-
-            // Cargar el tema guardado
-            if (localStorage.getItem("theme") === "dark") {
-                body.classList.add("dark-mode");
-                toggleThemeBtn.textContent = "☀️";
-            }
-
-            // Cambiar entre temas
-            toggleThemeBtn.addEventListener("click", () => {
-                if (body.classList.contains("dark-mode")) {
-                    body.classList.remove("dark-mode");
-                    localStorage.setItem("theme", "light");
-                    toggleThemeBtn.textContent = "🌙";
-                } else {
-                    body.classList.add("dark-mode");
-                    localStorage.setItem("theme", "dark");
-                    toggleThemeBtn.textContent = "☀️";
-                }
-            });
-        });
-
     </script>
+    <script src="js/theme.js"></script>
 </body>
 </html>

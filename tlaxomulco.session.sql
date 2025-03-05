@@ -98,7 +98,7 @@ CREATE TABLE alumno (
 -- ==============================================================
 
 INSERT INTO usuario (nombre, usuario, contraseña, imagen_perfil) VALUES
-('Admin', 'Admin', '$2y$10$NFX2D5z2RS6zHwaHTWD.nOCN2MtD5GeZrihqn0AdzK8oPH2ZS8ooy', 'img/perfiles/profile1.jpg');
+('Admin', 'Admin', '$2y$10$gM2yLXLQXK8czB.qxx5Fs.1NFgXf6DFiG7YYXTIF26SNv5EuSatlq', 'img/perfiles/profile1.jpg');
 
 -- ==============================================================
 -- INSERT DE NIVELES ESCOLARES --

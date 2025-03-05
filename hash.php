@@ -1,5 +1,5 @@
 <?php
 
-$hashedPassword = password_hash('Pss978?!24', PASSWORD_BCRYPT);
+$hashedPassword = password_hash('Pss978Aa?!', PASSWORD_BCRYPT);
 echo $hashedPassword;
 

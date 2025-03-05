@@ -12,14 +12,14 @@
 
 html {
     font-family: "Inter", sans-serif;
-    background-color: #FFFFFF;
+    background-color: var(--bg-color);
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #F5F5F5;
+    background-color: var(--header-bg);
     padding: 20px 40px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 }
@@ -33,7 +33,7 @@ header {
 header h1 {
     font-size: 24px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-color);
     max-width: 150px;
 }
 
@@ -60,7 +60,8 @@ ul {
 
 li a {
     text-decoration: none;
-    color: #333;
+    color: FFFFFF;
+    color: var(--text-color);
     font-size: 18px;
     transition: color 0.2s ease;
 }
@@ -84,7 +85,7 @@ li a:hover {
 h2 {
     font-size: 18px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-color);
 }
 
 header p {
@@ -94,19 +95,11 @@ header p {
 
 a {
     transition: transform 0.3s ease;
+    color: var(--link-a);
 }
 
 a:hover {
     transform: scale(1.05);
-}
-
-main {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -118,7 +111,7 @@ main {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #b0b0b0; /* Color de la barra de desplazamiento */
+    background-color: var(--scrollbar-bg); /* Color de la barra de desplazamiento */
     transition: background-color 1s ease; /* Transición suave en color */
 }
 
@@ -126,7 +119,147 @@ main {
     background-color: #505050;
 }
 
-/* INICIO */
+/* PRINCIPAL */
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+main h1{
+    font-weight: 400;
+    width: 100%;
+    text-align: center;
+    animation: aparecer 1.5s ease-in-out;
+}
+
+.master{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    gap: 20px;
+    padding: 25px;
+    animation: inicio 0.7s ease-out;
+}
+
+.card{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid var(--card-border);
+    background-color: var(--card-bg);
+    padding: 30px 20px 20px 20px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card img{
+    width: 35px;
+    margin-right: 10px;
+    filter: invert(1) brightness(0);
+}
+
+.card h3{
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.card p{
+    font-weight: 300;
+    font-size: 14px;
+    text-align: left;
+    padding: 10px 0px;
+}
+
+.card a{
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--link-a);
+    font-weight: 400;
+    padding: 8px 15px;
+    border-radius: 6px;
+    background-color: var(--link-bg);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    margin-left: auto;
+}
+
+.card .icon{
+    filter: var(--icon-filter);
+}
+
+.link{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: var(--link-a);
+}
+
+.graphics{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    animation: inicio 0.7s ease-out;
+}
+
+section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.graphic{
+    text-align: center;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 40px 40px 40px;
+    background-color: var(--card-bg);
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.graphic h3{
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.graphic img{
+    margin: auto;
+    width: 400px;
+}
+
+#bienvenida.hide {
+    animation: desaparecer 1s ease-in-out;
+}
+
+/* ANIMACIONES */
 
 @keyframes inicio {
     0% {
@@ -165,146 +298,6 @@ main {
     }
 }
 
-main h1{
-    font-weight: 400;
-    width: 100%;
-    text-align: center;
-    animation: aparecer 1.5s ease-in-out;
-}
-
-.master{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-}
-
-.cards{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
-    gap: 20px;
-    padding: 25px;
-    animation: inicio 0.7s ease-out;
-}
-
-.card{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 10px;
-    border: 1px solid #dfdfdf;
-    padding: 30px 20px 20px 20px;
-    border-radius: 6px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-
-.card img{
-    width: 35px;
-    margin-right: 10px;
-    filter: invert(1) brightness(0);
-}
-
-.card h3{
-    font-weight: 600;
-    font-size: 22px;
-}
-
-.card p{
-    font-weight: 300;
-    font-size: 14px;
-    text-align: left;
-    padding: 10px 0px;
-}
-
-.card a{
-    font-size: 12px;
-    text-decoration: none;
-    color: #FFFFFF;
-    font-weight: 200;
-    padding: 8px 15px;
-    border-radius: 6px;
-    background-color: #2C2C2C;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-    transition: all 0.2s ease;
-    margin-left: auto;
-}
-
-.link{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.graphics{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    animation: inicio 0.7s ease-out;
-}
-
-section{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-}
-
-.graphic{
-    text-align: center;
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 1px solid #dfdfdf;
-    padding: 20px 40px 40px 40px;
-    border-radius: 6px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-
-.graphic h3{
-    font-weight: 400;
-    font-size: 22px;
-}
-
-.graphic img{
-    margin: auto;
-    width: 400px;
-}
-
-#bienvenida.hide {
-    animation: desaparecer 1s ease-in-out;
-}
-
-
-
-
-
-#toggleTheme {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--text-color);
-    transition: transform 0.2s ease-in-out;
-}
-
-#toggleTheme:hover {
-    transform: scale(1.1);
-}
-
 /* Modo Claro */
 :root {
     --bg-color: #FFFFFF;
@@ -314,41 +307,29 @@ section{
     --card-border: #dfdfdf;
     --link-bg: #2C2C2C;
     --scrollbar-bg: #b0b0b0;
+    --link-a: #fff;
+    --icon-filter: invert(0) brightness(0);
 }
 
 /* Modo Oscuro */
 .dark-mode {
-    --bg-color: #181818;
-    --header-bg: #282828;
-    --text-color: #EAEAEA;
-    --card-bg: #222;
-    --card-border: #444;
-    --link-bg: #444;
+    --bg-color: #121212;
+    --header-bg: #1E1E1E;
+    --text-color: #E0E0E0;
+    --text-secondary-color: #B0B0B0;
+    --card-bg: #1E1E1E;
+    --card-border: #292929;
+    --link-bg: #fff;
     --scrollbar-bg: #666;
+    --link-a: #333;
+    --icon-filter: invert(1) brightness(1);
 }
 
-/* Aplicar las variables */
-html {
-    background-color: var(--bg-color);
-}
-
-header {
-    background-color: var(--header-bg);
-}
-
-h1, h2, p, a {
+h1, h2, h3{
     color: var(--text-color);
 }
 
-.card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--card-border);
+p{
+    color: var(--text-secondary-color);
 }
 
-.card a {
-    background-color: var(--link-bg);
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-bg);
-}
