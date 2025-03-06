@@ -54,7 +54,6 @@ if ($stmt->rowCount() > 0) {
                     <li><a href="alumnos.php">Alumnos</a></li>
                     <li><a href="Datos.php">Datos</a></li>
                     <li><a href="consulta.php">Consulta específica</a></li>
-                    <li><button id="toggleTheme">🌙</button></li>
                 </ul>
             </nav>
             <div class="saludoContainer">
@@ -99,35 +98,24 @@ if ($stmt->rowCount() > 0) {
                 <a href="fotoDePerfil.php">Actualizar foto de perfil</a>
             </div>
             <div class="seccion2">
-                <table>
-                    <thead>
-                        <th colspan="2">
-                            <h2>Datos de usuario</h2>
-                            <hr>
-                        </th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <p>Nombre:</p>
-                            </td>
-                            <td> <?php echo $_SESSION['nombre'];?> </td>
-                        </tr>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>Usuario:</p>
-                        </td>
-                        <td> <?php echo $_SESSION['usuario'];?> </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <br>
-                            <a href="#">Cambiar datos</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <h1>Cuenta de usuario</h1>
+                <hr class="linea">
+                <div class="group">
+                    <p>Nombre: </p>
+                    <p><?php echo $_SESSION['nombre'];?></p>
+                </div>
+                <div class="group">
+                    <p>Usuario: </p>
+                    <p><?php echo $_SESSION['usuario'];?></p>
+                </div>
+                <div class="group">
+                    <a href="#">Cambiar datos de usuario</a>
+                </div>
+                <div class="toggle-container">
+                    <span id="themeLabel">Cambiar a modo oscuro</span>
+                    <input type="checkbox" id="toggleTheme">
+                    <label for="toggleTheme" class="toggle-switch"></label>
+                </div>
             </div>
         </div>
         

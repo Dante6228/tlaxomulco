@@ -180,8 +180,22 @@ main{
     transition: all 0.2s ease;
 }
 
-table td:last-child{
-    text-align: center;
+.linea{
+    width: 100%;
+}
+
+.seccion2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.group{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
 }
 
 main a{
@@ -203,22 +217,6 @@ main a:hover{
 }
 
 /* MODAL */
-
-.master h2{
-    padding: 6px;
-    border-radius: 10px;
-}
-
-.master table td:nth-child(1),
-.master table td:nth-child(3){
-    padding: 5px;
-    font-weight: bolder;
-}
-
-.master table td:nth-child(2),
-.master table td:nth-child(4){
-    padding: 5px;
-}
 
 .modal {
     display: none;
@@ -440,13 +438,64 @@ label{
     --input-text: #c7c7c7;
 }
 
-#toggleTheme{
-    border: none;
-    border-radius: 50%;
-    background-color: var(--icon-theme);
-    width: 35px;
+/* Contenedor del interruptor */
+.toggle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    cursor: pointer;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-#toggleTheme:hover{
-    cursor: pointer;
+#themeLabel {
+    font-size: 16px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+/* Cambia el color del texto en modo oscuro */
+.dark-mode #themeLabel {
+    color: #fff;
+}
+
+
+/* Ocultar el checkbox nativo */
+.toggle-container input {
+    display: none;
+}
+
+/* Estilos del switch */
+.toggle-switch {
+    width: 50px;
+    height: 25px;
+    background: #ccc;
+    border-radius: 25px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+/* El círculo dentro del switch */
+.toggle-switch::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+}
+
+/* Cuando está activado (modo oscuro) */
+input:checked + .toggle-switch {
+    background: #333;
+}
+
+input:checked + .toggle-switch::before {
+    left: 27px;
 }

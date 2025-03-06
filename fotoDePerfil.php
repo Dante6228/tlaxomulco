@@ -27,7 +27,6 @@ session_start();
                 <li><a href="alumnos.php">Alumnos</a></li>
                 <li><a href="Datos.php">Datos</a></li>
                 <li><a href="consulta.php">Consulta específica</a></li>
-                <li><button id="toggleTheme">🌙</button></li>
             </ul>
         </nav>
         <div class="saludoContainer">
