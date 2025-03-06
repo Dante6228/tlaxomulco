@@ -346,7 +346,7 @@ tbody tr:nth-child(even) {
 }
 
 .update-btn{
-    background-color: #70ff70;
+    background-color: #aeffae;
     color: black;
     font-weight: 600;
     border: none;
@@ -357,7 +357,7 @@ tbody tr:nth-child(even) {
 }
 
 .update-btn:hover{
-    background-color: #4dff4d;
+    background-color: #6bff6b;
     scale: 1.05;
 }
 
@@ -409,15 +409,4 @@ tbody tr:nth-child(even) {
     --bg-h2: #6d6d6d;
     --input-text: #c7c7c7;
     --label: #222222;
-}
-
-#toggleTheme{
-    border: none;
-    border-radius: 50%;
-    background-color: var(--icon-theme);
-    width: 35px;
-}
-
-#toggleTheme:hover{
-    cursor: pointer;
 }

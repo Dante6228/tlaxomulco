@@ -31,7 +31,6 @@ function generarOpciones($tabla, $pdo) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/registrarAlumno.css">
-    <link rel="stylesheet" href="css/header.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -39,7 +38,7 @@ function generarOpciones($tabla, $pdo) {
 </head>
 <body>
 
-    <header>
+<header>
         <div class="logo">
             <img src="img/logo.png" alt="Logo del instituto Tlaxomulco">
             <h1>Instituto Tlaxomulco</h1>
@@ -54,7 +53,7 @@ function generarOpciones($tabla, $pdo) {
         </nav>
         <div class="saludoContainer">
             <a href="usuario.php">
-                <img src="img/usuario.png" alt="Foto de usuario">
+                <img src="<?php echo $_SESSION['picture']; ?>" alt="Foto de usuario">
             </a>
             <div class="saludo">
                 <h2>Hola</h2>
@@ -69,6 +68,9 @@ function generarOpciones($tabla, $pdo) {
             <div id="matricula-error"></div>
             <div id="matricula-error2"></div>
             <div id="error-general"></div>
+            <div class="form-group">
+                <a href="alumnos.php" id="regresar">Regresar</a>
+            </div>
             <div class="form-group">
                 <label for="nombre">Nombre completo</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre(s)" required>
@@ -166,6 +168,7 @@ function generarOpciones($tabla, $pdo) {
     </div>
 
     <script src="js/registrarAlumno.js"></script>
+    <script src="js/theme.js"></script>
 
 </body>
 </html>

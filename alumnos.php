@@ -37,7 +37,7 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Alumnos</title>
 </head>
 <body>
-<header>
+    <header>
         <div class="logo">
             <img src="img/logo.png" alt="Logo del instituto Tlaxomulco">
             <h1>Instituto Tlaxomulco</h1>
