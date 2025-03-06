@@ -93,8 +93,15 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="button-container">
                 <a href="Registrar_alumno.php" class="linksNav">Registrar nuevo alumno</a>
-                <a href="excel.php" class="linksNav">Importar archivo excel</a>
-                <a href="php/excel/generar.php" class="linksNav">Generar excel de importación</a>
+                <a href="excel.php" class="linksNav">
+                    <img src="img/Subida.png" alt="Icono de subida">Importar archivo excel
+                </a>
+                <a href="php/excel/generar.php" class="linksNav">
+                    <img src="img/descarga.png" alt="Icono de descarga">Generar excel de importación
+                </a>
+                <button class="info-btn" onclick="mostrarInfo()">
+                    ¿Para qué sirve cada botón?
+                </button>
             </div>
             
             <div class="options-container">
@@ -126,11 +133,13 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
             <div class="second-button-container">
-                <button id="mostrar-alumnos-btn" class="secondBtn" onclick="mostrarAlumnos()">Mostrar Alumnos</button>
-                <button id="mostrar-alumnos-btn" class="secondBtn" onclick="generarPDF()">
+                <button id="mostrar-alumnos-btn" class="secondBtn" onclick="mostrarAlumnos()" title="Buscar alumnos con los filtros seleccionados">
+                    <img src="img/search.png" alt="Icono de búsqueda"> Mostrar Alumnos
+                </button>
+                <button id="mostrar-alumnos-btn" class="secondBtn" onclick="generarPDF()" title="Descargar la lista de alumnos en PDF">
                     <img src="img/pdfico.png" alt="Icono de pdf">Generar PDF
                 </button>
-                <button id="mostrar-alumnos-btn" class="secondBtn" onclick="generarExcel()">
+                <button id="mostrar-alumnos-btn" class="secondBtn" onclick="generarExcel()" title="Descargar la lista de alumnos en Excel">
                     <img src="img/excelico.png" alt="Icono de Excel"> Generar Excel
                 </button>
             </div>
@@ -160,5 +169,6 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <script src="js/alumnos.js"></script>
     <script src="js/theme.js"></script>
+
 </body>
 </html>

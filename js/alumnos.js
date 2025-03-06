@@ -73,7 +73,7 @@ async function mostrarAlumnos() {
     } else {
         Swal.fire({
             title: 'Faltan datos',
-            text: 'Por favor, selecciona un nivel educativo, grado, ciclo escolar y colonia.',
+            text: 'Por favor, selecciona un nivel educativo, grado y ciclo escolar.',
             icon: 'warning',
             confirmButtonText: 'Aceptar'
         });
@@ -288,4 +288,28 @@ async function generarExcel() {
     } catch (error) {
         console.error('Error:', error);
     }
+}
+
+function mostrarInfo() {
+    Swal.fire({
+        title: "Información",
+        html: `
+            <p style="font-size: 16px; line-height: 1.6;">En esta sección de la aplicación web se cuentan con distintas funciones:</p><br>
+            <ul style="text-align: left; font-size: 15px; line-height: 1.6;">
+                <li><strong style="color: #3085d6;">📌 Registrar nuevo alumno:</strong> Permite registrar un nuevo alumno en la base de datos llenando un formulario.</li>
+                <li><strong style="color: #3085d6;">📥 Importar archivo Excel:</strong> Permite importar un archivo Excel con los datos de los alumnos que se llenó previamente <strong>(Se recomienda usar el Excel generado por el botón 'Generar Excel de importación')</strong>.</li>
+                <li><strong style="color: #3085d6;">📤 Generar Excel de importación:</strong> Descarga un archivo Excel con el formato necesario para importar alumnos, donde solo tendrá que colocar los datos necesarios y posteriormente importar el Excel.</li>
+                <li><strong style="color: #3085d6;">🔍 Mostrar Alumnos:</strong> Muestra los alumnos que coinciden con los filtros seleccionados.</li>
+                <li><strong style="color: #3085d6;">📄 Generar PDF:</strong> Descarga un archivo PDF con la lista de alumnos filtrados.</li>
+                <li><strong style="color: #3085d6;">📊 Generar Excel:</strong> Descarga un archivo Excel con la lista de alumnos filtrados.</li>
+            </ul>
+        `,
+        icon: "info",
+        confirmButtonText: "Entendido",
+        confirmButtonColor: "#3085d6",
+        background: "#f4f7fb",
+        width: "70%",
+        padding: "20px",
+        showConfirmButton: true
+    });
 }
