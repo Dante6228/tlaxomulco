@@ -42,17 +42,28 @@ session_start();
     </header>
     
     <main>
-        <a href="usuario.php">Regresar</a>
         <form action="php/usuario/actualizarImagen.php" method="POST" enctype="multipart/form-data">
+            <h3>Nueva foto de perfil</h3>
             <div class="form-group">
                 <label for="nuevaImagen">Seleccionar nueva Imagen de Perfil</label>
                 <input type="file" id="nuevaImagen" name="nuevaImagen" accept="image/*" required>
             </div>
+            <p id="filePreview"></p>
             <div class="form-group">
                 <input type="submit" value="Subir Imagen">
             </div>
         </form>
+        <a href="usuario.php">Regresar</a>
     </main>
+
     <script src="js/theme.js"></script>
+    <script>
+        document.getElementById('nuevaImagen').addEventListener('change', function(event) {
+            const fileInput = event.target;
+            const filePreview = document.getElementById('filePreview');
+            const fileName = fileInput.files[0] ? fileInput.files[0].name : 'No se ha seleccionado ningún archivo';
+            filePreview.textContent = `Archivo seleccionado: ${fileName}`;
+        });
+    </script>
 </body>
 </html>

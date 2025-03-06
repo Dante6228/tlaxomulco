@@ -448,7 +448,7 @@ main a{
 
 /* Modo Oscuro */
 .dark-mode {
-    --bg-color: #272727;
+    --bg-color: #313131;
     --header-bg: #1E1E1E;
     --text-color: #E0E0E0;
     --text-secondary-color: #B0B0B0;

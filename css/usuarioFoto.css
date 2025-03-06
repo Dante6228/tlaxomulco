@@ -141,7 +141,7 @@ main a{
     background-color: #2C2C2C;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease;
-    margin-bottom: 20px;
+    margin-top: 30px;
 }
 
 main form{
@@ -150,20 +150,29 @@ main form{
     justify-content: center;
     align-items: center;
     justify-items: center;
-    gap: 25px;
+    gap: 20px;
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 main form label{
-    padding: 10px;
-    background-color: #a7ffc4;
-    border-radius: 6px;
-    transition: all 0.3s normal;
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #76b8ff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: auto;
+    transition: background-color 0.5s ease;
 }
 
 main form label:hover{
     cursor: pointer;
-    background-color: #6fff9f;
-    scale: 1.05;
+    background-color: #0056b3;
 }
 
 .form-group{
@@ -173,12 +182,19 @@ main form label:hover{
     gap: 12px;
 }
 
+h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+}
+
 input[type='file']{
     display: none;
 }
 
 input[type='submit']{
-    background-color: aquamarine;
+    background-color: #87ff8d;
     padding: 10px;
     text-decoration: none;
     color: black;
@@ -190,10 +206,18 @@ input[type='submit']{
 }
 
 input[type='submit']:hover{
-    background-color: #54f88a;
     cursor: pointer;
-    box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.5);
     transform: scale(1.05);
+}
+
+#filePreview{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* ANIMACIONES */
@@ -228,7 +252,7 @@ input[type='submit']:hover{
 
 /* Modo Oscuro */
 .dark-mode {
-    --bg-color: #272727;
+    --bg-color: #313131;
     --header-bg: #1E1E1E;
     --text-color: #E0E0E0;
     --text-secondary-color: #B0B0B0;

@@ -120,30 +120,3 @@ form button[type="submit"]:hover{
         opacity: 100%;
     }
 }
-
-/* Responsive design*/
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-    }
-
-    .form-group {
-        flex-direction: column;
-    }
-
-    .group-1 {
-        flex-direction: column;
-    }
-
-    .form-group label {
-        width: 100%;
-    }
-
-    .form-group input, .form-group select {
-        width: 100%;
-    }
-
-    form button[type="submit"] {
-        width: 100%;
-    }
-}
