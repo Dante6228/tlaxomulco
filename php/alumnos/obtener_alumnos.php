@@ -30,7 +30,7 @@ if (isset($_POST['nivelEducativoId'], $_POST['gradoId'], $_POST['cicloId'])) {
         me.descripcion AS medio_enterado,
         p.descripcion AS promocion,
         e.descripcion AS estado_alumno,
-        ngc.id AS nivel_grado_ciclo_id  -- Agregado aquí
+        ngc.id AS nivel_grado_ciclo_id
     FROM alumno a
     JOIN nivel_grado_ciclo ngc ON a.nivel_grado_ciclo_id = ngc.id
     LEFT JOIN municipio mu ON a.municipio = mu.id
@@ -41,7 +41,8 @@ if (isset($_POST['nivelEducativoId'], $_POST['gradoId'], $_POST['cicloId'])) {
     LEFT JOIN estado e ON a.estado = e.id
     WHERE ngc.nivel_educativo_id = ?
     AND ngc.grado_id = ?
-    AND ngc.ciclo_id = ?";
+    AND ngc.ciclo_id = ?
+    ORDER BY a.nombre ASC";
 
     $stmt = $pdo->prepare($query);
     $stmt->execute([$nivelEducativoId, $gradoId, $cicloId]);

@@ -286,7 +286,7 @@ th, td {
 }
 
 th {
-    background-color: #445f7a;
+    background-color: #577fa8;
     color: white;
 }
 
@@ -303,7 +303,7 @@ td:last-child:hover {
 }
 
 tr{
-    background-color: #dddddd;
+    background-color: #eeeeee;
 }
 
 tbody tr {
@@ -330,7 +330,7 @@ tbody tr:nth-child(even) {
 }
 
 .delete-btn{
-    background-color: #ff0000;
+    background-color: #ff6c6c;
     color: white;
     border: none;
     font-weight: 600;
