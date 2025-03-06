@@ -96,52 +96,71 @@ function generarOpciones($tabla, $pdo, $valorSeleccionado = null) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/registrarAlumno.css">
-    <link rel="stylesheet" href="css/header.css">
     <title>Actualizar alumno</title>
 </head>
 <body>
     <header>
-        <h1>Actualizar alumno <?php echo htmlspecialchars($alumno['nombre']); ?></h1>
-        <?php
-            switch ($_GET['from']){
-                case '0':
-                    echo "<a href='alumnos.php' class='botonInicio'>Regresar</a>";
-                    break;
-                case '1':
-                    echo "<a href='consulta/medio.php' class='botonInicio'>Regresar</a>";
-                    break;
-                case '2':
-                    echo "<a href='consulta/estado.php' class='botonInicio'>Regresar</a>";
-                    break;
-                case '3' :
-                    echo "<a href='consulta/colonia.php' class='botonInicio'>Regresar</a>";
-                    break;
-                case '4':
-                    echo "<a href='consulta/municipio.php' class='botonInicio'>Regresar</a>";
-                    break;
-                case '5':
-                    echo "<a href='consulta/promocion.php' class='botonInicio'>Regresar</a>";
-                    break;
-                case '6':
-                    echo "<a href='consulta/genero.php' class='botonInicio'>Regresar</a>";
-                    break;
-                default:
-                    echo "Error inesperado";
-                    break;
-            }
-        ?>
-        <a href="usuario.php">
-            <img src="img/usuario.png" alt="Cuenta de usuario">
-        </a>
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo del instituto Tlaxomulco">
+            <h1>Instituto Tlaxomulco</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Bienvenida.php">Inicio</a></li>
+                <li><a href="alumnos.php">Alumnos</a></li>
+                <li><a href="Datos.php">Datos</a></li>
+                <li><a href="consulta.php">Consulta específica</a></li>
+            </ul>
+        </nav>
+        <div class="saludoContainer">
+            <a href="usuario.php">
+                <img src="<?php echo $_SESSION['picture']; ?>" alt="Foto de usuario">
+            </a>
+            <div class="saludo">
+                <h2>Hola</h2>
+                <p><?php echo $_SESSION["nombre"]?></p>
+            </div>
+        </div>
     </header>
-
+    
     <div class="container">
+        <h3>Actualizar alumno <?php echo htmlspecialchars($alumno['nombre']); ?></h3>
         <form action="php/alumnos/actualizarAlumno.php" method="POST">
             <div id="nombre-error"></div>
             <div id="matricula-error"></div>
             <div id="matricula-error2"></div>
             <div id="error-general"></div>
             <input id="matriculaExistente" type="hidden" name="matriculaExistente" value="<?php echo htmlspecialchars($alumno['matricula']) ?>" required>
+            <div class="form-group">
+                <?php
+                    switch ($_GET['from']){
+                        case '0':
+                            echo "<a href='alumnos.php' id='regresar'>Regresar</a>";
+                            break;
+                        case '1':
+                            echo "<a href='consulta/medio.php' id='regresar'>Regresar</a>";
+                            break;
+                        case '2':
+                            echo "<a href='consulta/estado.php' id='regresar'>Regresar</a>";
+                            break;
+                        case '3' :
+                            echo "<a href='consulta/colonia.php' id='regresar'>Regresar</a>";
+                            break;
+                        case '4':
+                            echo "<a href='consulta/municipio.php' id='regresar'>Regresar</a>";
+                            break;
+                        case '5':
+                            echo "<a href='consulta/promocion.php' id='regresar'>Regresar</a>";
+                            break;
+                        case '6':
+                            echo "<a href='consulta/genero.php' id='regresar'>Regresar</a>";
+                            break;
+                        default:
+                            echo "Error inesperado";
+                            break;
+                    }
+                ?>
+            </div>
             <div class="form-group">
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($alumno['id']); ?>" required>
                 <label for="nombre">Nombre completo</label>
@@ -258,5 +277,6 @@ function generarOpciones($tabla, $pdo, $valorSeleccionado = null) {
     </div>
 
     <script src="js/actualizarAlumno.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html>
