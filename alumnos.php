@@ -30,15 +30,14 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/alumnos.css">
-    <link rel="stylesheet" href="css/header.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Alumnos</title>
 </head>
 <body>
-    <header>
+<header>
         <div class="logo">
             <img src="img/logo.png" alt="Logo del instituto Tlaxomulco">
             <h1>Instituto Tlaxomulco</h1>
@@ -49,6 +48,7 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <li><a href="alumnos.php">Alumnos</a></li>
                 <li><a href="Datos.php">Datos</a></li>
                 <li><a href="consulta.php">Consulta específica</a></li>
+                <li><button id="toggleTheme">🌙</button></li>
             </ul>
         </nav>
         <div class="saludoContainer">
@@ -93,19 +93,9 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php endif; ?>
 
             <div class="button-container">
-                <a href="Registrar_alumno.php">
-                    <button class="register-btn">Registrar nuevo alumno</button>
-                </a>
-            </div>
-            <div class="button-container">
-                <a href="excel.php">
-                    <button class="register-btn">Importar archivo excel</button>
-                </a>
-            </div>
-            <div class="button-container">
-                <a href="php/excel/generar.php">
-                    <button class="register-btn">Generar excel de importación</button>
-                </a>
+                <a href="Registrar_alumno.php" class="linksNav">Registrar nuevo alumno</a>
+                <a href="excel.php" class="linksNav">Importar archivo excel</a>
+                <a href="php/excel/generar.php" class="linksNav">Generar excel de importación</a>
             </div>
             
             <div class="options-container">
@@ -136,7 +126,15 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
-            <button id="mostrar-alumnos-btn" onclick="mostrarAlumnos()">Mostrar Alumnos</button>
+            <div class="second-button-container">
+                <button id="mostrar-alumnos-btn" class="secondBtn" onclick="mostrarAlumnos()">Mostrar Alumnos</button>
+                <button id="mostrar-alumnos-btn" class="secondBtn" onclick="generarPDF()">
+                    <img src="img/pdfico.png" alt="Icono de pdf">Generar PDF
+                </button>
+                <button id="mostrar-alumnos-btn" class="secondBtn" onclick="generarExcel()">
+                    <img src="img/excelico.png" alt="Icono de Excel"> Generar Excel
+                </button>
+            </div>
 
             <table>
                 <thead>
@@ -158,13 +156,10 @@ $nivel = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <!-- La consulta al registro de alumnos se mostrará aquí -->
                 </tbody>
             </table>
-
-            <button id="mostrar-alumnos-btn" class="btn" onclick="generarPDF()">Generar PDF</button>
-            <button id="mostrar-alumnos-btn" class="btn" onclick="generarExcel()">Generar Excel</button>
         </div>
     </main>
 
     <script src="js/alumnos.js"></script>
-
+    <script src="js/theme.js"></script>
 </body>
 </html>

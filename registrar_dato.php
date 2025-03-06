@@ -14,7 +14,6 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/registrar_dato.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +32,7 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                 <li><a href="alumnos.php">Alumnos</a></li>
                 <li><a href="Datos.php">Datos</a></li>
                 <li><a href="consulta.php">Consulta específica</a></li>
+                <li><button id="toggleTheme">🌙</button></li>
             </ul>
         </nav>
         <div class="saludoContainer">
@@ -98,5 +98,6 @@ if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
     </main>
 
     <script src="js/registrar_dato.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html>
